@@ -17,7 +17,7 @@ def truncate(number, digits) -> float:
     return math.trunc(stepper * number) / stepper
     
 
-def saveFromInput(saveFile, inputO:bool=False): 
+def saveFromInput(saveFile, df, inputO:bool=False): 
 	if inputO:
 		inp= 'a'
 		while inp!='y' and inp!='n':
@@ -29,8 +29,10 @@ def saveFromInput(saveFile, inputO:bool=False):
 	
 	if savePlt: 
 		print(f"Saving the remaining EGs to {saveFile}")
-		egDF.to_csv(saveFile, index=False)
-	
+		df.to_csv(saveFile, index=False)
+
+def addMBH():
+	pass	
 	
 ########################################################################################################################################################################
 # Overlap functions
@@ -133,7 +135,51 @@ print(f"Left with {len(egDF)} of the original {egDForigLength} EGs - {100*len(eg
 
 #Save resulting EG list as a new csv
 finalList="EGs_KH_overlapRemoved.csv"
-saveFromInput(finalList,exists(finalList))
+saveFromInput(finalList,egDF,exists(finalList))
 	
 #Catalog from Kormendy and Ho (https://arxiv.org/pdf/1304.7762.pdf) with M_BH
+########################################################################################################################################################################
+
+
+
+########################################################################################################################################################################
+#Catalog from Dabringhausen and Fellhauer (https://academic.oup.com/mnras/article/460/4/4492/2609151) without M_BH
+del egDF
+del egDForigLength
+del toRemove
+del finalList
+
+print("Importing CSV 2 - Dabringhausen and Fellhauer")
+egDF=pd.read_csv('EGs_DF.csv')
+egDForigLength=len(egDF)
+
+#Remove candidates too close to galactic plane
+toRemove = []
+toRemove.append(galacticPlaneOverlap(egDF))
+
+#Compare to BZCAT Blazar catalog (https://www.ssdc.asi.it/bzcat5/) 
+print("Consider blazar catalog from BZCAT")
+toRemove.append(compCat('bzcat_blazarCatalog.csv',' R.A. (J2000) ', ' Dec. (J2000) ', egDF))
+
+#Compare to 2MRS radio galaxy catalog (http://ragolu.science.ru.nl/index.html) 
+print("Consider radio galaxy catalog from 2MRS")
+toRemove.append(compCat('2mrs_radioCatalog.csv','ra', 'dec', egDF))
+
+
+#Remove EGs marked to remove
+toRemove=sum(toRemove, []) #flatten list
+toRemove = list(set(toRemove)) #remove duplicates
+toRemove.sort()
+for i in toRemove:
+	egDF.drop(i,inplace=True)
+egDF.reset_index(inplace=True)
+
+print(f"Left with {len(egDF)} of the original {egDForigLength} EGs - {100*len(egDF)/egDForigLength:.2f}%")
+
+#Save resulting EG list as a new csv
+finalList="EGs_DF_overlapRemoved.csv"
+saveFromInput(finalList,egDF,exists(finalList))
+
+	
+#Catalog from Dabringhausen and Fellhauer (https://academic.oup.com/mnras/article/460/4/4492/2609151) without M_BH
 ########################################################################################################################################################################
