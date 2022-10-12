@@ -25,9 +25,16 @@ For DF, this is done in the creation of the input EGs_DF.csv. To create this ori
 	python makeCSV.py
 Will output EGs_DF.csv that can be copied to the directory above.
 
-## To run overlap:
-	python catalogOverlap.py
+## To run overlap code 
 
+### In terminal:
+	python catalogOverlap.py
+	
+### As iPython notebook:
+	jupyter notebook
+And open catalogOverlap.ipynb
+
+### Details
 Code requires that original csv's and csvs from overlap catalogs be stored in the same directory. This includes:
 - EGs_DF.csv
 - EGs_KH.csv
@@ -39,4 +46,4 @@ Code outputs:
 - EGs_DF_overlapRemoved.csv
 - EGs_KH_overlapRemoved.csv
 
-If one of these outputs already exists, code will prompt in-terminal whether the original file should be overwritten or not._
+If one of these outputs already exists, code will prompt in-terminal whether the original file should be overwritten or not.
