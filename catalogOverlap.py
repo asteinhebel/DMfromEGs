@@ -38,10 +38,10 @@ def addMBH():
 # Overlap functions
 ########################################################################################################################################################################
 
-def galacticPlaneOverlap(egDF, deg:float=15.):
+def galacticPlaneOverlap(egDF, deg:float=10.):
 #Remove candidates too close to galactic plane
 
-	print("Removing EGs with b<15deg")
+	print(f"Removing EGs with b<{deg} deg")
 	removed=0
 	toRemove=[]
 	for x in egDF.index:
@@ -51,7 +51,7 @@ def galacticPlaneOverlap(egDF, deg:float=15.):
 	print(f"    Removed {removed} EGs - left with {(len(egDF.index)-removed)/len(egDF.index)*100:.2f}% of sample")
 	return toRemove
 	
-def compCat(compDFName, raIn, decIn, egDF, sep:float=1.0):
+def compCat(compDFName, raIn, decIn, egDF, sep:float=0.1):
 
 	compDF=pd.read_csv(compDFName)
 	toRemove=[]
