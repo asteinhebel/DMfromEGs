@@ -39,7 +39,8 @@ def addMBH():
 ########################################################################################################################################################################
 
 def galacticPlaneOverlap(egDF, deg:float=10.):
-#Remove candidates too close to galactic plane
+	"""Remove candidates too close to galactic plane
+	Return: Array of index locations of EGs that should be removed due to galactic plane proximity"""
 
 	print(f"Removing EGs with b<{deg} deg")
 	removed=0
@@ -52,6 +53,8 @@ def galacticPlaneOverlap(egDF, deg:float=10.):
 	return toRemove
 	
 def compCat(compDFName, raIn, decIn, egDF, sep:float=0.1):
+	"""Identify EG candidates that are too close to sources in another catalog
+	Return: Array of index locations of EGs that should be removed due to proximity to item in other catalog"""
 
 	compDF=pd.read_csv(compDFName)
 	toRemove=[]
@@ -122,6 +125,9 @@ toRemove.append(compCat('bzcat_blazarCatalog.csv',' R.A. (J2000) ', ' Dec. (J200
 print("Consider radio galaxy catalog from 2MRS")
 toRemove.append(compCat('2mrs_radioCatalog.csv','ra', 'dec', egDF))
 
+#Compare to 4FGL gamma-ray source catalog (https://fermi.gsfc.nasa.gov/ssc/data/access/lat/10yr_catalog/) 
+print("Consider 4FGL gamma-ray catalog")
+toRemove.append(compCat('fermi_4fgl_gammaCatalog.csv','RAJ2000', 'DEJ2000', egDF))
 
 #Remove EGs marked to remove
 toRemove=sum(toRemove, []) #flatten list
@@ -165,6 +171,9 @@ toRemove.append(compCat('bzcat_blazarCatalog.csv',' R.A. (J2000) ', ' Dec. (J200
 print("Consider radio galaxy catalog from 2MRS")
 toRemove.append(compCat('2mrs_radioCatalog.csv','ra', 'dec', egDF))
 
+#Compare to 4FGL gamma-ray source catalog (https://fermi.gsfc.nasa.gov/ssc/data/access/lat/10yr_catalog/) 
+print("Consider 4FGL gamma-ray catalog")
+toRemove.append(compCat('fermi_4fgl_gammaCatalog.csv','RAJ2000', 'DEJ2000', egDF))
 
 #Remove EGs marked to remove
 toRemove=sum(toRemove, []) #flatten list
