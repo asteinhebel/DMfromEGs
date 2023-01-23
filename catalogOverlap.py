@@ -1,8 +1,9 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
 import astropy
 from astropy import units as u
-from astropy.coordinates import SkyCoord
+from astropy.coordinates import SkyCoord, Angle
 from astropy.io import fits
 from astropy.table import Table
 import math
@@ -83,7 +84,7 @@ def galacticPlaneOverlap(egDF, deg:float=10.):
 	print(f"    Removed {removed} EGs - left with {(len(egDF.index)-removed)/len(egDF.index)*100:.2f}% of sample")
 	return toRemove
 	
-def compCat(compDFName, raIn, decIn, egDF, sep:float=0.1):
+def compCat(compDFName, raIn, decIn, egDF, egDFName, sep:float=0.1):
 	"""Identify EG candidates that are too close to sources in another catalog
 	Return: Array of index locations of EGs that should be removed due to proximity to item in other catalog"""
 
@@ -95,6 +96,22 @@ def compCat(compDFName, raIn, decIn, egDF, sep:float=0.1):
 	#return arrays of elements from cl2 that match cl1
 	#index of cl2 object closest to the corresponding cl1 object, 2D distance between objects, 3D distance between object (if exists)
 	idx, d2d, d3d = cl1.match_to_catalog_sky(cl2)
+	
+	if args.plot:
+		degMax = np.max(d2d.degree)
+		binEdges = np.arange(0, degMax, 0.05) #0.05deg bins
+		np.concatenate((binEdges,[degMax]))
+		hist=plt.hist(d2d.degree, bins=binEdges)
+		plt.title(compDFName[:-4])
+		plt.xlabel("Min separation distance [deg]")
+		plt.ylabel("elliptical galacy count")
+		if args.saveOut:
+			savename=f"{args.outDir}/hist_minSep_{egDFName}_{compDFName[:-4]}.png"
+			print(f"Saving {savename}")
+			plt.savefig(savename)
+		else:
+			plt.show()
+		plt.clf()
 
 	#Max separation between EG and other source
 	max_sep = sep*u.degree #Maximum distance to neighbor
@@ -127,15 +144,15 @@ def main(args, f_in, extraprocess):
 
 	#Compare to BZCAT Blazar catalog (https://www.ssdc.asi.it/bzcat5/) 
 	print("Consider blazar catalog from BZCAT")
-	toRemove.append(compCat('bzcat_blazarCatalog.csv',' R.A. (J2000) ', ' Dec. (J2000) ', egDF))
+	toRemove.append(compCat('bzcat_blazarCatalog.csv',' R.A. (J2000) ', ' Dec. (J2000) ', egDF, f_in_name))
 
 	#Compare to 2MRS radio galaxy catalog (http://ragolu.science.ru.nl/index.html) 
 	print("Consider radio galaxy catalog from 2MRS")
-	toRemove.append(compCat('2mrs_radioCatalog.csv','ra', 'dec', egDF))
+	toRemove.append(compCat('2mrs_radioCatalog.csv','ra', 'dec', egDF, f_in_name))
 
 	#Compare to 4FGL gamma-ray source catalog (https://fermi.gsfc.nasa.gov/ssc/data/access/lat/10yr_catalog/) 
 	print("Consider 4FGL gamma-ray catalog")
-	toRemove.append(compCat('fermi_4fgl_gammaCatalog.csv','RAJ2000', 'DEJ2000', egDF))
+	toRemove.append(compCat('fermi_4fgl_gammaCatalog.csv','RAJ2000', 'DEJ2000', egDF, f_in_name))
 
 	#Remove EGs marked to remove
 	toRemove=sum(toRemove, []) #flatten list
