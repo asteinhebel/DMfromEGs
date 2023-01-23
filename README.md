@@ -2,8 +2,9 @@
 
 Suitable sources for analysis must:
 - Be >15deg above the galactic plane
-- Not fall within 1deg of a known radio galaxy (from 2MRS catalog)
-- Not fall within 1deg of a known blazar (from BZCAT catalog)
+- Not fall within 0.1deg of a known radio galaxy (from 2MRS catalog)
+- Not fall within 0.1deg of a known blazar (from BZCAT catalog)
+- Not fall within 0.1deg of a known gamma ray source (from Fermi 4FGL-2DL catalog)
 
 ## Two input EG catalogs:
 - ``KH" from Kormendy and Ho (<https://arxiv.org/pdf/1304.7762.pdf>)
@@ -41,9 +42,15 @@ Code requires that original csv's and csvs from overlap catalogs be stored in th
 - EGs_KH_lb.csv
 - 2mrs_radioCatalog.csv
 - bzcat_blazarCatalog.csv
+- fermi_4fgl_gammaCatalog.csv
 
 Code outputs:
 - EGs_DF_overlapRemoved.csv
 - EGs_KH_overlapRemoved.csv
 
 If one of these outputs already exists, code will prompt in-terminal whether the original file should be overwritten or not.
+
+Runtime optional arguments:
+- -o, directory for saving outputs, needs string input
+- -p, plot histograms of minimum separation between EG and comparison catalog entries
+- -s, save output csv lists of good EGs and separation histograms 
