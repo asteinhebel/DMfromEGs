@@ -6,7 +6,8 @@ from astropy.coordinates import SkyCoord
 from astropy.io import fits
 from astropy.table import Table
 import math
-from os.path import exists
+import os
+import argparse
 
 ########################################################################################################################################################################
 # Helper functions
@@ -37,6 +38,36 @@ def addMBH():
 ########################################################################################################################################################################
 # Overlap functions
 ########################################################################################################################################################################
+def extraKHprocessing(egDF):
+	#get l,b from Michela
+	egDF_mn=pd.read_csv('EGs_KH_lb.csv')
+	egDF_mn[['Name','Type','Distance[Mpc]','Distance Uncert','Ks','M_KsT','M_VT','(V-Ks)_0','(B-V)_0','M_BH[Msolar*10e6]','Flags:M','Flags:C','Flags:M_BH','l','b']]=egDF_mn['Name;Type;Distance[Mpc];Ks;M_KsT;M_VT;(V-Ks)_0;(B-V)_0;M_BH[Msolar*10e6];Flags:M;Flags:C;Flags:M_BH;;l;b'].str.split(';', expand=True)
+	egDF_mn.drop(columns=['Name;Type;Distance[Mpc];Ks;M_KsT;M_VT;(V-Ks)_0;(B-V)_0;M_BH[Msolar*10e6];Flags:M;Flags:C;Flags:M_BH;;l;b'], inplace=True)
+	egDF['l']=egDF_mn['l']
+	egDF['b']=egDF_mn['b']
+	
+	#Remove rows of NaN entries
+	egDF.dropna(inplace=True)
+	egDForigLength=len(egDF)
+
+	#Convert l,b to floats
+	toConvert=['l','b']
+	for colu in toConvert:
+		egDF[colu]=pd.to_numeric(egDF[colu])
+
+	#Add RA/Dec in degrees to egDF
+	c=SkyCoord(l = egDF['l']*u.deg, b = egDF['b']*u.deg, frame='galactic')
+
+	eg_ra=[]
+	eg_dec=[]
+	for coord in c.icrs: #convert galactic coordinates to icrs RA/Dec
+		strcoord=coord.to_string()
+		eg_ra.append(float(strcoord.split(' ')[0]))
+		eg_dec.append(float(strcoord.split(' ')[1]))
+	egDF['RA']=eg_ra
+	egDF['Dec']=eg_dec
+	
+	return egDF
 
 def galacticPlaneOverlap(egDF, deg:float=10.):
 	"""Remove candidates too close to galactic plane
@@ -80,115 +111,73 @@ def compCat(compDFName, raIn, decIn, egDF, sep:float=0.1):
 # Main
 ########################################################################################################################################################################
 	  
-########################################################################################################################################################################
-#Catalog from Kormendy and Ho (https://arxiv.org/pdf/1304.7762.pdf) with M_BH
-print("Importing CSV 1 - Kormendy and Ho")
-egDF=pd.read_csv('EGs_KH.csv')
+def main(args, f_in, extraprocess): 
 
-#get l,b from Michela
-egDF_mn=pd.read_csv('EGs_KH_lb.csv')
-egDF_mn[['Name','Type','Distance[Mpc]','Distance Uncert','Ks','M_KsT','M_VT','(V-Ks)_0','(B-V)_0','M_BH[Msolar*10e6]','Flags:M','Flags:C','Flags:M_BH','l','b']]=egDF_mn['Name;Type;Distance[Mpc];Ks;M_KsT;M_VT;(V-Ks)_0;(B-V)_0;M_BH[Msolar*10e6];Flags:M;Flags:C;Flags:M_BH;;l;b'].str.split(';', expand=True)
-egDF_mn.drop(columns=['Name;Type;Distance[Mpc];Ks;M_KsT;M_VT;(V-Ks)_0;(B-V)_0;M_BH[Msolar*10e6];Flags:M;Flags:C;Flags:M_BH;;l;b'], inplace=True)
-egDF['l']=egDF_mn['l']
-egDF['b']=egDF_mn['b']
-
-#Remove rows of NaN entries
-egDF.dropna(inplace=True)
-egDForigLength=len(egDF)
-
-#Convert l,b to floats
-toConvert=['l','b']
-for colu in toConvert:
-	egDF[colu]=pd.to_numeric(egDF[colu])
-
-#Add RA/Dec in degrees to egDF
-c=SkyCoord(l = egDF['l']*u.deg, b = egDF['b']*u.deg, frame='galactic')
-
-eg_ra=[]
-eg_dec=[]
-for coord in c.icrs: #convert galactic coordinates to icrs RA/Dec
-	strcoord=coord.to_string()
-	eg_ra.append(float(strcoord.split(' ')[0]))
-	eg_dec.append(float(strcoord.split(' ')[1]))
-egDF['RA']=eg_ra
-egDF['Dec']=eg_dec
-
-#Remove candidates too close to galactic plane
-toRemove = []
-toRemove.append(galacticPlaneOverlap(egDF))
-
-#Compare to BZCAT Blazar catalog (https://www.ssdc.asi.it/bzcat5/) 
-print("Consider blazar catalog from BZCAT")
-toRemove.append(compCat('bzcat_blazarCatalog.csv',' R.A. (J2000) ', ' Dec. (J2000) ', egDF))
-
-#Compare to 2MRS radio galaxy catalog (http://ragolu.science.ru.nl/index.html) 
-print("Consider radio galaxy catalog from 2MRS")
-toRemove.append(compCat('2mrs_radioCatalog.csv','ra', 'dec', egDF))
-
-#Compare to 4FGL gamma-ray source catalog (https://fermi.gsfc.nasa.gov/ssc/data/access/lat/10yr_catalog/) 
-print("Consider 4FGL gamma-ray catalog")
-toRemove.append(compCat('fermi_4fgl_gammaCatalog.csv','RAJ2000', 'DEJ2000', egDF))
-
-#Remove EGs marked to remove
-toRemove=sum(toRemove, []) #flatten list
-toRemove = list(set(toRemove)) #remove duplicates
-toRemove.sort()
-for i in toRemove:
-	egDF.drop(i,inplace=True)
-egDF.reset_index(inplace=True)
-
-print(f"Left with {len(egDF)} of the original {egDForigLength} EGs - {100*len(egDF)/egDForigLength:.2f}%")
-
-#Save resulting EG list as a new csv
-finalList="EGs_KH_overlapRemoved.csv"
-saveFromInput(finalList,egDF,exists(finalList))
+	egDF=pd.read_csv(f_in)
+	f_in_name=f_in[:-4]
 	
-#Catalog from Kormendy and Ho (https://arxiv.org/pdf/1304.7762.pdf) with M_BH
+	if extraprocess:
+		egDF=extraKHprocessing(egDF)
+
+	egDForigLength=len(egDF)
+
+	#Remove candidates too close to galactic plane
+	toRemove = []
+	toRemove.append(galacticPlaneOverlap(egDF))
+
+	#Compare to BZCAT Blazar catalog (https://www.ssdc.asi.it/bzcat5/) 
+	print("Consider blazar catalog from BZCAT")
+	toRemove.append(compCat('bzcat_blazarCatalog.csv',' R.A. (J2000) ', ' Dec. (J2000) ', egDF))
+
+	#Compare to 2MRS radio galaxy catalog (http://ragolu.science.ru.nl/index.html) 
+	print("Consider radio galaxy catalog from 2MRS")
+	toRemove.append(compCat('2mrs_radioCatalog.csv','ra', 'dec', egDF))
+
+	#Compare to 4FGL gamma-ray source catalog (https://fermi.gsfc.nasa.gov/ssc/data/access/lat/10yr_catalog/) 
+	print("Consider 4FGL gamma-ray catalog")
+	toRemove.append(compCat('fermi_4fgl_gammaCatalog.csv','RAJ2000', 'DEJ2000', egDF))
+
+	#Remove EGs marked to remove
+	toRemove=sum(toRemove, []) #flatten list
+	toRemove = list(set(toRemove)) #remove duplicates
+	toRemove.sort()
+	for i in toRemove:
+		egDF.drop(i,inplace=True)
+	egDF.reset_index(inplace=True)
+
+	print(f"Left with {len(egDF)} of the original {egDForigLength} EGs - {100*len(egDF)/egDForigLength:.2f}%")
+
+	if args.saveOut:
+		#Save resulting EG list as a new csv
+		finalList=f"{args.outDir}/{f_in_name}_overlapRemoved.csv"
+		saveFromInput(finalList,egDF,os.path.exists(args.outDir+"/"+finalList))		
+
+
 ########################################################################################################################################################################
-
-
-
+# call main
 ########################################################################################################################################################################
-#Catalog from Dabringhausen and Fellhauer (https://academic.oup.com/mnras/article/460/4/4492/2609151) without M_BH
-del egDF
-del egDForigLength
-del toRemove
-del finalList
+if __name__ == "__main__":
 
-print("Importing CSV 2 - Dabringhausen and Fellhauer")
-egDF=pd.read_csv('EGs_DF.csv')
-egDForigLength=len(egDF)
+	parser = argparse.ArgumentParser(description='Determine overlap of source EGs with other catalogs')
+	parser.add_argument('-s', '--saveOut', action='store_true', default=False, required=False, 
+		help='Save all plots (no display_ and/or csv lists to current dir. Default: False (only displays/prints to terminal, does not save)')
+	parser.add_argument('-p', '--plot', action='store_true', default=False, required=False, 
+		help='Plot histograms of distance between EG and closest entry in other catalogs. Default:False')
+	parser.add_argument('-o', '--outDir', default='./', required=False,  
+        help='Directory to save outputs. Default: current directory')
 
-#Remove candidates too close to galactic plane
-toRemove = []
-toRemove.append(galacticPlaneOverlap(egDF))
-
-#Compare to BZCAT Blazar catalog (https://www.ssdc.asi.it/bzcat5/) 
-print("Consider blazar catalog from BZCAT")
-toRemove.append(compCat('bzcat_blazarCatalog.csv',' R.A. (J2000) ', ' Dec. (J2000) ', egDF))
-
-#Compare to 2MRS radio galaxy catalog (http://ragolu.science.ru.nl/index.html) 
-print("Consider radio galaxy catalog from 2MRS")
-toRemove.append(compCat('2mrs_radioCatalog.csv','ra', 'dec', egDF))
-
-#Compare to 4FGL gamma-ray source catalog (https://fermi.gsfc.nasa.gov/ssc/data/access/lat/10yr_catalog/) 
-print("Consider 4FGL gamma-ray catalog")
-toRemove.append(compCat('fermi_4fgl_gammaCatalog.csv','RAJ2000', 'DEJ2000', egDF))
-
-#Remove EGs marked to remove
-toRemove=sum(toRemove, []) #flatten list
-toRemove = list(set(toRemove)) #remove duplicates
-toRemove.sort()
-for i in toRemove:
-	egDF.drop(i,inplace=True)
-egDF.reset_index(inplace=True)
-
-print(f"Left with {len(egDF)} of the original {egDForigLength} EGs - {100*len(egDF)/egDForigLength:.2f}%")
-
-#Save resulting EG list as a new csv
-finalList="EGs_DF_overlapRemoved.csv"
-saveFromInput(finalList,egDF,exists(finalList))
-
+	parser.add_argument
+	args = parser.parse_args()
 	
-#Catalog from Dabringhausen and Fellhauer (https://academic.oup.com/mnras/article/460/4/4492/2609151) without M_BH
-########################################################################################################################################################################
+	#create output dir if does not exist
+	if not os.path.exists(args.outDir):
+		os.mkdir(args.outDir)
+	
+	extraprocessing = [True, False]
+	f_in = ["EGs_KH.csv","EGs_DF.csv"]
+	for i,extra in enumerate(extraprocessing):
+		print(f"Importing CSV {i+1} - {f_in[i]}")
+		main(args, f_in[i], extra)
+			
+	#Catalog KH from Kormendy and Ho (https://arxiv.org/pdf/1304.7762.pdf) with M_BH
+	#Catalog DF from Dabringhausen and Fellhauer (https://academic.oup.com/mnras/article/460/4/4492/2609151) without M_BH	
