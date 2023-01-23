@@ -98,6 +98,7 @@ def compCat(compDFName, raIn, decIn, egDF, egDFName, sep:float=0.1):
 	idx, d2d, d3d = cl1.match_to_catalog_sky(cl2)
 	
 	if args.plot:
+		#Make histograms of minimum distance between each EG and the closest entry from the comparison catalog
 		degMax = np.max(d2d.degree)
 		binEdges = np.arange(0, degMax, 0.05) #0.05deg bins
 		np.concatenate((binEdges,[degMax]))
@@ -117,6 +118,12 @@ def compCat(compDFName, raIn, decIn, egDF, egDFName, sep:float=0.1):
 	max_sep = sep*u.degree #Maximum distance to neighbor
 	sep_constraint = d2d < max_sep #array of booleans corresponding to cl1 - True if sep too small and cl1 element should be removed
 	print(f"    Eliminating {sep_constraint.sum()} EGs for overlap within {sep} deg")
+
+	print("EGs TO BE REMOVED:")
+	to_remove = egDF['Name']*(d2d<max_sep)
+	to_remove.replace('', np.nan, inplace=True)
+	to_remove.dropna(inplace=True)
+	print(to_remove)
 
 	for i in range(len(egDF)):
 		if sep_constraint[i]:
