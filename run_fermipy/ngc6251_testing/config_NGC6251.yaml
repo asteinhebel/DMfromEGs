@@ -1,0 +1,68 @@
+logging : 
+
+  verbosity : 3
+
+data:
+
+  evfile: /Users/asteinhe/FermiLAT/BHinEGs_DM/data/NGC6251/ft1.fits
+  scfile: /Users/asteinhe/FermiLAT/BHinEGs_DM/data/NGC6251/L220207103331BDBB1D6332_SC00.fits
+
+binning:
+
+  # Binning
+  roiwidth   : 10.0 #5.0
+  npix       : null
+  binsz      : 0.08 #0.1 # spatial bin size in deg
+  binsperdec : 8   # nb energy bins per decade
+
+selection:
+
+  # Data selections
+  emin    : 1000 #1 GeV
+  emax    : 500000 #500 GeV
+  zmax    : 100 
+  evclass : 128 #?
+  evtype  : 3 #?
+  tmin    : 239557417
+  tmax    : 665410983 # 12 years
+  filter  : null
+  
+  # Set the ROI center to these coordinates
+  # EG not a Fermi source
+  ra: -111.867 #want between -180 -> 180
+  dec: 82.5379
+
+#from database -> (248.133,82.5379)
+
+gtlike:
+  # IRFs
+  edisp : True
+  irfs : 'P8R3_SOURCE_V3'
+  edisp_disable : ['isodiff','galdiff']
+
+
+# Settings for ROI model
+model:
+
+  # Include catalog sources within this distance from the ROI center
+  src_radius  : null
+
+  # Include catalog sources within a box of width roisrc.
+  src_roiwidth : 10.0
+
+  galdiff  : '$FERMI_DIFFUSE_DIR/gll_iem_v07.fits'
+  isodiff  : '$FERMI_DIFFUSE_DIR/iso_P8R3_SOURCE_V3_v1.txt'
+  #sourceveto?
+
+  # List of catalogs to be used in the model.
+  catalogs : ['4FGL']
+
+  #create power law source for target EG
+  sources :
+    - { name : 'NGC6251', ra : -111.867, dec : 82.5379, 
+        SpectrumType : 'PowerLaw', Index : 2.0, Prefactor : { 'value' : 0.0, 'scale' : 1e-13 } } 
+        #manually set Index and Norm and cycle through combinations of them for 2D TS
+
+components: null
+
+

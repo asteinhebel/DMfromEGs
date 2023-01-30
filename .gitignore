@@ -27,3 +27,9 @@ Temporary Items
 
 #Jupyter notebook
 .ipynb_checkpoints/
+
+#Data dir - too big
+data/
+
+#outdated run files used to learn fermipy
+run_fermipy/old
