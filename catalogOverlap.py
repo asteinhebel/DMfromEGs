@@ -57,7 +57,7 @@ def extraKHprocessing(egDF):
 		egDF[colu]=pd.to_numeric(egDF[colu])
 
 	#Add RA/Dec in degrees to egDF
-	c=SkyCoord(l = egDF['l']*u.deg, b = egDF['b']*u.deg, frame='galactic')
+	c = SkyCoord(l = egDF['l']*u.deg, b = egDF['b']*u.deg, frame='galactic')
 
 	eg_ra=[]
 	eg_dec=[]
@@ -90,7 +90,7 @@ def compCat(compDFName, raIn, decIn, egDF, egDFName, sep:float=0.1):
 
 	compDF=pd.read_csv(compDFName)
 	toRemove=[]
-	cl1=SkyCoord(l = egDF['l']*u.deg, b = egDF['b']*u.deg, frame='galactic').icrs
+	cl1 = SkyCoord(ra = egDF['RA']*u.degree,dec = egDF['Dec']*u.degree)
 	cl2 = SkyCoord(ra = compDF[raIn]*u.degree,dec = compDF[decIn]*u.degree)
 
 	#return arrays of elements from cl2 that match cl1
