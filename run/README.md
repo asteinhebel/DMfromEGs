@@ -36,3 +36,14 @@
 		- `output/` contains all output files from fermipy including fit results (*.fits, *.npy), source finding, the resulting SED results, etc
 		- `output/plots/` contains debugging plots from likelihood fitting and SED creation
 
+Outputs: target directory containing fit parameters, SED fit, many plots, many fit files
+
+### Consider contribution of DM model and convert SED output from energy/flux space to DM mass/sigmav space 
+1. Update bash steering file `run_interpret.sh`
+	- Update arrays containing targets to stack and their associated J factors and J factor uncertainties
+2. Update hardcoded file paths in `diMauro_likelihood_JfactorDM.py`
+	- Point `homedir` to `run/` space
+	- Check that SED output .npy files will be found by `sedfits`
+
+Outputs: npy files with 2D arrays of dloglike values in DM mass/sigmav space
+
