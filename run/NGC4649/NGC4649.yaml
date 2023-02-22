@@ -1,0 +1,53 @@
+logging:
+  verbosity : 3
+  chatter : 3
+#--------#
+fileio:
+  outdir : output
+  logfile : NGC4649
+  usescratch : False
+  scratchdir : scratch
+#--------#
+data:
+  evfile : '/Users/asteinhe/FermiLAT/BHinEGs_DM/data/NGC4649/ft1.fits'
+  scfile : '/Users/asteinhe/FermiLAT/BHinEGs_DM/data/ft2_sc.fits'
+  ltcube : '/Users/asteinhe/FermiLAT/BHinEGs_DM/data/ltcube_00.fits'
+#--------#
+binning:
+  roiwidth : 10
+  binsz : 0.08
+  binsperdec : 8
+#--------#
+selection:
+  emin : 1000
+  emax : 1000000
+  zmax : 100
+  target : 'NGC4649'
+  radius : 15
+  tmin : 239557417
+  tmax : 665410983
+  evclass : 128
+  evtype : 3
+  filter : 'DATA_QUAL>0 && LAT_CONFIG==1 && ABS(ROCK_ANGLE)<52'
+#--------#
+gtlike:
+  edisp : True
+  edisp_disable : ['isodiff']
+  irfs : 'P8R3_SOURCE_V3'
+#--------#
+model:
+  src_radius : 15
+  src_roiwidth : 15
+  galdiff : '/Users/asteinhe/opt/anaconda3/envs/fermi_test/share/fermitools/refdata/fermi/galdiffuse/gll_iem_v07.fits'
+  isodiff : '/Users/asteinhe/opt/anaconda3/envs/fermi_test/share/fermitools/refdata/fermi/galdiffuse/iso_P8R3_SOURCE_V3_v1.txt'
+  catalogs :
+    - '4FGL-DR3'
+  sources :
+    - { 'name' : 'NGC4649', 'ra' : 190.917, 'dec' : 11.5526, 'SpectrumType' : PowerLaw }
+#--------#
+components: null
+plotting:
+  format : png
+#--------#
+sed:
+  use_local_index : True

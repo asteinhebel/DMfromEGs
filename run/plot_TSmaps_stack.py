@@ -92,6 +92,9 @@ def main(cmd_line):
 	
 	#get sources
 	srclist = open(cmd_line[1],'r').read().split('\n')
+	#protect against empty lines
+	if '' in srclist:
+		srclist.remove('')
 	dsph = True if 'Draco' in srclist else False
 	typeStr = "dSph" if dsph else "EG"
 	
@@ -225,7 +228,7 @@ if __name__=="__main__":
 
 	homepath = '/Users/asteinhe/FermiLAT/BHinEGs_DM/run/'
 	
-	savePlots = False
+	savePlots = True
 	
 	main(sys.argv)
 

@@ -34,4 +34,11 @@ data/
 #outdated run files used to learn fermipy
 run_fermipy_testing
 dmpipe_testing
+
+#old data runs
 run/8x8ROIs
+run/M32_short
+run/M32_origRunthrough
+
+#test scripts
+stack_plot.py
