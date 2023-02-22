@@ -22,8 +22,8 @@ Initial EG catalogs must be saved as CSV and contain at least the variables:
 
 For KH, this is done in catalogOverlap.py code by adding values from the supplementary EGs_KH_lb.csv 
 For DF, this is done in the creation of the input EGs_DF.csv. To create this original input from the article's Tables (saved as .txt files).
-	cd tables_DF
-	python makeCSV.py
+	```cd tables_DF
+	python makeCSV.py ```
 Will output EGs_DF.csv that can be copied to the directory above.
 
 ## To run overlap code 
