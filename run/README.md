@@ -62,3 +62,7 @@ Outputs: plots of TS map (in DM space) for individual targets and for full stack
 	- Make sure to update hardcoded paths and savePlot variable before running
 	- Run for one single input like
 		python tsmap.py <target>	
+
+
+### Notes
+- Original scripts provided by A. McDaniel at Clemson stored in `clemsonScripts`
