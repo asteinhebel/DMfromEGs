@@ -47,3 +47,14 @@ Outputs: target directory containing fit parameters, SED fit, many plots, many f
 
 Outputs: npy files with 2D arrays of dloglike values in DM mass/sigmav space
 
+### Stack likelihoods and plot 
+1. Create .txt file listing all targets to stack (eg. `stackingTargets.txt`)
+2. Update hardcoded file path for `homedir` in `plot_TSmaps_stack.py`
+3. Define whether you want to save or view plots with `savePlots` bool in `plot_TSmaps_stack.py`
+4. Run plotting script
+	python plot_TSmaps_stack.py stackingTargets.txt
+	
+Outputs: plots of TS map (in DM space) for individual targets and for full stack (saved either in individual target dir OR in `run/stack/` for full stack)
+
+### Troubleshooting scripts
+- 
