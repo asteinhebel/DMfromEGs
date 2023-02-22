@@ -57,4 +57,8 @@ Outputs: npy files with 2D arrays of dloglike values in DM mass/sigmav space
 Outputs: plots of TS map (in DM space) for individual targets and for full stack (saved either in individual target dir OR in `run/stack/` for full stack)
 
 ### Troubleshooting scripts
-- 
+`tsmap.py`
+	- Creates TS maps in the style of the DM TS maps but for SED outputs (in flux/energy space)
+	- Make sure to update hardcoded paths and savePlot variable before running
+	- Run for one single input like
+		python tsmap.py <target>	
