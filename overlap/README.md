@@ -1,7 +1,7 @@
 # Identify viable elliptical galaxy (EG) sources for Fermi analysis
 
 Suitable sources for analysis must:
-- Be >15deg above the galactic plane
+- Be >10deg above the galactic plane
 - Not fall within 0.1deg of a known radio galaxy (from 2MRS catalog)
 - Not fall within 0.1deg of a known blazar (from BZCAT catalog)
 - Not fall within 0.1deg of a known gamma ray source (from Fermi 4FGL-2DL catalog)
