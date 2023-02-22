@@ -34,3 +34,4 @@ data/
 #outdated run files used to learn fermipy
 run_fermipy_testing
 dmpipe_testing
+run/8x8ROIs
