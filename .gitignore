@@ -32,4 +32,5 @@ Temporary Items
 data/
 
 #outdated run files used to learn fermipy
-run_fermipy/old
+run_fermipy_testing
+dmpipe_testing
