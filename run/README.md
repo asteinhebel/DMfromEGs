@@ -13,13 +13,17 @@
 3. In each directory with source data, define the file `ft1.fits` that lists all data files
 4. If no `ltcube` file exists, generate one 
 	- Using the SC file in `../data/` and one example target with known RA/dec, run:
+	
 		cd run
 		python make_ltcube.py <target> <RA> <dec>
+		
 	- Save `ltcube` output in `../data/` with the SC file
 
 ### Fermipy joint likelihood fitting and SED
 1. Move to `run/`
+
 	cd run
+	
 2. Ensure Fermipy/fermitools are installed/usable (eg. activate a conda environment)
 3. Update bash steering file `run_preprocess_sed.sh`
 	- Update arrays of targets and their associated RA / dec
@@ -29,7 +33,9 @@
 5. Update hardcoded paths in `get_sed.py`
 	- Point `preprocessing_path` to the `run/` dir
 5. Run bash file which calls `preprocess_likelihoodFitting.py` and `get_sed.py`
+
 	source run_preprocess_sed.sh
+	
 	- All outputs are saved to directories in `run/` named after the target. If the directory does not exist, it will be created
 	- These directories are organized as follows:
 		- main dir space stores configuration file (<target>.yaml), fermipy log file, and txt file of output fit parameters
@@ -44,6 +50,9 @@ Outputs: target directory containing fit parameters, SED fit, many plots, many f
 2. Update hardcoded file paths in `diMauro_likelihood_JfactorDM.py`
 	- Point `homedir` to `run/` space
 	- Check that SED output .npy files will be found by `sedfits`
+3. Run bash file which calls `diMauro_likelihood_JfactorDM.py`
+
+	source run_interpret.sh
 
 Outputs: npy files with 2D arrays of dloglike values in DM mass/sigmav space
 
@@ -52,12 +61,13 @@ Outputs: npy files with 2D arrays of dloglike values in DM mass/sigmav space
 2. Update hardcoded file path for `homedir` in `plot_TSmaps_stack.py`
 3. Define whether you want to save or view plots with `savePlots` bool in `plot_TSmaps_stack.py`
 4. Run plotting script
+
 	python plot_TSmaps_stack.py stackingTargets.txt
 	
 Outputs: plots of TS map (in DM space) for individual targets and for full stack (saved either in individual target dir OR in `run/stack/` for full stack)
 
 ### Troubleshooting scripts
-`tsmap.py`
+	tsmap.py
 	- Creates TS maps in the style of the DM TS maps but for SED outputs (in flux/energy space)
 	- Make sure to update hardcoded paths and savePlot variable before running
 	- Run for one single input like
