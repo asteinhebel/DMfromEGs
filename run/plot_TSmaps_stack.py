@@ -115,14 +115,24 @@ def main(cmd_line):
 		# Need to talk with Mattia to see if he understands it
 		TS_array = 2*(like_file-like_file[0,0])
 		TS_array_J = 2*(like_file_prior-like_file_prior[0,0])
+		
+		#Identify lowest value and correct by that, not by the corner entry
+		#TS_array = 2*(like_file-like_file.min())
+		#TS_array_J = 2*(like_file_prior-like_file_prior.min())
 		# the above lines convert the delta log likelihood to TS
+		
+		#TS_array = 2*like_file
+		#TS_array_J = 2*like_file_prior
+		
+		print(like_file[0,0])
+		print(TS_array.min())
 	
 		summed_noprior+= TS_array	
 		summed_wprior+= TS_array_J
 		
 		#save TS plots for individual inputs
-		plotTS(TS_array.T, mass_vec, sigmav_vec, vmin=-3, save=savePlots, filename=homepath+srcname+"/output/plots/TS_noprior_"+typeStr+".png", title=srcname+"_noprior")
-		plotTS(TS_array_J.T, mass_vec, sigmav_vec, vmin=-3, save=savePlots, filename=homepath+srcname+"/output/plots/TS_Jprior_"+typeStr+".png", title=srcname+"_Jprior")
+		plotTS(TS_array.T, mass_vec, sigmav_vec, vmin=-50, save=savePlots, filename=homepath+srcname+"/output/plots/TS_noprior_"+typeStr+".png", title=srcname+"_noprior")
+		plotTS(TS_array_J.T, mass_vec, sigmav_vec, vmin=-50, save=savePlots, filename=homepath+srcname+"/output/plots/TS_Jprior_"+typeStr+".png", title=srcname+"_Jprior")
 
 		
 		"""
@@ -228,7 +238,7 @@ if __name__=="__main__":
 
 	homepath = '/Users/asteinhe/FermiLAT/BHinEGs_DM/run/'
 	
-	savePlots = True
+	savePlots = False
 	
 	main(sys.argv)
 

@@ -75,25 +75,44 @@ def plotTS(summed, masses, sigmav, vmin=0, interp=True,dof=2,
 ############################################################################################################
 def main(cmd_line):
 
-	srcname = sys.argv[1]
-	sedfits =  f"{homepath}{srcname}/output/{srcname}_free_BG_sed.fits"
-	save_array_path = f"{homepath}{srcname}/output/plots/"
-	sed = fits.open(sedfits)[1].data
-	like_file = copy.deepcopy(sed['dloglike_scan'])
+	srcIn = sys.argv[1]
 	
-	en_vec = copy.deepcopy(sed['e_ref'])/1.e3
-	flux_vec = np.logspace(-8,-5,20)
-	
-	#correct 0 point
-	TS_array = 2*(like_file-like_file[0,0])
-	
-	plotTS(TS_array.T, en_vec, flux_vec, interp=False, vmin=0, save=savePlots, filename=homepath+srcname+"/output/plots/TS_enFlux.png", title=srcname)
+	if '.txt' in srcIn:
+		srclist = open(srcIn,'r').read().split('\n')
+		#protect against empty lines
+		if '' in srclist:
+			srclist.remove('')
+	else:
+		srclist=[srcIn]
+	typeStr = "dSph" if 'Draco' in srclist else "EG"
 
+	stackTS = 0
+	
+	for srcname in srclist:
+		sedfits =  f"{homepath}{srcname}/output/{srcname}_free_BG_sed.fits"
+		save_array_path = f"{homepath}{srcname}/output/plots/"
+		sed = fits.open(sedfits)[1].data
+		like_file = copy.deepcopy(sed['dloglike_scan'])
+	
+		en_vec = copy.deepcopy(sed['e_ref'])/1.e3
+		flux_vec = np.logspace(-8,-5,20)
+	
+		#correct 0 point
+		TS_array = 2*(like_file-like_file[0,0])
+		stackTS += TS_array
+	
+		plotTS(TS_array.T, en_vec, flux_vec, interp=True, vmin=0, save=savePlots, filename=homepath+srcname+"/output/plots/TS_enFlux.png", title=srcname)
+
+	#plot stack if more than one input
+	if len(srclist)>1:
+		plotTS(stackTS.T, en_vec, flux_vec, interp=True, vmin=0, save=savePlots, filename=homepath+"/stack/TS_enFlux_"+typeStr+".png", title=f"{typeStr} stacked")
 
 ################################################################################################
 ################################################################################################
 ################################################################################################
 if __name__=="__main__":
 	homepath = '/Users/asteinhe/FermiLAT/BHinEGs_DM/run/'
-	savePlots=False
+	savePlots=True
 	main(sys.argv)
+	
+	#run with either name of a target to consider or with the path to a txt file listing all targets to consider
