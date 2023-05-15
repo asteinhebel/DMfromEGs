@@ -88,7 +88,7 @@ def main(cmd_line):
 	# define 
 	mass_vec =  np.logspace(0,4,40)
 	sigmav_vec = np.logspace(-28,-22,60)
-	summed_noprior, summed_wprior = 0,0
+	summed = 0
 	
 	#get sources
 	srclist = open(cmd_line[1],'r').read().split('\n')
@@ -100,10 +100,9 @@ def main(cmd_line):
 	
 	for i, srcname in enumerate(srclist):
 		# The filename in the load functions need to be your specific numpy arrays for the run
-		array_path = homepath+srcname+'/output/dloglike/'
+		array_path = homepath+srcname+'/output/dloglike/test/'
 		try:
-		  like_file = np.load(array_path+'/{}_noprior_freeBG_dlike.npy'.format(srcname))
-		  like_file_prior = np.load(array_path+'/{}_Jprior_freeBG_dlike.npy'.format(srcname))
+		  like_file = np.load(array_path+'/{}_freeBG_dlike.npy'.format(srcname))
 		except:
 		  print("{} Does not exist".format())
 
@@ -114,25 +113,19 @@ def main(cmd_line):
 		# Not sure where this correction comes from, but the correction seems to work
 		# Need to talk with Mattia to see if he understands it
 		TS_array = 2*(like_file-like_file[0,0])
-		TS_array_J = 2*(like_file_prior-like_file_prior[0,0])
 		
 		#Identify lowest value and correct by that, not by the corner entry
 		#TS_array = 2*(like_file-like_file.min())
-		#TS_array_J = 2*(like_file_prior-like_file_prior.min())
 		# the above lines convert the delta log likelihood to TS
-		
 		#TS_array = 2*like_file
-		#TS_array_J = 2*like_file_prior
 		
-		print(like_file[0,0])
-		print(TS_array.min())
+		#print(like_file[0,0])
+		#print(TS_array.min())
 	
-		summed_noprior+= TS_array	
-		summed_wprior+= TS_array_J
+		summed+= TS_array	
 		
 		#save TS plots for individual inputs
-		plotTS(TS_array.T, mass_vec, sigmav_vec, vmin=-50, save=savePlots, filename=homepath+srcname+"/output/plots/TS_noprior_"+typeStr+".png", title=srcname+"_noprior")
-		plotTS(TS_array_J.T, mass_vec, sigmav_vec, vmin=-50, save=savePlots, filename=homepath+srcname+"/output/plots/TS_Jprior_"+typeStr+".png", title=srcname+"_Jprior")
+		plotTS(TS_array.T, mass_vec, sigmav_vec, vmin=-50, save=savePlots, filename=homepath+srcname+"/output/plots/TS_"+typeStr+".png", title=srcname)
 
 		
 		"""
@@ -206,8 +199,7 @@ def main(cmd_line):
 		  sigmavUL_wprior = copy.deepcopy(sigmavUL_sims)
 		"""
 
-	plotTS(summed_noprior.T, mass_vec, sigmav_vec, vmin=-3, save=savePlots, filename=homepath+"stack/TS_noprior_"+typeStr+".png", title="stack_"+typeStr)
-	plotTS(summed_wprior.T, mass_vec, sigmav_vec, vmin=-3, save=savePlots, filename=homepath+"stack/TS_Jprior_"+typeStr+".png", title="stack_"+typeStr)
+	plotTS(summed.T, mass_vec, sigmav_vec, vmin=-3, save=savePlots, filename=homepath+"stack/test/TS_"+typeStr+".png", title="stack_"+typeStr)
 
 	"""
 	setplot()

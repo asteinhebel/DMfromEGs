@@ -17,11 +17,6 @@ targets=("M32" "NGC4889" "NGC4649" "NGC1407")
 ra=(10.6743 195.034 190.917 55.0496)
 dec=(40.8652 27.977 11.5526 -18.5804)
 
-#####DWARFS#####
-#targets=("Draco" "Hercules" "SDG")
-#ra=(260.055 247.758 84.1215)
-#dec=(57.9172 36.8713 -14.0858)
-
 
 for i in ${!targets[@]}; do
   python preprocess_likelihoodFitting.py ${targets[$i]} ${ra[$i]} ${dec[$i]}
