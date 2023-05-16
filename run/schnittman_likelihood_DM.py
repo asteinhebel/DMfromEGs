@@ -54,7 +54,7 @@ def funcLogLike(DMprop,table_norm,table_loglike, eref_vec):
         LogLike += loglike_interp(fluxval)
         #print(f"{eref_vec[t]} GeV bin, {fluxval} /cm^2/s flux, {-loglike_interp(fluxval)} dloglike")
         
-    return -LogLike
+    return LogLike
 
 def makeDir(dirpath):
     if(os.path.isdir(dirpath)==True):
