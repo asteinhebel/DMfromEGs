@@ -17,11 +17,10 @@ def normalization_flux(DMmass):
     return norm
 
 def diffEn(m,e):
-	E = convertGeVErg(e)
-	frac = (E/m)**2
-	norm = normalization_flux(m)
-	flux = norm * frac * (E/m) * np.exp(-frac)
-	return E/m, flux
+	frac = (e/m)**2
+	norm = 2 * normalization_flux(m) / m 
+	flux = norm * frac * (e/m) * np.exp(-frac)
+	return e/m, flux
 	
 ############################################################################################################
 #MAIN
@@ -37,7 +36,7 @@ def main():
 	emMatrix = np.zeros((len(mass_vec), len(gam_vec)))
 	interp = []
 	
-	#Derive/plot differential energy spectrum
+	#Derive/plot differential spectrum
 	for i,m in enumerate(mass_vec):
 		for j,e in enumerate(gam_vec):
 			emMatrix[i][j],specMatrix[i][j] = diffEn(m,e)
@@ -48,14 +47,14 @@ def main():
 	plt.xscale('log')
 	plt.yscale('log')
 	plt.ylim([10e-40, 10e-18])
-	plt.title("Differential Energy Flux")
+	plt.title("Differential Photon Flux, dN/dE")
 	plt.xlabel("photon energy [GeV]")
-	plt.ylabel("estimated DM flux [erg/cm^2/s/GeV]")
+	plt.ylabel("estimated DM flux [ph/cm^2/s/GeV]")
 	#plt.show()
-	plt.savefig("ngc4649_energySpectrum.png")
+	plt.savefig("ngc4649_spectrum.png")
 	plt.clf()
 	
-	#plot ratio plot like in jeremy's paper : E*F_E vs E/m 
+	#plot ratio plot like in jeremy's paper : E*F_E (=dN/dE) vs E/m 
 	for p in range(len(emMatrix)):
 		plt.plot(emMatrix[p], specMatrix[p], label=f"{mass_vec[p]} GeV")
 		
@@ -68,25 +67,9 @@ def main():
 	plt.xlabel("E/m")
 	plt.ylabel("estimated DM flux [erg/cm^2/s/GeV]")
 	#plt.show()
-	plt.savefig("ngc4649_energySpectrum_Em.png")
+	plt.savefig("ngc4649_spectrum_Em.png")
 	plt.clf()
 	
-	#Derive/plot differential photon spectrum
-	photMatrix = np.zeros((len(mass_vec), len(interp_x)))
-	for i,m in enumerate(mass_vec):
-		for j,e in enumerate(interp_x):
-			photMatrix[i][j] = interp[i][j]/convertGeVErg(e)
-		plt.plot(interp_x, photMatrix[i], '-', label=f"{m:.0f} GeV")
-	
-	plt.legend(loc="best")
-	plt.xscale('log')
-	plt.yscale('log')
-	plt.ylim([10e-40, 10e-18])
-	plt.title("Differential Photon Flux")
-	plt.xlabel("photon energy [GeV]")
-	plt.ylabel("estimated DM flux [ph/cm^2/s/GeV]")
-	#plt.show()
-	plt.savefig("ngc4649_photonSpectrum.png")
 
 ################################################################################################
 ################################################################################################
