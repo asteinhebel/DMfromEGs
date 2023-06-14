@@ -8,9 +8,9 @@
 
 # python schnittamn_likelihood_DM.py <target> <M_BH> <distance>
 
-targets=("NGC4889" "NGC4649" "NGC1407")
-m_bh=(208.0 47.3 46.5) #1e8 solar masses
-distance=(102.0 16.5 29.0) #Mpc
+targets=("NGC4649")
+m_bh=(47.3) #1e8 solar masses
+distance=(16.5) #Mpc
 
 for i in ${!targets[@]}; do
   python schnittman_likelihood_DM.py ${targets[$i]} ${m_bh[$i]} ${distance[$i]}
