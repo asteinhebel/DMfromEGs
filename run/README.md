@@ -43,26 +43,21 @@
 
 Outputs: target directory containing fit parameters, SED fit, many plots, many fit files
 
-### Consider contribution of DM model and convert SED output from energy/flux space to DM mass/sigmav space 
-1. Update bash steering file `run_interpret.sh`
-	- Update arrays containing targets to stack and their associated J factors and J factor uncertainties
-2. Update hardcoded file paths in `diMauro_likelihood_JfactorDM.py`
+### Consider contribution of DM model and convert SED output from energy/flux space to DM mass/sigmav space. Then stack likelihoods and plot 
+1. Create .txt file listing all targets to stack (eg. `stackingTargets.txt`)
+2. Update bash steering file `run_interpret.sh` or `run_interpret_test.sh`
+	- Update arrays containing targets to stack and their associated black hole masses and distances
+3. Update hardcoded file paths in `schnittman_likelihood_DM.py`
 	- Point `homedir` to `run/` space
 	- Check that SED output .npy files will be found by `sedfits`
-3. Run bash file which calls `diMauro_likelihood_JfactorDM.py`
+4. Update hardcoded file path for `homedir` in `plot_TSmaps_stack.py`
+5. Define whether you want to save or view plots with `savePlots` bool in `plot_TSmaps_stack.py`
+6. Run bash file which calls `schnittman_likelihood_DM.py` for each individual source and then calls `plot_TSmaps_stack.py` to visualize them all and stack them together
 
 	```source run_interpret.sh```
-Outputs: npy files with 2D arrays of dloglike values in DM mass/sigmav space
+Outputs: (`schnittman_likelihood_DM.py`) npy files with 2D arrays of dloglike values in DM mass/sigmav space
+Outputs: (`plot_TSmaps_stack.py`) plots of TS map (in DM space) for individual targets and for full stack (saved either in individual target dir OR in `run/stack/` for full stack)
 
-### Stack likelihoods and plot 
-1. Create .txt file listing all targets to stack (eg. `stackingTargets.txt`)
-2. Update hardcoded file path for `homedir` in `plot_TSmaps_stack.py`
-3. Define whether you want to save or view plots with `savePlots` bool in `plot_TSmaps_stack.py`
-4. Run plotting script
-
-	```python plot_TSmaps_stack.py stackingTargets.txt```
-	
-Outputs: plots of TS map (in DM space) for individual targets and for full stack (saved either in individual target dir OR in `run/stack/` for full stack)
 
 ### Troubleshooting scripts
 
@@ -72,6 +67,12 @@ Outputs: plots of TS map (in DM space) for individual targets and for full stack
 	- Run for one single input like
 		python tsmap.py <target>	
 
+```spectrum/spectrum.py```
+	- Visualizes DM flux spectrum (dN/dE) associated with Schnittman model for unbound DM near black holes (can compare to Schnittman paper considering DM energy cutoff E_com>3m_X)
+	- Uses parameters from test galaxy NGC4649 - can update this by updating global variable values in header
+	- Saves plots (dN/dE spectrum as a function of E and as a function of E/m) to the spectrum/ directory. Can comment out the save and replace with plt.show() if no saving is desired
+	- Run with no inputs like
+		python spectrum/spectrum.py
 
 ### Notes
 - Original scripts provided by A. McDaniel at Clemson stored in `clemsonScripts`
