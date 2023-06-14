@@ -59,6 +59,8 @@ def plotTS(summed, masses, sigmav,vmin=0, interp=True,dof=2,
         plt.contour(masses,sigmav,summed,levels=levels,colors='limegreen',linestyles=["-.",'--',"-"], linewidths=3*[1],alpha=1)
 
     plt.plot(best_flux, best_index,marker="+",ms=4,color="black")
+    
+    
 
     if(title!=None):
         plt.title(title, fontsize=10)
@@ -86,7 +88,8 @@ def plotTS(summed, masses, sigmav,vmin=0, interp=True,dof=2,
 def main(cmd_line):
 
 	# define 
-	mass_vec =  np.logspace(0,4,40)
+	#mass_vec =  np.logspace(0,4,40)
+	mass_vec =  np.logspace(-1,4,40)
 	sigmav_vec = np.logspace(-28,-22,60)
 	summed = 0
 	
@@ -112,7 +115,8 @@ def main(cmd_line):
 		# in the delta-loglikelihood
 		# Not sure where this correction comes from, but the correction seems to work
 		# Need to talk with Mattia to see if he understands it
-		TS_array = 2*(like_file-like_file[0,0])
+		#TS_array = 2*(like_file-like_file[0,0])
+		TS_array = -2*like_file
 		
 		#Identify lowest value and correct by that, not by the corner entry
 		#TS_array = 2*(like_file-like_file.min())
@@ -199,6 +203,8 @@ def main(cmd_line):
 		  sigmavUL_wprior = copy.deepcopy(sigmavUL_sims)
 		"""
 
+	#summed.T[summed.T<=0]=1e-30
+	#plotTS(np.log10(summed.T), mass_vec, sigmav_vec, vmin=-3, save=savePlots, filename=homepath+"stack/test/TS_"+typeStr+".png", title="stack_"+typeStr)
 	plotTS(summed.T, mass_vec, sigmav_vec, vmin=-3, save=savePlots, filename=homepath+"stack/test/TS_"+typeStr+".png", title="stack_"+typeStr)
 
 	"""
