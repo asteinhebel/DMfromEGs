@@ -22,12 +22,12 @@ def diffPhotSpectrum(m, sigmav, mBH, dist, eref):
 	sig26 = sigmav * 1e26 #scale to get sigma ^-26
 	#Calculate dE/dN of DM spectrum, units of ph/cm^2/s/GeV (after multiplication with DM sigma), return as array of points that span LAT sensitivity 
 	norm = (2.e-20)*pow(mBH,(5./2.))*sig26*pow(m,-2.)*pow(dist,-2.) * 2. / m
-	spectrum = np.array([ norm*(en/m)**3*np.exp(-(en/m)**2) for en in eref])
+	spectrum = np.array([ norm * (en/m)**3 * np.exp(-(en/m)**2) for en in eref])
 	interp_spectrum = interpolate.InterpolatedUnivariateSpline(eref, spectrum, k=1, ext=0) #linear interpolation because k=1, ext=0=>extrapolate. Identical to interp1d
 
 	"""
 	#DEBUG
-	if m==1. and sigmav> 2.5e-25:
+	if m>0.3 and sigmav > 5e-16:
 		plt.plot(eref, spectrum, "o")
 		plt.plot(eref, interp_spectrum(eref), "-")
 		plt.xlabel("Center of SED bins [GeV]")
@@ -47,12 +47,6 @@ def flux_DM_model(DMprop, spec, emin, emax, eref):
 	sigmav = DMprop[1]	
 	mBH = DMprop[2]
 	dist = DMprop[3]
-	
-	#Finish normalizing photon spectrum
-	#sig26 = sigmav * 1e26 #scale to get sigma ^-26
-	
-	#fullSpec = np.array([s*sig26 for s in spec]) #= dN/dE [ph/cm^2/s/GeV]
-	#interp_spectrum = interpolate.InterpolatedUnivariateSpline(eref, fullSpec, k=1, ext=0) #linear interpolation because k=1, ext=0=>extrapolate. Identical to interp1d
 	
 	"""
 	#DEBUG
@@ -90,14 +84,16 @@ def funcLogLike(DMprop, spec, table_norm, table_loglike, emin, emax, eref):
 	
 	#Do not consider first point of each scan - normalization of zero 
 	table_norm = table_norm[:, 1:]
+	
 	table_loglike = table_loglike[:, 1:]
 		
+	print(f"IN FUNCLOGLIKE WITH DM MASS {DMprop[0]} AND DM SIGMAV {DMprop[1]}")
 	#calculate dloglike of DM flux value individually in each energy bin from interpolated data
 	for t in range(len(table_norm)):
 		#determine whether bin is suitable for interpolating (if dloglike max at lowest flux value)
 		maxBin = np.argmax(table_loglike[t])
-		if maxBin==0 and fluxval[t]>0.0:
-		#if 1==1:
+		#if maxBin==0 and fluxval[t]>0.:
+		if fluxval[t]>0. and fluxval[t] < max(table_norm[t]):
 			#approximate function SED loglike = y = f(x) = f(table_norm)
 			loglike_interp = interpolate.InterpolatedUnivariateSpline(table_norm[t], table_loglike[t], k=1, ext=0) #linear interpolation because k=1, ext=0=>extrapolate. Identical to interp1d 
  
@@ -105,7 +101,8 @@ def funcLogLike(DMprop, spec, table_norm, table_loglike, emin, emax, eref):
 			#FOR DEBUGGING 
 			#visualize interpolation in each bin
 			print(f"bin {t}, DM flux = {fluxval[t]} with dloglike={loglike_interp(fluxval[t])}")
-			if DMprop[0]==1 and DMprop[1]>2.7e-25:
+			#if DMprop[0]==1 and DMprop[1]>2.7e-25:
+			if 1==1:
 				xrn =  np.sort(table_norm[t])
 				xrn_longer = np.logspace(-25,-9, 100)
 				plt.plot(table_norm[t], table_loglike[t], 'o', xrn_longer, loglike_interp(xrn_longer), '-', fluxval[t], loglike_interp(fluxval[t]), 'o')
@@ -119,8 +116,9 @@ def funcLogLike(DMprop, spec, table_norm, table_loglike, emin, emax, eref):
 			LogLike.append(loglike_interp(fluxval[t]))
 			del loglike_interp #make sure it clears
 		else:
+			print(f"Flux larger than measured: DM flux = {fluxval[t]} compared to measured {max(table_norm[t])}")
 			continue
-			  
+
 	"""
 	#DEBUG
 	print(f"dloglike = {np.sum(LogLike)}")
@@ -134,7 +132,7 @@ def funcLogLike(DMprop, spec, table_norm, table_loglike, emin, emax, eref):
 	plt.clf()
 	"""	  
 			  
-	return np.sum(LogLike)
+	return sum(LogLike)
 	
 	
 ############################################################################################################
@@ -160,23 +158,22 @@ def main(cmd_line):
 	homedir = "/Users/asteinhe/FermiLAT/BHinEGs_DM/run/"
 
 	sedfits =  f"{homedir}{srcname}/output/{srcname}_{sed_suffix}.fits"
-	save_array_path = f"{homedir}{srcname}/output/dloglike/deepDebug/"
+	save_array_path = f"{homedir}{srcname}/output/dloglike/{subdir}/"
 	makeDir(save_array_path)
 
 	print("Running for {}".format(srcname))
 
 	sed = fits.open(sedfits)[1].data
-	refdnde_vec = copy.deepcopy(sed['ref_dnde'])*1.e3 #Differential flux of the reference model evaluated at the bin center (cm−2 s−1 MeV−1 converted to cm-2 s-1 GeV-1)
-	table_normscan1 = copy.deepcopy(sed['norm_scan']) #Array of NxM normalization values for the profile likelihood scan in N energy bins and M scan points. A row-wise multiplication with any of ref columns can be used to convert this matrix to the respective unit.
+	refdnde_vec = copy.deepcopy(sed['ref_dnde'])/1.e3 #Differential flux of the reference model evaluated at the bin center (cm−2 s−1 MeV−1 converted to cm-2 s-1 GeV-1)
+	#table_normscan1 = copy.deepcopy(sed['norm_scan']) #Array of NxM normalization values for the profile likelihood scan in N energy bins and M scan points. A row-wise multiplication with any of ref columns can be used to convert this matrix to the respective unit.
 	table_normscan = copy.deepcopy(sed['norm_scan']) #Array of NxM normalization values for the profile likelihood scan in N energy bins [arrays] and M scan points. A row-wise multiplication with any of ref columns can be used to convert this matrix to the respective unit.
 	#convert table_normscan to units of cm^-2 s^-1 GeV^-1
 	for t in range(len(refdnde_vec)):
-		#table_normscan[t] = sed['norm_scan'][t,:]*refdnde_vec[t]
+		#table_normscan[t,:] = sed['norm_scan'][t,:]*refdnde_vec[t]
 		table_normscan[t] = sed['norm_scan'][t]*refdnde_vec[t]
-		
 
 	table_loglikescan = copy.deepcopy(sed['dloglike_scan']) #Array of NxM delta-loglikelihood values for the profile likelihood scan in N energy bins and M scan points.
-	
+
 	# Convert MeV to GeV
 	print("Define eref_vec in GeV...")
 	eref_vec = copy.deepcopy(sed['e_ref'])/1.e3 #"reference energy" (= center of bin) of SED energy bins in GeV
@@ -249,7 +246,7 @@ def main(cmd_line):
 	for u in range(len(mass_vec)):
 		for t in range(len(sigmav_vec)):
 			#plot energy spectrum with all normalization 
-			photSpectrum = diffPhotSpectrum(mass_vec[u], sigmav_vec[t], m_BH, distance, eref_vec)
+			photSpectrum = diffPhotSpectrum(mass_vec[u], sigmav_vec[t], m_BH, distance, eref_vec) #valid in SED range
 			DMprop = [mass_vec[u],sigmav_vec[t], m_BH, distance]
 			LogLike_vec[u,t] = funcLogLike(DMprop,photSpectrum,table_normscan,table_loglikescan,emin_vec,emax_vec,eref_vec)
 
@@ -260,4 +257,5 @@ def main(cmd_line):
 ################################################################################################
 if __name__=="__main__":
 
+	subdir = "debug_9"
 	main(sys.argv)
