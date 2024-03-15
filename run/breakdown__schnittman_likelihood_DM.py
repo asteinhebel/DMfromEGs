@@ -37,6 +37,11 @@ def diffPhotSpectrum(m, sigmav, mBH, dist, eref):
 		plt.show()
 		plt.clf()
 	"""
+	"""
+	#save spectrum as csv for later plotting
+	spec_out = np.asarray([eref, spectrum])
+	np.savetxt(save_array_path+'spectrum_'+str(m)+'_'+str(sigmav)+'.csv', spec_out.T, delimiter=",")
+	"""
 	
 	#return spectrum
 	return interp_spectrum
@@ -51,9 +56,7 @@ def flux_DM_model(DMprop, spec, emin, emax, eref):
 	"""
 	#DEBUG
 	#plt.plot(eref, fullSpec, "o")
-	#plt.plot(eref, interp_spectrum(eref), "-")
-	plt.plot(eref, fullSpec, "o")
-	plt.plot(eref, interp_spectrum(eref), "-")
+	plt.plot(eref, spec(eref), "-")
 	plt.xlabel("Observed photon energy [GeV]")
 	plt.ylabel("Expected DM flux [ph/cm^2/s/GeV]")
 	plt.xscale('log')
@@ -61,15 +64,23 @@ def flux_DM_model(DMprop, spec, emin, emax, eref):
 	plt.show()
 	plt.clf()
 	"""
+	
 		
 	#Integrate photon flux in each SED bin from min-max value (emin to emax)
 	fluxInBins=[]
 	for sedbin in range(len(emin)):
-		#print(f"Bin {sedbin}: [{emin[sedbin]}, {emax[sedbin]}]") 
 		#define finer mesh of points within SED bin to compute integral
 		xx = np.linspace(emin[sedbin], emax[sedbin], 200)
 		#integrate interpolated flux over this range
 		fluxInBins.append(spec.integral(xx[0], xx[-1]))
+		"""
+		if DMprop[0]==100 and DMprop[1] == 1.3141473626117527e-23:
+			print(f"Bin {sedbin}: [{emin[sedbin]}, {emax[sedbin]}]") 
+			print(f"Bin center flux value = {spec(eref[sedbin])}")
+			print(f"Bin edge flux values: {spec(emin[sedbin])}, {spec(emax[sedbin])}")
+			print(f"Integrate from {xx[0]} to {xx[-1]}")
+			print(f"Integral = {fluxInBins[-1]}")
+		"""
 
 	fluxInBins = np.array(fluxInBins)
 	
@@ -80,6 +91,11 @@ def funcLogLike(DMprop, spec, table_norm, table_loglike, emin, emax, eref):
 	
 	LogLike = []
 	fluxval = flux_DM_model(DMprop, spec, emin, emax, eref) 
+	"""
+	if DMprop[0]==100 and DMprop[1] == 1.3141473626117527e-23:
+		print("integrated flux vals")
+		print(fluxval)
+	"""
 	#array the same length as number of SED bins, each value has units of ph/cm^2/s		
 	
 	#Do not consider first point of each scan - normalization of zero 
@@ -87,22 +103,23 @@ def funcLogLike(DMprop, spec, table_norm, table_loglike, emin, emax, eref):
 	
 	table_loglike = table_loglike[:, 1:]
 		
-	print(f"IN FUNCLOGLIKE WITH DM MASS {DMprop[0]} AND DM SIGMAV {DMprop[1]}")
+	#print(f"IN FUNCLOGLIKE WITH DM MASS {DMprop[0]} AND DM SIGMAV {DMprop[1]}")
 	#calculate dloglike of DM flux value individually in each energy bin from interpolated data
 	for t in range(len(table_norm)):
 		#determine whether bin is suitable for interpolating (if dloglike max at lowest flux value)
 		maxBin = np.argmax(table_loglike[t])
-		#if maxBin==0 and fluxval[t]>0.:
-		if fluxval[t]>0. and fluxval[t] < max(table_norm[t]):
+		if maxBin==0 and fluxval[t] < max(table_norm[t]):
+		#if fluxval[t]>0. and fluxval[t] < max(table_norm[t]):
 			#approximate function SED loglike = y = f(x) = f(table_norm)
 			loglike_interp = interpolate.InterpolatedUnivariateSpline(table_norm[t], table_loglike[t], k=1, ext=0) #linear interpolation because k=1, ext=0=>extrapolate. Identical to interp1d 
- 
+
 			"""
 			#FOR DEBUGGING 
 			#visualize interpolation in each bin
 			print(f"bin {t}, DM flux = {fluxval[t]} with dloglike={loglike_interp(fluxval[t])}")
-			#if DMprop[0]==1 and DMprop[1]>2.7e-25:
-			if 1==1:
+			if DMprop[0]==100 and DMprop[1] == 1.3141473626117527e-23:
+			#if 1==1:
+				print(maxBin)
 				xrn =  np.sort(table_norm[t])
 				xrn_longer = np.logspace(-25,-9, 100)
 				plt.plot(table_norm[t], table_loglike[t], 'o', xrn_longer, loglike_interp(xrn_longer), '-', fluxval[t], loglike_interp(fluxval[t]), 'o')
@@ -112,11 +129,11 @@ def funcLogLike(DMprop, spec, table_norm, table_loglike, emin, emax, eref):
 				plt.show()
 				plt.clf()
 			"""
-			
+	
 			LogLike.append(loglike_interp(fluxval[t]))
 			del loglike_interp #make sure it clears
 		else:
-			print(f"Flux larger than measured: DM flux = {fluxval[t]} compared to measured {max(table_norm[t])}")
+			#print(f"Flux larger than measured: DM flux = {fluxval[t]} compared to measured {max(table_norm[t])}")
 			continue
 
 	"""
@@ -130,8 +147,8 @@ def funcLogLike(DMprop, spec, table_norm, table_loglike, emin, emax, eref):
 	plt.yscale('log')
 	plt.show()
 	plt.clf()
-	"""	  
-			  
+	"""
+			 
 	return sum(LogLike)
 	
 	
@@ -158,6 +175,7 @@ def main(cmd_line):
 	homedir = "/Users/asteinhe/FermiLAT/BHinEGs_DM/run/"
 
 	sedfits =  f"{homedir}{srcname}/output/{srcname}_{sed_suffix}.fits"
+	global save_array_path 
 	save_array_path = f"{homedir}{srcname}/output/dloglike/{subdir}/"
 	makeDir(save_array_path)
 
@@ -257,5 +275,5 @@ def main(cmd_line):
 ################################################################################################
 if __name__=="__main__":
 
-	subdir = "debug_9"
+	subdir = "mbh1"
 	main(sys.argv)
