@@ -1,4 +1,5 @@
 #!/bin/bash
+
 #Run preprocessing script for EGs - creates parameter txt files that will be used to compute SEDs
 #Compute and save SED with free background
 
@@ -9,14 +10,13 @@
 #		 - fits files from different fit models, fermipy files in <TARGET>/output
 #		 - plots prefit and postfit of data/model and significance/excess in <TARGET>/output/plots
 
-# python preprocess_JLA.py <target> <ra> <dec>
+# python preprocess_likelihoodFitting.py <target> <ra> <dec>
 # python get_sed.py <target>
 
 #####EGs#####
-targets=("M32" "NGC4889" "NGC4649" "NGC1407")
-ra=(10.6743 195.034 190.917 55.0496)
-dec=(40.8652 27.977 11.5526 -18.5804)
-
+targets=("NGC4889" "NGC4649" "NGC1407" "NGC3842" "NGC3091" "NGC1550")
+ra=(195.034 190.917 55.0496 176.009 150.059 64.9081)
+dec=(27.977 11.5526 -18.5804 19.9498 -19.6365 2.40998)
 
 for i in ${!targets[@]}; do
   python preprocess_likelihoodFitting.py ${targets[$i]} ${ra[$i]} ${dec[$i]}
