@@ -44,7 +44,7 @@ def plotTS(summed, masses, sigmav,vmin=0, interp=True,dof=2,save=False, filename
 	plt.plot(best_flux, best_index,marker="+",ms=4,color="black")
 	
 	"""
-	#DEBUG - FOR TESTING - OVERLAY LAT DATA FROM 2108.13646	
+	#DEBUG - FOR TESTING - OVERLAY LAT DATA FROM 2108.13646 
 	latDF = pd.read_csv("latData.csv")
 	latDF.columns = ['x','y']
 	plt.plot(latDF['x'], latDF['y'], '-', label = "LAT")
@@ -64,6 +64,11 @@ def plotTS(summed, masses, sigmav,vmin=0, interp=True,dof=2,save=False, filename
 	
 	if(save):
 		plt.savefig(filename)
+		with open(f'{filename[:-4]}.txt', 'w') as f:
+			f.write(f"Peak TS: {summed.max():.2f} \n")
+			f.write(f"Peak mass: {best_flux:.3f} GeV \n")
+			f.write(f"Peak <sigmav> : {best_index} cm^3/s")
+		f.close()
 	else:
 		plt.show()
 		
@@ -129,7 +134,7 @@ def main(cmd_line):
 if __name__=="__main__":
 
 	homepath = '/Users/asteinhe/FermiLAT/BHinEGs_DM/run/'
-	subdir = 'debug_7'
+	subdir = 'mbh1'
 	savePlots = True
 	
 	main(sys.argv)
