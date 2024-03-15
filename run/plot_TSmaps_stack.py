@@ -12,7 +12,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from scipy import interpolate
 import copy
-import sys
+import sys, os, shutil
 
 
 
@@ -81,6 +81,13 @@ def plotTS(summed, masses, sigmav,vmin=0, interp=True,dof=2,
     	
     return best_index, best_flux, summed.max()
 
+def makeDir(dirpath):
+    if(os.path.isdir(dirpath)==True):
+        print(f"Path to {dirpath} exists")
+    else:
+        print(f"path to {dirpath} does not exist, creating...")
+        os.system('mkdir -p %s' %dirpath)
+    return dirpath
 
 ############################################################################################################
 #MAIN
@@ -90,7 +97,9 @@ def main(cmd_line):
 	# define 
 	#mass_vec =  np.logspace(0,4,40)
 	mass_vec =  np.logspace(-1,4,40)
-	sigmav_vec = np.logspace(-28,-22,60)
+	#sigmav_vec = np.logspace(-28,-22,60)
+	#sigmav_vec = np.logspace(-28,-10,60)#cm^3/s
+	sigmav_vec = np.logspace(-17,-15,60)#cm^3/s
 	summed = 0
 	
 	#get sources
@@ -103,7 +112,7 @@ def main(cmd_line):
 	
 	for i, srcname in enumerate(srclist):
 		# The filename in the load functions need to be your specific numpy arrays for the run
-		array_path = homepath+srcname+'/output/dloglike/test/'
+		array_path = homepath+srcname+'/output/dloglike/'+subdir+'/'
 		try:
 		  like_file = np.load(array_path+'/{}_freeBG_dlike.npy'.format(srcname))
 		except:
@@ -129,7 +138,7 @@ def main(cmd_line):
 		summed+= TS_array	
 		
 		#save TS plots for individual inputs
-		plotTS(TS_array.T, mass_vec, sigmav_vec, vmin=-50, save=savePlots, filename=homepath+srcname+"/output/plots/TS_"+typeStr+".png", title=srcname)
+		plotTS(TS_array.T, mass_vec, sigmav_vec, vmin=-50, save=savePlots, filename=makeDir(homepath+srcname+"/output/plots/"+subdir+"/")+"TS_"+typeStr+".png", title=srcname)
 
 		
 		"""
@@ -205,7 +214,7 @@ def main(cmd_line):
 
 	#summed.T[summed.T<=0]=1e-30
 	#plotTS(np.log10(summed.T), mass_vec, sigmav_vec, vmin=-3, save=savePlots, filename=homepath+"stack/test/TS_"+typeStr+".png", title="stack_"+typeStr)
-	plotTS(summed.T, mass_vec, sigmav_vec, vmin=-3, save=savePlots, filename=homepath+"stack/test/TS_"+typeStr+".png", title="stack_"+typeStr)
+	plotTS(summed.T, mass_vec, sigmav_vec, vmin=-3, save=savePlots, filename=makeDir(homepath+"stack/"+subdir+"/")+"TS_"+typeStr+".png", title="stack_"+typeStr)
 
 	"""
 	setplot()
@@ -235,7 +244,7 @@ def main(cmd_line):
 if __name__=="__main__":
 
 	homepath = '/Users/asteinhe/FermiLAT/BHinEGs_DM/run/'
-	
+	subdir = 'deetest_july_lessSigmaRange2
 	savePlots = False
 	
 	main(sys.argv)
