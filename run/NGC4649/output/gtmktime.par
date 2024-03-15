@@ -5,9 +5,9 @@ scfile,f,a,"/Users/asteinhe/FermiLAT/BHinEGs_DM/data/ft2_sc.fits",,,"Spacecraft 
 sctable,s,h,"SC_DATA",,,"Spacecraft data extension"
 filter,s,a,"DATA_QUAL>0 && LAT_CONFIG==1 && ABS(ROCK_ANGLE)<52",,,"Filter expression"
 roicut,b,a,no,,,"Apply ROI-based zenith angle cut"
-evfile,f,a,"/Users/asteinhe/FermiLAT/BHinEGs_DM/clemson/NGC4649/output/ft1_00.fits",,,"Event data file"
+evfile,f,a,"/Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC4649/output/ft1_00.fits",,,"Event data file"
 evtable,s,h,"EVENTS",,,"Event data extension"
-outfile,s,a,"/Users/asteinhe/FermiLAT/BHinEGs_DM/clemson/NGC4649/output/ft1_filtered_00.fits",,,"Output event file name"
+outfile,s,a,"/Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC4649/output/ft1_filtered_00.fits",,,"Output event file name"
 apply_filter,b,h,yes,,,"apply GTI filter"
 
 overwrite,b,h,no,,,"Build GTI from scratch (overwrite existing GTI)"

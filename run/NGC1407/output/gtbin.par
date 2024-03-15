@@ -1,17 +1,17 @@
 #-------------------------------------------------------------------------------
 # General parameters.
-evfile,        f, a, "/Users/asteinhe/FermiLAT/BHinEGs_DM/clemson/NGC1407/output/ft1_00.fits", , , "Event data file name"
+evfile,        f, a, "/Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1407/output/ft1_00.fits", , , "Event data file name"
 scfile,        f, a, "/Users/asteinhe/FermiLAT/BHinEGs_DM/data/ft2_sc.fits", , , "Spacecraft data file name"
-outfile,       f, a, "/Users/asteinhe/FermiLAT/BHinEGs_DM/clemson/NGC1407/output/ccube_00.fits", , , "Output file name"
+outfile,       f, a, "/Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1407/output/ccube_00.fits", , , "Output file name"
 algorithm,     s, a, "CCUBE", CCUBE|CMAP|LC|PHA1|PHA2|HEALPIX, , "Type of output file"
 #-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
 # Energy binning parameters.
 ebinalg,       s, a, "LOG", FILE|LIN|LOG, , "Algorithm for defining energy bins"
-emin,          r, a, 1000, , , "Start value for first energy bin in MeV"
+emin,          r, a, 500, , , "Start value for first energy bin in MeV"
 emax,          r, a, 1000000, , , "Stop value for last energy bin in MeV"
-enumbins,      i, a, 24, , , "Number of logarithmically uniform energy bins"
+enumbins,      i, a, 13, , , "Number of logarithmically uniform energy bins"
 denergy,       r, a, 0, , , "Width of linearly uniform energy bins in MeV"
 ebinfile,      f, a, "NONE", , , "Name of the file containing the energy bin definition"
 #-------------------------------------------------------------------------------

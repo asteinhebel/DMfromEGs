@@ -3,7 +3,7 @@
 # General parameters.
 infile,f,a,"/Users/asteinhe/FermiLAT/BHinEGs_DM/data/ltcube_00.fits",,,"Livetime cube file"
 cmap,f,a,"none",,,"Counts map file"
-outfile,f,a,"/Users/asteinhe/FermiLAT/BHinEGs_DM/clemson/NGC4889/output/bexpmap_roi_00.fits",,,"Output file name"
+outfile,f,a,"/Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC4889/output/bexpmap_roi_00.fits",,,"Output file name"
 irfs,s,a,"P8R3_SOURCE_V3",,,"Response functions to use"
 evtype,i,h,INDEF,,,"Event type selections"
 
@@ -19,9 +19,9 @@ yref,r,a,27.977,,,"Second coordinate of image center in degrees (DEC or galactic
 axisrot,r,a,0,,,"Rotation angle of image axis, in degrees"
 proj,s,a,"CAR",,,"Projection method e.g. AIT|ARC|CAR|GLS|MER|NCP|SIN|STG|TAN"
 ebinalg,s,h,"LOG",LOG|FILE,,"Algorithm for defining energy bins"
-emin,r,a,1000,,,"Start energy (MeV) of first bin"
+emin,r,a,500,,,"Start energy (MeV) of first bin"
 emax,r,a,1000000,,,"Stop energy (MeV) of last bin"
-enumbins,i,a,24,,,"Number of logarithmically-spaced energy bins"
+enumbins,i,a,13,,,"Number of logarithmically-spaced energy bins"
 ebinfile,s,a,"NONE",,,"Name of FITS file containing the energy bin definition"
 
 # Parameters for user-defined healpix map.

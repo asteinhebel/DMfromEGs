@@ -16,16 +16,16 @@ data:
 binning:
   roiwidth : 10
   binsz : 0.08
-  binsperdec : 8
+  binsperdec : 4
 #--------#
 selection:
-  emin : 1000
+  emin : 500
   emax : 1000000
   zmax : 100
   target : 'NGC1407'
   radius : 15
   tmin : 239557417
-  tmax : 665410983
+  tmax : 712597417
   evclass : 128
   evtype : 3
   filter : 'DATA_QUAL>0 && LAT_CONFIG==1 && ABS(ROCK_ANGLE)<52'

@@ -2,13 +2,13 @@
 # $Header: /nfs/slac/g/glast/ground/cvs/ScienceTools-scons/dataSubselector/pfiles/gtselect.par,v 1.26 2015/01/08 16:46:22 jchiang Exp $
 #
 infile,f,a,"/Users/asteinhe/FermiLAT/BHinEGs_DM/data/NGC1407/ft1.fits",,,"Input FT1 file"
-outfile,f,a,"/Users/asteinhe/FermiLAT/BHinEGs_DM/clemson/NGC1407/output/ft1_00.fits",,,"Output FT1 file"
+outfile,f,a,"/Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1407/output/ft1_00.fits",,,"Output FT1 file"
 ra,r,a,55.0496,0,360,RA for new search center (degrees)
 dec,r,a,-18.5804,-90,90,Dec for new search center (degrees)
 rad,r,a,15,0,180,radius of new search region (degrees)
 tmin,r,a,239557417,0,,start time (MET in s)
-tmax,r,a,665410983,0,,end time (MET in s)
-emin,r,a,1000,0,,lower energy limit (MeV)
+tmax,r,a,712597417,0,,end time (MET in s)
+emin,r,a,500,0,,lower energy limit (MeV)
 emax,r,a,1000000,0,,upper energy limit (MeV)
 zmin,r,h,0,0,180,minimum zenith angle value (degrees)
 zmax,r,a,100,0,180,maximum zenith angle value (degrees)
