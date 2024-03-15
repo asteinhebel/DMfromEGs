@@ -44,3 +44,4 @@ run/M32_origRunthrough
 stack_plot.py
 run/old/
 run/output_generateLTCUBE/
+run/spectrum/spectra_*
