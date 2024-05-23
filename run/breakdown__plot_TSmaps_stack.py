@@ -110,7 +110,8 @@ def main(cmd_line):
 		  print("{} Does not exist".format())
 		  
 		#Define TS
-		TS_array = -2*like_file
+		#TS_array = -2*like_file
+		TS_array = -2*(like_file-like_file[0,0])
 		
 		"""
 		np.savetxt("TEST.csv", TS_array, delimiter=",")
@@ -120,7 +121,7 @@ def main(cmd_line):
 		"""
 		
 		#Add to summed plot
-		summed+= TS_array
+		summed += TS_array
 		
 		#save TS plots for individual inputs
 		plotTS(TS_array.T, mass_vec, sigmav_vec, vmin=0, save=savePlots, filename=makeDir(homepath+srcname+"/output/plots/"+subdir+"/")+"TS.png", title=srcname)
@@ -134,7 +135,7 @@ def main(cmd_line):
 if __name__=="__main__":
 
 	homepath = '/Users/asteinhe/FermiLAT/BHinEGs_DM/run/'
-	subdir = 'mbh1'
+	subdir = 'mspPlusDm'
 	savePlots = True
 	
 	main(sys.argv)
