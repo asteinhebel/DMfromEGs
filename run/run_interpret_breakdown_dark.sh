@@ -8,16 +8,12 @@
 #			- likelihood plots in DM mass/crossSection space for every individual entry in <TARGET>/output/plots/
 #			- likelihood plot of all entries in <TARGETS> stacked together in top level directory
 
-# python schnittamn_likelihood_DM.py <target> <M_BH> <distance>
-
 targets=("dark4889")
 m_bh=(1.0) #1e8 solar masses
 distance=(99.03) #Mpc
 
 for i in ${!targets[@]}; do
-  #python breakdown__schnittman_likelihood_DM.py ${targets[$i]} ${m_bh[$i]} ${distance[$i]} 0 4 40 -28 -22 60
-  python breakdown__schnittman_likelihood_DM.py ${targets[$i]} ${m_bh[$i]} ${distance[$i]} -2 4 40 -30 -15 60
+  python schnittman_likelihood_DM.py ${targets[$i]} ${m_bh[$i]} ${distance[$i]} -2 4 40 -30 -15 60
 done
 
-#python breakdown__plot_TSmaps_stack.py stackingTargets.txt 0 4 40 -28 -22 60
-python breakdown__plot_TSmaps_stack.py stackingTargets_dark.txt -2 4 40 -30 -15 60
+python plot_TSmaps_stack.py stackingTargets_dark.txt -2 4 40 -30 -15 60
