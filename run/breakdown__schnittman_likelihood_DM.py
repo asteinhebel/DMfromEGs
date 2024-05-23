@@ -19,28 +19,42 @@ def makeDir(dirpath):
 		os.system('mkdir -p %s' %dirpath)
 	
 def diffPhotSpectrum(m, sigmav, mBH, dist, eref): 
+	#DM spectrum
 	sig26 = sigmav * 1e26 #scale to get sigma ^-26
 	#Calculate dE/dN of DM spectrum, units of ph/cm^2/s/GeV (after multiplication with DM sigma), return as array of points that span LAT sensitivity 
 	norm = (2.e-20)*pow(mBH,(5./2.))*sig26*pow(m,-2.)*pow(dist,-2.) * 2. / m
-	spectrum = np.array([ norm * (en/m)**3 * np.exp(-(en/m)**2) for en in eref])
-	interp_spectrum = interpolate.InterpolatedUnivariateSpline(eref, spectrum, k=1, ext=0) #linear interpolation because k=1, ext=0=>extrapolate. Identical to interp1d
+	spectrum_dm = np.array([ norm * (en/m)**3 * np.exp(-(en/m)**2) for en in eref])
+	interp_spectrum_dm = interpolate.InterpolatedUnivariateSpline(eref, spectrum_dm, k=1, ext=0) #linear interpolation because k=1, ext=0=>extrapolate. Identical to interp1d
+
+	#MSP spectrum
+	spectrum_msp = np.array([1.2e-9 * (mBH / 1000) * pow(dist,-2.) * pow(en, -1.29) * np.exp(-en/2.5) for en in eref])
+	interp_spectrum_msp = interpolate.InterpolatedUnivariateSpline(eref, spectrum_msp, k=1, ext=0)
+	
+	#Add DM + MSP
+	spectrum = spectrum_dm + spectrum_msp
+	interp_spectrum = interpolate.InterpolatedUnivariateSpline(eref, spectrum, k=1, ext=0)
+	
 
 	"""
 	#DEBUG
-	if m>0.3 and sigmav > 5e-16:
-		plt.plot(eref, spectrum, "o")
-		plt.plot(eref, interp_spectrum(eref), "-")
+	if m==100 and sigmav == 1.3141473626117527e-23:
+		plt.plot(eref, spectrum, "o", label="DM")
+		plt.plot(eref, interp_spectrum(eref), "-", label="DM interp")
+		plt.plot(eref, spectrum_msp, "o", label="MSP")
+		plt.plot(eref, interp_spectrum_msp(eref), "-", label="MSP interp")
+		plt.legend(loc='best')
 		plt.xlabel("Center of SED bins [GeV]")
-		plt.ylabel("Expected DM flux [ph/cm^2/GeV]")
+		plt.ylabel("Expected flux [ph/cm^2/GeV]")
 		plt.xscale('log')
 		plt.yscale('log')
 		plt.show()
 		plt.clf()
-	"""
-	"""
-	#save spectrum as csv for later plotting
-	spec_out = np.asarray([eref, spectrum])
-	np.savetxt(save_array_path+'spectrum_'+str(m)+'_'+str(sigmav)+'.csv', spec_out.T, delimiter=",")
+	
+		#save spectrum as csv for later plotting
+		spec_out = np.asarray([eref, spectrum])
+		np.savetxt(save_array_path+'spectrum_'+str(m)+'_'+str(sigmav)+'.csv', spec_out.T, delimiter=",")
+		spec_out_msp = np.asarray([eref, spectrum_msp])
+		np.savetxt(save_array_path+'spectrum_msp_'+str(m)+'_'+str(sigmav)+'.csv', spec_out_msp.T, delimiter=",")
 	"""
 	
 	#return spectrum
@@ -198,6 +212,9 @@ def main(cmd_line):
 	emin_vec = copy.deepcopy(sed['e_min'])/1.e3 #lower edges of SED energy bins in GeV
 	emax_vec = copy.deepcopy(sed['e_max'])/1.e3 #upper edges of SED energy bins in GeV
 	
+	print(eref_vec)
+	print(emin_vec)
+	
 	"""
 	#DEBUG
 	print(f"ref_dnde = {refdnde_vec}" )
@@ -275,5 +292,5 @@ def main(cmd_line):
 ################################################################################################
 if __name__=="__main__":
 
-	subdir = "mbh1"
+	subdir = "mspPlusDm"
 	main(sys.argv)
