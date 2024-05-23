@@ -14,9 +14,9 @@
 # python get_sed.py <target>
 
 #####EGs#####
-targets=("NGC4889" "NGC4649" "NGC1407" "NGC3842" "NGC3091" "NGC1550")
-ra=(195.034 190.917 55.0496 176.009 150.059 64.9081)
-dec=(27.977 11.5526 -18.5804 19.9498 -19.6365 2.40998)
+targets=("NGC4889" "NGC4649" "NGC1407" "NGC3842" "NGC3091" "NGC1550" "NGC1600")
+ra=(195.034 190.917 55.0496 176.009 150.059 64.9081 67.916417)
+dec=(27.977 11.5526 -18.5804 19.9498 -19.6365 2.40998 -5.08625)
 
 for i in ${!targets[@]}; do
   python preprocess_likelihoodFitting.py ${targets[$i]} ${ra[$i]} ${dec[$i]}

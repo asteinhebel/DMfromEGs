@@ -1,0 +1,2578 @@
+2024-03-19 14:40:09 INFO    GTAnalysis.__init__(): 
+--------------------------------------------------------------------------------
+fermipy version 1.2.0 
+ScienceTools version 2.2.0
+2024-03-19 14:40:09 DEBUG   GTAnalysis.print_config(): Configuration:
+binning:
+  binsperdec: 4.0
+  binsz: 0.08
+  coordsys: CEL
+  enumbins: null
+  hpx_ebin: true
+  hpx_order: 10
+  hpx_ordering_scheme: RING
+  npix: null
+  proj: AIT
+  projtype: WCS
+  roiwidth: 10.0
+components: null
+curvature:
+  Index2: 0.6667
+  free_Index2: false
+data:
+  cacheft1: true
+  evfile: /Users/asteinhe/FermiLAT/BHinEGs_DM/data/NGC1600/ft1.fits
+  ltcube: /Users/asteinhe/FermiLAT/BHinEGs_DM/data/ltcube_00.fits
+  scfile: /Users/asteinhe/FermiLAT/BHinEGs_DM/data/ft2_sc.fits
+extension:
+  fit_ebin: false
+  fit_position: false
+  fix_shape: false
+  free_background: false
+  free_radius: null
+  make_plots: false
+  make_tsmap: true
+  psf_scale_fn: null
+  reoptimize: false
+  save_model_map: false
+  spatial_model: RadialGaussian
+  sqrt_ts_threshold: null
+  tsmap_fitter: tsmap
+  update: false
+  width: []
+  width_max: 1.0
+  width_min: 0.01
+  width_nstep: 21
+  write_fits: true
+  write_npy: true
+fileio:
+  logfile: NGC1600
+  outdir: output
+  outdir_regex:
+  - \.fits$|\.fit$|\.xml$|\.npy$|\.png$|\.pdf$|\.yaml$
+  savefits: true
+  scratchdir: scratch
+  usescratch: false
+  workdir: null
+  workdir_regex:
+  - \.fits$|\.fit$|\.xml$|\.npy$
+gtlike:
+  bexpmap: null
+  bexpmap_base: null
+  bexpmap_roi: null
+  bexpmap_roi_base: null
+  convolve: true
+  edisp: true
+  edisp_bins: -1
+  edisp_disable:
+  - isodiff
+  expscale: null
+  irfs: P8R3_SOURCE_V3
+  llscan_npts: 20
+  minbinsz: 0.05
+  resample: true
+  rfactor: 2
+  src_expscale: {}
+  srcmap: null
+  srcmap_base: null
+  use_external_srcmap: false
+  use_scaled_srcmap: false
+  wmap: null
+lightcurve:
+  binsz: 86400.0
+  free_background: false
+  free_params: []
+  free_radius: null
+  free_sources: []
+  make_plots: false
+  max_free_sources: 5
+  multithread: false
+  nbins: null
+  nthread: null
+  outdir: null
+  save_bin_data: true
+  shape_ts_threshold: 16.0
+  systematic: 0.02
+  time_bins: []
+  use_local_ltcube: true
+  use_scaled_srcmap: false
+  write_fits: true
+  write_npy: true
+localize:
+  dtheta_max: 0.5
+  fix_shape: false
+  free_background: false
+  free_radius: null
+  make_plots: false
+  nstep: 5
+  tsmap_fitter: tsmap
+  update: true
+  write_fits: true
+  write_npy: true
+logging:
+  chatter: 3
+  prefix: ''
+  verbosity: 3
+ltcube:
+  binsz: 1.0
+  dcostheta: 0.025
+  phibins: 0
+  use_local_ltcube: false
+mc:
+  seed: null
+model:
+  assoc_xmatch_columns:
+  - 3FGL_Name
+  catalogs:
+  - 4FGL-DR3
+  diffuse: []
+  diffuse_dir: []
+  diffuse_xml: []
+  extdir: null
+  extract_diffuse: false
+  galdiff:
+  - /Users/asteinhe/opt/anaconda3/envs/fermi_test/share/fermitools/refdata/fermi/galdiffuse/gll_iem_v07.fits
+  isodiff:
+  - /Users/asteinhe/opt/anaconda3/envs/fermi_test/share/fermitools/refdata/fermi/galdiffuse/iso_P8R3_SOURCE_V3_v1.txt
+  limbdiff: []
+  merge_sources: true
+  sources:
+  - SpectrumType: PowerLaw
+    dec: -5.08625
+    name: NGC1600
+    ra: 67.916417
+  src_radius: 15.0
+  src_radius_roi: null
+  src_roiwidth: 15.0
+optimizer:
+  init_lambda: 0.0001
+  max_iter: 100
+  min_fit_quality: 2
+  optimizer: MINUIT
+  retries: 3
+  tol: 0.001
+  verbosity: 0
+plotting:
+  catalogs: []
+  cmap: magma
+  cmap_resid: RdBu_r
+  figsize:
+  - 8.0
+  - 6.0
+  format: png
+  graticule_radii: []
+  interactive: false
+  label_ts_threshold: 0.0
+  loge_bounds: []
+residmap:
+  exclude: []
+  loge_bounds: []
+  make_plots: false
+  model: {}
+  use_weights: false
+  write_fits: true
+  write_npy: true
+roiopt:
+  max_free_sources: 5
+  npred_frac: 0.95
+  npred_threshold: 1.0
+  shape_ts_threshold: 25.0
+  skip: []
+sed:
+  bin_index: 2.0
+  cov_scale: 3.0
+  free_background: false
+  free_pars: []
+  free_radius: null
+  make_plots: false
+  ul_confidence: 0.95
+  use_local_index: true
+  write_fits: true
+  write_npy: true
+selection:
+  convtype: null
+  dec: null
+  emax: 1000000.0
+  emin: 500.0
+  evclass: 128
+  evtype: 3
+  filter: DATA_QUAL>0 && LAT_CONFIG==1 && ABS(ROCK_ANGLE)<52
+  glat: null
+  glon: null
+  logemax: null
+  logemin: null
+  phasemax: null
+  phasemin: null
+  ra: null
+  radius: 15.0
+  roicut: 'no'
+  target: NGC1600
+  tmax: 712597417
+  tmin: 239557417
+  zmax: 100.0
+sourcefind:
+  free_params: []
+  max_iter: 5
+  min_separation: 1.0
+  model: {}
+  multithread: false
+  nthread: null
+  sources_per_iter: 4
+  sqrt_ts_threshold: 5.0
+  tsmap_fitter: tsmap
+tscube:
+  cov_scale: -1.0
+  cov_scale_bb: -1.0
+  do_sed: true
+  exclude: []
+  init_lambda: 0.0
+  max_iter: 30
+  model: {}
+  nnorm: 10
+  norm_sigma: 5.0
+  remake_test_source: false
+  st_scan_level: 0
+  tol: 0.001
+  tol_type: 0
+tsmap:
+  exclude: []
+  loge_bounds: []
+  make_plots: false
+  max_kernel_radius: 3.0
+  model: {}
+  multithread: false
+  nthread: null
+  write_fits: true
+  write_npy: true
+
+2024-03-19 14:40:10 DEBUG   GTAnalysis._create_component(): Creating Analysis Component: 00
+2024-03-19 14:40:10 DEBUG   GTBinnedAnalysis.print_config(): Configuration:
+binning:
+  binsperdec: 4.0
+  binsz: 0.08
+  coordsys: CEL
+  enumbins: null
+  hpx_ebin: true
+  hpx_order: 10
+  hpx_ordering_scheme: RING
+  npix: null
+  proj: AIT
+  projtype: WCS
+  roiwidth: 10.0
+data:
+  cacheft1: true
+  evfile: /Users/asteinhe/FermiLAT/BHinEGs_DM/data/NGC1600/ft1.fits
+  ltcube: /Users/asteinhe/FermiLAT/BHinEGs_DM/data/ltcube_00.fits
+  scfile: /Users/asteinhe/FermiLAT/BHinEGs_DM/data/ft2_sc.fits
+file_suffix: _00
+fileio:
+  logfile: NGC1600
+  outdir: output
+  outdir_regex:
+  - \.fits$|\.fit$|\.xml$|\.npy$|\.png$|\.pdf$|\.yaml$
+  savefits: true
+  scratchdir: scratch
+  usescratch: false
+  workdir: /Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output
+  workdir_regex:
+  - \.fits$|\.fit$|\.xml$|\.npy$
+gtlike:
+  bexpmap: null
+  bexpmap_base: null
+  bexpmap_roi: null
+  bexpmap_roi_base: null
+  convolve: true
+  edisp: true
+  edisp_bins: -1
+  edisp_disable:
+  - isodiff
+  expscale: null
+  irfs: P8R3_SOURCE_V3
+  llscan_npts: 20
+  minbinsz: 0.05
+  resample: true
+  rfactor: 2
+  src_expscale: {}
+  srcmap: null
+  srcmap_base: null
+  use_external_srcmap: false
+  use_scaled_srcmap: false
+  wmap: null
+logging:
+  chatter: 3
+  prefix: ''
+  verbosity: 3
+ltcube:
+  binsz: 1.0
+  dcostheta: 0.025
+  phibins: 0
+  use_local_ltcube: false
+model:
+  assoc_xmatch_columns:
+  - 3FGL_Name
+  catalogs:
+  - 4FGL-DR3
+  diffuse: []
+  diffuse_dir: []
+  diffuse_xml: []
+  extdir: null
+  extract_diffuse: false
+  galdiff:
+  - /Users/asteinhe/opt/anaconda3/envs/fermi_test/share/fermitools/refdata/fermi/galdiffuse/gll_iem_v07.fits
+  isodiff:
+  - /Users/asteinhe/opt/anaconda3/envs/fermi_test/share/fermitools/refdata/fermi/galdiffuse/iso_P8R3_SOURCE_V3_v1.txt
+  limbdiff: []
+  merge_sources: true
+  sources:
+  - SpectrumType: PowerLaw
+    dec: -5.08625
+    name: NGC1600
+    ra: 67.916417
+  src_radius: 15.0
+  src_radius_roi: null
+  src_roiwidth: 15.0
+name: '00'
+selection:
+  convtype: null
+  dec: null
+  emax: 1000000.0
+  emin: 500.0
+  evclass: 128
+  evtype: 3
+  filter: DATA_QUAL>0 && LAT_CONFIG==1 && ABS(ROCK_ANGLE)<52
+  glat: null
+  glon: null
+  logemax: !!python/object/apply:numpy.core.multiarray.scalar
+  - &id001 !!python/object/apply:numpy.dtype
+    args:
+    - f8
+    - false
+    - true
+    state: !!python/tuple
+    - 3
+    - <
+    - null
+    - null
+    - null
+    - -1
+    - -1
+    - 0
+  - !!binary |
+    AAAAAAAAGEA=
+  logemin: !!python/object/apply:numpy.core.multiarray.scalar
+  - *id001
+  - !!binary |
+    wBDslX2XBUA=
+  phasemax: null
+  phasemin: null
+  ra: null
+  radius: 15.0
+  roicut: 'no'
+  target: NGC1600
+  tmax: 712597417
+  tmin: 239557417
+  zmax: 100.0
+
+2024-03-19 14:40:10 INFO    GTAnalysis.setup(): Running setup.
+2024-03-19 14:40:10 INFO    GTBinnedAnalysis.setup(): Running setup for component 00
+2024-03-19 14:40:10 INFO    GTBinnedAnalysis.run_gtapp(): Running gtselect.
+2024-03-19 14:40:10 INFO    GTBinnedAnalysis.run_gtapp(): time -p gtselect infile=/Users/asteinhe/FermiLAT/BHinEGs_DM/data/NGC1600/ft1.fits outfile=/Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/ft1_00.fits ra=67.916417 dec=-5.08625 rad=15.0 tmin=239557417.0 tmax=712597417.0 emin=500.0 emax=1000000.0 zmin=0.0 zmax=100.0 evclass=128 evtype=3 convtype=-1 phasemin=0.0 phasemax=1.0 evtable="EVENTS" chatter=3 clobber=yes debug=no gui=no mode="ql"
+2024-03-19 14:40:11 INFO    GTBinnedAnalysis.run_gtapp(): This is gtselect version HEAD
+2024-03-19 14:40:11 INFO    GTBinnedAnalysis.run_gtapp(): Applying filter string: ((EVENT_CLASS&o200) != o0) && angsep(RA,DEC,67.916075,-5.086103) < 15 && angsep(RA,DEC,67.916417,-5.08625) < 15 && ((EVENT_TYPE&o3) != o0) && 500 < ENERGY && ENERGY <= 1000000 && 239557417 < TIME && TIME <= 712597417 && 0 < ZENITH_ANGLE && ZENITH_ANGLE <= 100 && gtifilter()
+2024-03-19 14:40:19 INFO    GTBinnedAnalysis.run_gtapp(): Done.
+2024-03-19 14:40:19 INFO    GTBinnedAnalysis.run_gtapp(): Finished gtselect. Execution time: 8.85 s
+2024-03-19 14:40:19 INFO    GTBinnedAnalysis.run_gtapp(): Running gtmktime.
+2024-03-19 14:40:19 INFO    GTBinnedAnalysis.run_gtapp(): time -p gtmktime scfile=/Users/asteinhe/FermiLAT/BHinEGs_DM/data/ft2_sc.fits sctable="SC_DATA" filter="DATA_QUAL>0 && LAT_CONFIG==1 && ABS(ROCK_ANGLE)<52" roicut=no evfile=/Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/ft1_00.fits evtable="EVENTS" outfile="/Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/ft1_filtered_00.fits" apply_filter=yes overwrite=no header_obstimes=yes tstart=0.0 tstop=0.0 gtifile="default" chatter=2 clobber=yes debug=no gui=no mode="ql"
+2024-03-19 15:01:25 INFO    GTBinnedAnalysis.run_gtapp(): Finished gtmktime. Execution time: 1265.99 s
+2024-03-19 15:01:25 INFO    GTBinnedAnalysis.setup(): Using external LT cube.
+2024-03-19 15:01:25 DEBUG   GTBinnedAnalysis.setup(): Loading LT Cube /Users/asteinhe/FermiLAT/BHinEGs_DM/data/ltcube_00.fits
+2024-03-19 15:01:25 DEBUG   GTBinnedAnalysis.setup(): Creating PSF model
+2024-03-19 15:01:26 INFO    GTBinnedAnalysis.run_gtapp(): Running gtbin.
+2024-03-19 15:01:26 INFO    GTBinnedAnalysis.run_gtapp(): time -p gtbin evfile=/Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/ft1_00.fits scfile=/Users/asteinhe/FermiLAT/BHinEGs_DM/data/ft2_sc.fits outfile=/Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/ccube_00.fits algorithm="ccube" ebinalg="LOG" emin=500.0 emax=1000000.0 enumbins=13 ebinfile=NONE tbinalg="LIN" tbinfile=NONE nxpix=125 nypix=125 binsz=0.08 coordsys="CEL" xref=67.916417 yref=-5.08625 axisrot=0.0 rafield="RA" decfield="DEC" proj="AIT" hpx_ordering_scheme="RING" hpx_order=3 hpx_ebin=yes hpx_region="" evtable="EVENTS" sctable="SC_DATA" efield="ENERGY" tfield="TIME" chatter=3 clobber=yes debug=no gui=no mode="ql"
+2024-03-19 15:01:26 INFO    GTBinnedAnalysis.run_gtapp(): This is gtbin version HEAD
+2024-03-19 15:01:33 INFO    GTBinnedAnalysis.run_gtapp(): Finished gtbin. Execution time: 6.62 s
+2024-03-19 15:01:33 INFO    GTBinnedAnalysis.run_gtapp(): Running gtexpcube2.
+2024-03-19 15:01:33 INFO    GTBinnedAnalysis.run_gtapp(): time -p gtexpcube2 infile=/Users/asteinhe/FermiLAT/BHinEGs_DM/data/ltcube_00.fits cmap=none outfile=/Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/bexpmap_00.fits irfs="P8R3_SOURCE_V3" evtype=3 edisp_bins=-1 nxpix=360 nypix=180 binsz=1.0 coordsys="CEL" xref=0.0 yref=0.0 axisrot=0.0 proj="CAR" ebinalg="LOG" emin=500.0 emax=1000000.0 enumbins=13 ebinfile="NONE" hpx_ordering_scheme="RING" hpx_order=6 bincalc="EDGE" ignorephi=no thmax=180.0 thmin=0.0 table="EXPOSURE" chatter=3 clobber=yes debug=no mode="ql"
+2024-03-19 15:01:33 INFO    GTBinnedAnalysis.run_gtapp(): This is gtexpcube2 version HEAD
+2024-03-19 15:01:33 INFO    GTBinnedAnalysis.run_gtapp(): Using evtype=3 (i.e., FRONT/BACK irfs)
+2024-03-19 15:01:33 INFO    GTBinnedAnalysis.run_gtapp(): ResponseFunctions::load: IRF used: P8R3_SOURCE_V3
+2024-03-19 15:01:33 INFO    GTBinnedAnalysis.run_gtapp(): event_types:  0  1
+2024-03-19 15:01:35 INFO    GTBinnedAnalysis.run_gtapp(): Computing binned exposure map....................!
+2024-03-19 15:01:35 INFO    GTBinnedAnalysis.run_gtapp(): Finished gtexpcube2. Execution time: 2.72 s
+2024-03-19 15:01:35 INFO    GTBinnedAnalysis.run_gtapp(): Running gtexpcube2.
+2024-03-19 15:01:35 INFO    GTBinnedAnalysis.run_gtapp(): time -p gtexpcube2 infile=/Users/asteinhe/FermiLAT/BHinEGs_DM/data/ltcube_00.fits cmap=none outfile=/Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/bexpmap_roi_00.fits irfs="P8R3_SOURCE_V3" evtype=3 edisp_bins=0 nxpix=125 nypix=125 binsz=0.08 coordsys="CEL" xref=67.916417 yref=-5.08625 axisrot=0.0 proj="CAR" ebinalg="LOG" emin=500.0 emax=1000000.0 enumbins=13 ebinfile="NONE" hpx_ordering_scheme="RING" hpx_order=6 bincalc="EDGE" ignorephi=no thmax=180.0 thmin=0.0 table="EXPOSURE" chatter=3 clobber=yes debug=no mode="ql"
+2024-03-19 15:01:35 INFO    GTBinnedAnalysis.run_gtapp(): This is gtexpcube2 version HEAD
+2024-03-19 15:01:35 INFO    GTBinnedAnalysis.run_gtapp(): Using evtype=3 (i.e., FRONT/BACK irfs)
+2024-03-19 15:01:35 INFO    GTBinnedAnalysis.run_gtapp(): ResponseFunctions::load: IRF used: P8R3_SOURCE_V3
+2024-03-19 15:01:35 INFO    GTBinnedAnalysis.run_gtapp(): event_types:  0  1
+2024-03-19 15:01:36 INFO    GTBinnedAnalysis.run_gtapp(): Computing binned exposure map.....................!
+2024-03-19 15:01:36 INFO    GTBinnedAnalysis.run_gtapp(): Finished gtexpcube2. Execution time: 0.94 s
+2024-03-19 15:01:36 INFO    GTBinnedAnalysis.run_gtapp(): Running gtsrcmaps.
+2024-03-19 15:01:36 INFO    GTBinnedAnalysis.run_gtapp(): time -p gtsrcmaps scfile=/Users/asteinhe/FermiLAT/BHinEGs_DM/data/ft2_sc.fits sctable="SC_DATA" expcube=/Users/asteinhe/FermiLAT/BHinEGs_DM/data/ltcube_00.fits cmap=/Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/ccube_00.fits srcmdl=/Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/srcmdl_00.xml bexpmap=/Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/bexpmap_00.fits wmap=none outfile=/Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/srcmap_00.fits irfs="P8R3_SOURCE_V3" evtype=3 convol=yes resample=yes rfactor=2 minbinsz=0.05 ptsrc=yes psfcorr=yes emapbnds=no edisp_bins=-1 copyall=no chatter=3 clobber=yes debug=no gui=no mode="ql"
+2024-03-19 15:01:37 INFO    GTBinnedAnalysis.run_gtapp(): This is gtsrcmaps version HEAD
+2024-03-19 15:01:37 INFO    GTBinnedAnalysis.run_gtapp(): Using evtype=3 (i.e., FRONT/BACK irfs)
+2024-03-19 15:01:37 INFO    GTBinnedAnalysis.run_gtapp(): ResponseFunctions::load: IRF used: P8R3_SOURCE_V3
+2024-03-19 15:01:37 INFO    GTBinnedAnalysis.run_gtapp(): event_types:  0  1
+2024-03-19 15:01:37 INFO    GTBinnedAnalysis.run_gtapp(): difference in gti interval found
+2024-03-19 15:01:37 INFO    GTBinnedAnalysis.run_gtapp(): 
+2024-03-19 15:01:37 INFO    GTBinnedAnalysis.run_gtapp(): WARNING:
+2024-03-19 15:01:37 INFO    GTBinnedAnalysis.run_gtapp(): AppHelpers::checkTimeCuts:
+2024-03-19 15:01:37 INFO    GTBinnedAnalysis.run_gtapp(): Time range cuts and GTI extensions in files /Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/ccube_00.fitsand /Users/asteinhe/FermiLAT/BHinEGs_DM/data/ltcube_00.fits[Exposure] do not agree.
+2024-03-19 15:01:37 INFO    GTBinnedAnalysis.run_gtapp(): Aggregate absolute differences in GTI start times (s): 0
+2024-03-19 15:01:37 INFO    GTBinnedAnalysis.run_gtapp(): Aggregate absolute differences in GTI stop times (s): 0
+2024-03-19 15:01:37 INFO    GTBinnedAnalysis.run_gtapp(): 
+2024-03-19 15:01:37 INFO    GTBinnedAnalysis.run_gtapp(): 
+2024-03-19 15:01:40 INFO    GTBinnedAnalysis.run_gtapp(): Creating source named NGC1600
+2024-03-19 15:01:40 INFO    GTBinnedAnalysis.run_gtapp(): Creating source named 4FGL J0430.2-0356
+2024-03-19 15:01:40 INFO    GTBinnedAnalysis.run_gtapp(): Creating source named 4FGL J0439.9-0535
+2024-03-19 15:01:40 INFO    GTBinnedAnalysis.run_gtapp(): Creating source named 4FGL J0422.1-0644
+2024-03-19 15:01:40 INFO    GTBinnedAnalysis.run_gtapp(): Creating source named 4FGL J0420.3-0407
+2024-03-19 15:01:40 INFO    GTBinnedAnalysis.run_gtapp(): Creating source named 4FGL J0421.0-0752
+2024-03-19 15:01:40 INFO    GTBinnedAnalysis.run_gtapp(): Creating source named 4FGL J0418.1-0252
+2024-03-19 15:01:40 INFO    GTBinnedAnalysis.run_gtapp(): Creating source named 4FGL J0423.3-0120
+2024-03-19 15:01:40 INFO    GTBinnedAnalysis.run_gtapp(): Creating source named 4FGL J0436.2-0038
+2024-03-19 15:01:40 INFO    GTBinnedAnalysis.run_gtapp(): Creating source named 4FGL J0413.1-0304
+2024-03-19 15:01:40 INFO    GTBinnedAnalysis.run_gtapp(): Creating source named 4FGL J0429.0-0006
+2024-03-19 15:01:40 INFO    GTBinnedAnalysis.run_gtapp(): Creating source named 4FGL J0423.0-0943
+2024-03-19 15:01:40 INFO    GTBinnedAnalysis.run_gtapp(): Creating source named 4FGL J0442.6-0017
+2024-03-19 15:01:40 INFO    GTBinnedAnalysis.run_gtapp(): Creating source named 4FGL J0409.8-0359
+2024-03-19 15:01:40 INFO    GTBinnedAnalysis.run_gtapp(): Creating source named 4FGL J0414.6-0842
+2024-03-19 15:01:40 INFO    GTBinnedAnalysis.run_gtapp(): Creating source named 4FGL J0433.5-1039
+2024-03-19 15:01:40 INFO    GTBinnedAnalysis.run_gtapp(): Creating source named 4FGL J0424.7+0036
+2024-03-19 15:01:40 INFO    GTBinnedAnalysis.run_gtapp(): Creating source named 4FGL J0416.9+0105
+2024-03-19 15:01:40 INFO    GTBinnedAnalysis.run_gtapp(): Creating source named 4FGL J0501.2-0158
+2024-03-19 15:01:40 INFO    GTBinnedAnalysis.run_gtapp(): Creating source named isodiff
+2024-03-19 15:01:40 INFO    GTBinnedAnalysis.run_gtapp(): Creating source named galdiff
+2024-03-19 15:01:40 INFO    GTBinnedAnalysis.run_gtapp(): Generating SourceMap for 4FGL J0409.8-0359 14.....................!
+2024-03-19 15:01:41 INFO    GTBinnedAnalysis.run_gtapp(): Generating SourceMap for 4FGL J0413.1-0304 14.....................!
+2024-03-19 15:01:41 INFO    GTBinnedAnalysis.run_gtapp(): Generating SourceMap for 4FGL J0414.6-0842 14.....................!
+2024-03-19 15:01:41 INFO    GTBinnedAnalysis.run_gtapp(): Generating SourceMap for 4FGL J0416.9+0105 14.....................!
+2024-03-19 15:01:42 INFO    GTBinnedAnalysis.run_gtapp(): Generating SourceMap for 4FGL J0418.1-0252 14.....................!
+2024-03-19 15:01:42 INFO    GTBinnedAnalysis.run_gtapp(): Generating SourceMap for 4FGL J0420.3-0407 14.....................!
+2024-03-19 15:01:43 INFO    GTBinnedAnalysis.run_gtapp(): Generating SourceMap for 4FGL J0421.0-0752 14.....................!
+2024-03-19 15:01:43 INFO    GTBinnedAnalysis.run_gtapp(): Generating SourceMap for 4FGL J0422.1-0644 14.....................!
+2024-03-19 15:01:44 INFO    GTBinnedAnalysis.run_gtapp(): Generating SourceMap for 4FGL J0423.0-0943 14.....................!
+2024-03-19 15:01:44 INFO    GTBinnedAnalysis.run_gtapp(): Generating SourceMap for 4FGL J0423.3-0120 14.....................!
+2024-03-19 15:01:45 INFO    GTBinnedAnalysis.run_gtapp(): Generating SourceMap for 4FGL J0424.7+0036 14.....................!
+2024-03-19 15:01:45 INFO    GTBinnedAnalysis.run_gtapp(): Generating SourceMap for 4FGL J0429.0-0006 14.....................!
+2024-03-19 15:01:45 INFO    GTBinnedAnalysis.run_gtapp(): Generating SourceMap for 4FGL J0430.2-0356 14.....................!
+2024-03-19 15:01:46 INFO    GTBinnedAnalysis.run_gtapp(): Generating SourceMap for 4FGL J0433.5-1039 14.....................!
+2024-03-19 15:01:46 INFO    GTBinnedAnalysis.run_gtapp(): Generating SourceMap for 4FGL J0436.2-0038 14.....................!
+2024-03-19 15:01:47 INFO    GTBinnedAnalysis.run_gtapp(): Generating SourceMap for 4FGL J0439.9-0535 14.....................!
+2024-03-19 15:01:47 INFO    GTBinnedAnalysis.run_gtapp(): Generating SourceMap for 4FGL J0442.6-0017 14.....................!
+2024-03-19 15:01:47 INFO    GTBinnedAnalysis.run_gtapp(): Generating SourceMap for 4FGL J0501.2-0158 14.....................!
+2024-03-19 15:01:48 INFO    GTBinnedAnalysis.run_gtapp(): Generating SourceMap for NGC1600 14.....................!
+2024-03-19 15:02:09 INFO    GTBinnedAnalysis.run_gtapp(): Generating SourceMap for galdiff 14....................!
+2024-03-19 15:02:25 INFO    GTBinnedAnalysis.run_gtapp(): Generating SourceMap for isodiff 14....................!
+2024-03-19 15:02:26 INFO    GTBinnedAnalysis.run_gtapp(): ProjMap: extrapolated beyond the maximum energy for map cube file /Users/asteinhe/opt/anaconda3/envs/fermi_test/share/fermitools/refdata/fermi/galdiffuse/gll_iem_v07.fits 178084 times.
+2024-03-19 15:02:26 INFO    GTBinnedAnalysis.run_gtapp(): Finished gtsrcmaps. Execution time: 49.15 s
+2024-03-19 15:02:26 INFO    GTBinnedAnalysis.setup(): Finished setup for component 00
+2024-03-19 15:02:26 INFO    GTBinnedAnalysis._create_binned_analysis(): Creating BinnedAnalysis for component 00.
+2024-03-19 15:02:26 DEBUG   GTBinnedAnalysis._create_binned_analysis(): Creating BinnedObs
+2024-03-19 15:02:26 DEBUG   GTBinnedAnalysis._create_binned_analysis(): {'srcMaps': '/Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/srcmap_00.fits', 'expCube': '/Users/asteinhe/FermiLAT/BHinEGs_DM/data/ltcube_00.fits', 'binnedExpMap': '/Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/bexpmap_00.fits', 'irfs': 'P8R3_SOURCE_V3'}
+2024-03-19 15:02:26 DEBUG   GTBinnedAnalysis._create_binned_analysis(): Creating BinnedAnalysis
+2024-03-19 15:02:26 DEBUG   GTBinnedAnalysis._create_binned_analysis(): {'srcModel': '/Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/srcmdl_00.xml', 'optimizer': 'MINUIT', 'wmap': None, 'convolve': True, 'resample': True, 'minbinsz': 0.05, 'resamp_fact': 2, 'edisp_bins': -1}
+2024-03-19 15:02:29 DEBUG   GTBinnedAnalysis._create_binned_analysis(): Disabling energy dispersion for isodiff
+2024-03-19 15:02:29 DEBUG   GTBinnedAnalysis._create_binned_analysis(): Computing fixed weights
+2024-03-19 15:02:29 DEBUG   GTBinnedAnalysis._create_binned_analysis(): Updating source maps
+2024-03-19 15:02:29 INFO    GTAnalysis.setup(): Initializing source properties
+2024-03-19 15:02:29 DEBUG   GTAnalysis.setup(): Initializing source 4FGL J0409.8-0359
+2024-03-19 15:02:29 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0409.8-0359
+2024-03-19 15:02:29 DEBUG   GTAnalysis.setup(): Initializing source 4FGL J0413.1-0304
+2024-03-19 15:02:29 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0413.1-0304
+2024-03-19 15:02:29 DEBUG   GTAnalysis.setup(): Initializing source 4FGL J0414.6-0842
+2024-03-19 15:02:29 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0414.6-0842
+2024-03-19 15:02:29 DEBUG   GTAnalysis.setup(): Initializing source 4FGL J0416.9+0105
+2024-03-19 15:02:29 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0416.9+0105
+2024-03-19 15:02:29 DEBUG   GTAnalysis.setup(): Initializing source 4FGL J0418.1-0252
+2024-03-19 15:02:29 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0418.1-0252
+2024-03-19 15:02:29 DEBUG   GTAnalysis.setup(): Initializing source 4FGL J0420.3-0407
+2024-03-19 15:02:29 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0420.3-0407
+2024-03-19 15:02:29 DEBUG   GTAnalysis.setup(): Initializing source 4FGL J0421.0-0752
+2024-03-19 15:02:29 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0421.0-0752
+2024-03-19 15:02:29 DEBUG   GTAnalysis.setup(): Initializing source 4FGL J0422.1-0644
+2024-03-19 15:02:29 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0422.1-0644
+2024-03-19 15:02:29 DEBUG   GTAnalysis.setup(): Initializing source 4FGL J0423.0-0943
+2024-03-19 15:02:29 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0423.0-0943
+2024-03-19 15:02:29 DEBUG   GTAnalysis.setup(): Initializing source 4FGL J0423.3-0120
+2024-03-19 15:02:29 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0423.3-0120
+2024-03-19 15:02:29 DEBUG   GTAnalysis.setup(): Initializing source 4FGL J0424.7+0036
+2024-03-19 15:02:29 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0424.7+0036
+2024-03-19 15:02:29 DEBUG   GTAnalysis.setup(): Initializing source 4FGL J0429.0-0006
+2024-03-19 15:02:29 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0429.0-0006
+2024-03-19 15:02:29 DEBUG   GTAnalysis.setup(): Initializing source 4FGL J0430.2-0356
+2024-03-19 15:02:29 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0430.2-0356
+2024-03-19 15:02:29 DEBUG   GTAnalysis.setup(): Initializing source 4FGL J0433.5-1039
+2024-03-19 15:02:29 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0433.5-1039
+2024-03-19 15:02:29 DEBUG   GTAnalysis.setup(): Initializing source 4FGL J0436.2-0038
+2024-03-19 15:02:29 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0436.2-0038
+2024-03-19 15:02:29 DEBUG   GTAnalysis.setup(): Initializing source 4FGL J0439.9-0535
+2024-03-19 15:02:29 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0439.9-0535
+2024-03-19 15:02:29 DEBUG   GTAnalysis.setup(): Initializing source 4FGL J0442.6-0017
+2024-03-19 15:02:29 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0442.6-0017
+2024-03-19 15:02:29 DEBUG   GTAnalysis.setup(): Initializing source 4FGL J0501.2-0158
+2024-03-19 15:02:29 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0501.2-0158
+2024-03-19 15:02:29 DEBUG   GTAnalysis.setup(): Initializing source NGC1600
+2024-03-19 15:02:29 DEBUG   GTAnalysis.get_src_model(): Generating source dict for NGC1600
+2024-03-19 15:02:29 DEBUG   GTAnalysis.setup(): Initializing source galdiff
+2024-03-19 15:02:29 DEBUG   GTAnalysis.get_src_model(): Generating source dict for galdiff
+2024-03-19 15:02:34 DEBUG   GTAnalysis.setup(): Initializing source isodiff
+2024-03-19 15:02:34 DEBUG   GTAnalysis.get_src_model(): Generating source dict for isodiff
+2024-03-19 15:02:34 INFO    GTAnalysis.setup(): Finished setup.
+2024-03-19 15:02:34 INFO    GTAnalysis.optimize(): Starting
+2024-03-19 15:02:34 DEBUG   GTAnalysis.optimize(): LogLike: -51733.355874
+2024-03-19 15:02:34 DEBUG   GTAnalysis.free_source(): Fixing parameters for NGC1600               : ['Prefactor']
+2024-03-19 15:02:34 DEBUG   GTAnalysis.free_source(): Freeing parameters for galdiff               : ['Prefactor']
+2024-03-19 15:02:34 DEBUG   GTAnalysis.free_source(): Freeing parameters for isodiff               : ['Normalization']
+2024-03-19 15:02:34 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0423.3-0120     : ['norm']
+2024-03-19 15:02:34 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0442.6-0017     : ['norm']
+2024-03-19 15:02:34 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0422.1-0644     : ['norm']
+2024-03-19 15:02:34 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:02:34 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:02:35 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0422.1-0644
+2024-03-19 15:02:35 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0422.1-0644
+2024-03-19 15:02:35 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:35 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0423.3-0120
+2024-03-19 15:02:35 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0423.3-0120
+2024-03-19 15:02:35 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:35 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0442.6-0017
+2024-03-19 15:02:35 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0442.6-0017
+2024-03-19 15:02:35 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:35 DEBUG   GTAnalysis.get_src_model(): Generating source dict for galdiff
+2024-03-19 15:02:35 DEBUG   GTAnalysis.profile_norm(): Profiling galdiff
+2024-03-19 15:02:35 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:35 DEBUG   GTAnalysis.get_src_model(): Generating source dict for isodiff
+2024-03-19 15:02:35 DEBUG   GTAnalysis.profile_norm(): Profiling isodiff
+2024-03-19 15:02:35 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:36 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:02:36 DEBUG   GTAnalysis.fit(): LogLike:   -51660.342 DeltaLogLike:       73.014 
+2024-03-19 15:02:36 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['norm']
+2024-03-19 15:02:36 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['norm']
+2024-03-19 15:02:36 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['norm']
+2024-03-19 15:02:36 DEBUG   GTAnalysis.free_source(): Fixing parameters for isodiff               : ['Normalization']
+2024-03-19 15:02:36 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Prefactor']
+2024-03-19 15:02:36 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0418.1-0252 npred:    927.665 TS:        nan
+2024-03-19 15:02:36 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0418.1-0252     : ['norm']
+2024-03-19 15:02:36 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:02:36 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:02:36 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0418.1-0252
+2024-03-19 15:02:36 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0418.1-0252
+2024-03-19 15:02:36 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:36 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:02:36 DEBUG   GTAnalysis.fit(): LogLike:   -51658.404 DeltaLogLike:        1.937 
+2024-03-19 15:02:36 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    829.847 TS:    670.329
+2024-03-19 15:02:36 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['norm']
+2024-03-19 15:02:36 DEBUG   GTAnalysis.optimize(): Fitting NGC1600 npred:    878.182 TS:        nan
+2024-03-19 15:02:36 DEBUG   GTAnalysis.free_source(): Freeing parameters for NGC1600               : ['Prefactor']
+2024-03-19 15:02:36 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:02:36 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:02:36 DEBUG   GTAnalysis.get_src_model(): Generating source dict for NGC1600
+2024-03-19 15:02:36 DEBUG   GTAnalysis.profile_norm(): Profiling NGC1600
+2024-03-19 15:02:36 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:36 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:02:36 DEBUG   GTAnalysis.fit(): LogLike:   -51397.794 DeltaLogLike:      260.611 
+2024-03-19 15:02:36 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:      0.009 TS:     -0.002
+2024-03-19 15:02:36 DEBUG   GTAnalysis.free_source(): Fixing parameters for NGC1600               : ['Prefactor']
+2024-03-19 15:02:36 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0423.0-0943 npred:    248.784 TS:        nan
+2024-03-19 15:02:36 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0423.0-0943     : ['norm']
+2024-03-19 15:02:36 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:02:37 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:02:37 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0423.0-0943
+2024-03-19 15:02:37 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0423.0-0943
+2024-03-19 15:02:37 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:37 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:02:37 DEBUG   GTAnalysis.fit(): LogLike:   -51397.779 DeltaLogLike:        0.014 
+2024-03-19 15:02:37 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    254.120 TS:    107.807
+2024-03-19 15:02:37 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.0-0943     : ['norm']
+2024-03-19 15:02:37 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0413.1-0304 npred:    233.175 TS:        nan
+2024-03-19 15:02:37 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0413.1-0304     : ['Prefactor']
+2024-03-19 15:02:37 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:02:37 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:02:37 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0413.1-0304
+2024-03-19 15:02:37 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0413.1-0304
+2024-03-19 15:02:37 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:37 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:02:37 DEBUG   GTAnalysis.fit(): LogLike:   -51397.776 DeltaLogLike:        0.003 
+2024-03-19 15:02:37 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    235.912 TS:     65.601
+2024-03-19 15:02:37 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0413.1-0304     : ['Prefactor']
+2024-03-19 15:02:37 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0421.0-0752 npred:    230.759 TS:        nan
+2024-03-19 15:02:37 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0421.0-0752     : ['Prefactor']
+2024-03-19 15:02:37 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:02:37 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:02:38 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0421.0-0752
+2024-03-19 15:02:38 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0421.0-0752
+2024-03-19 15:02:38 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:38 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:02:38 DEBUG   GTAnalysis.fit(): LogLike:   -51397.776 DeltaLogLike:        0.001 
+2024-03-19 15:02:38 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    229.213 TS:     42.943
+2024-03-19 15:02:38 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0421.0-0752     : ['Prefactor']
+2024-03-19 15:02:38 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0424.7+0036 npred:    202.544 TS:        nan
+2024-03-19 15:02:38 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0424.7+0036     : ['norm']
+2024-03-19 15:02:38 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:02:38 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:02:38 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0424.7+0036
+2024-03-19 15:02:38 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0424.7+0036
+2024-03-19 15:02:38 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:38 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:02:38 DEBUG   GTAnalysis.fit(): LogLike:   -51397.364 DeltaLogLike:        0.412 
+2024-03-19 15:02:38 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    140.724 TS:      4.552
+2024-03-19 15:02:38 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0424.7+0036     : ['norm']
+2024-03-19 15:02:38 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0430.2-0356 npred:    134.350 TS:        nan
+2024-03-19 15:02:38 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0430.2-0356     : ['Prefactor']
+2024-03-19 15:02:38 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:02:38 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:02:38 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0430.2-0356
+2024-03-19 15:02:38 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0430.2-0356
+2024-03-19 15:02:38 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:39 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:02:39 DEBUG   GTAnalysis.fit(): LogLike:   -51397.316 DeltaLogLike:        0.048 
+2024-03-19 15:02:39 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    147.530 TS:     14.153
+2024-03-19 15:02:39 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0430.2-0356     : ['Prefactor']
+2024-03-19 15:02:39 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0420.3-0407 npred:    132.282 TS:        nan
+2024-03-19 15:02:39 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0420.3-0407     : ['Prefactor']
+2024-03-19 15:02:39 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:02:39 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:02:39 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0420.3-0407
+2024-03-19 15:02:39 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0420.3-0407
+2024-03-19 15:02:39 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:39 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:02:39 DEBUG   GTAnalysis.fit(): LogLike:   -51396.976 DeltaLogLike:        0.339 
+2024-03-19 15:02:39 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    103.496 TS:     12.087
+2024-03-19 15:02:39 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0420.3-0407     : ['Prefactor']
+2024-03-19 15:02:39 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0436.2-0038 npred:    130.227 TS:        nan
+2024-03-19 15:02:39 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0436.2-0038     : ['norm']
+2024-03-19 15:02:39 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:02:39 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:02:39 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0436.2-0038
+2024-03-19 15:02:39 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0436.2-0038
+2024-03-19 15:02:39 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:39 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:02:39 DEBUG   GTAnalysis.fit(): LogLike:   -51396.961 DeltaLogLike:        0.016 
+2024-03-19 15:02:39 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    125.546 TS:     38.505
+2024-03-19 15:02:39 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0436.2-0038     : ['norm']
+2024-03-19 15:02:39 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0501.2-0158 npred:    115.171 TS:        nan
+2024-03-19 15:02:39 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0501.2-0158     : ['norm']
+2024-03-19 15:02:39 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:02:39 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:02:40 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0501.2-0158
+2024-03-19 15:02:40 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0501.2-0158
+2024-03-19 15:02:40 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:40 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:02:40 DEBUG   GTAnalysis.fit(): LogLike:   -51395.842 DeltaLogLike:        1.119 
+2024-03-19 15:02:40 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    228.293 TS:      9.338
+2024-03-19 15:02:40 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0501.2-0158     : ['norm']
+2024-03-19 15:02:40 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0439.9-0535 npred:    100.609 TS:        nan
+2024-03-19 15:02:40 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0439.9-0535     : ['Prefactor']
+2024-03-19 15:02:40 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:02:40 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:02:40 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0439.9-0535
+2024-03-19 15:02:40 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0439.9-0535
+2024-03-19 15:02:40 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:40 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:02:40 DEBUG   GTAnalysis.fit(): LogLike:   -51395.824 DeltaLogLike:        0.017 
+2024-03-19 15:02:40 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:     95.318 TS:     21.227
+2024-03-19 15:02:40 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0439.9-0535     : ['Prefactor']
+2024-03-19 15:02:40 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0414.6-0842 npred:     98.959 TS:        nan
+2024-03-19 15:02:40 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0414.6-0842     : ['Prefactor']
+2024-03-19 15:02:40 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:02:40 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:02:40 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0414.6-0842
+2024-03-19 15:02:40 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0414.6-0842
+2024-03-19 15:02:41 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:41 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:02:41 DEBUG   GTAnalysis.fit(): LogLike:   -51395.749 DeltaLogLike:        0.075 
+2024-03-19 15:02:41 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    109.696 TS:     26.682
+2024-03-19 15:02:41 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0414.6-0842     : ['Prefactor']
+2024-03-19 15:02:41 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0409.8-0359 npred:     81.209 TS:        nan
+2024-03-19 15:02:41 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0409.8-0359     : ['norm']
+2024-03-19 15:02:41 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:02:41 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:02:41 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0409.8-0359
+2024-03-19 15:02:41 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0409.8-0359
+2024-03-19 15:02:41 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:41 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:02:41 DEBUG   GTAnalysis.fit(): LogLike:   -51394.895 DeltaLogLike:        0.854 
+2024-03-19 15:02:41 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:     24.388 TS:      0.338
+2024-03-19 15:02:41 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0409.8-0359     : ['norm']
+2024-03-19 15:02:41 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0429.0-0006 npred:     74.898 TS:        nan
+2024-03-19 15:02:41 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0429.0-0006     : ['Prefactor']
+2024-03-19 15:02:41 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:02:41 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:02:41 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0429.0-0006
+2024-03-19 15:02:41 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0429.0-0006
+2024-03-19 15:02:41 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:41 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:02:41 DEBUG   GTAnalysis.fit(): LogLike:   -51394.768 DeltaLogLike:        0.126 
+2024-03-19 15:02:41 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:     57.893 TS:      3.317
+2024-03-19 15:02:41 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0429.0-0006     : ['Prefactor']
+2024-03-19 15:02:41 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0416.9+0105 npred:     24.080 TS:        nan
+2024-03-19 15:02:41 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0416.9+0105     : ['Prefactor']
+2024-03-19 15:02:41 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:02:42 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:02:42 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0416.9+0105
+2024-03-19 15:02:42 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0416.9+0105
+2024-03-19 15:02:42 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:42 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:02:42 DEBUG   GTAnalysis.fit(): LogLike:   -51394.326 DeltaLogLike:        0.443 
+2024-03-19 15:02:42 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:      0.004 TS:     -0.000
+2024-03-19 15:02:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0416.9+0105     : ['Prefactor']
+2024-03-19 15:02:42 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0433.5-1039 npred:     20.649 TS:        nan
+2024-03-19 15:02:42 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0433.5-1039     : ['Prefactor']
+2024-03-19 15:02:42 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:02:42 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:02:42 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0433.5-1039
+2024-03-19 15:02:42 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0433.5-1039
+2024-03-19 15:02:42 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:42 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:02:42 DEBUG   GTAnalysis.fit(): LogLike:   -51385.825 DeltaLogLike:        8.501 
+2024-03-19 15:02:42 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    246.248 TS:     20.483
+2024-03-19 15:02:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0433.5-1039     : ['Prefactor']
+2024-03-19 15:02:42 DEBUG   GTAnalysis.optimize(): Fitting shape galdiff TS:   8863.894
+2024-03-19 15:02:42 DEBUG   GTAnalysis.free_source(): Freeing parameters for galdiff               : ['Prefactor', 'Index']
+2024-03-19 15:02:42 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:02:42 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:02:43 DEBUG   GTAnalysis.get_src_model(): Generating source dict for galdiff
+2024-03-19 15:02:43 DEBUG   GTAnalysis.profile_norm(): Profiling galdiff
+2024-03-19 15:02:43 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:02:43 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:43 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:02:43 DEBUG   GTAnalysis.fit(): LogLike:   -51383.354 DeltaLogLike:        2.471 
+2024-03-19 15:02:43 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Prefactor', 'Index']
+2024-03-19 15:02:43 DEBUG   GTAnalysis.optimize(): Fitting shape 4FGL J0423.3-0120 TS:   4406.656
+2024-03-19 15:02:43 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0423.3-0120     : ['norm', 'alpha', 'beta']
+2024-03-19 15:02:43 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:02:43 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:02:43 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0423.3-0120
+2024-03-19 15:02:43 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0423.3-0120
+2024-03-19 15:02:43 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:02:43 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:43 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:02:43 DEBUG   GTAnalysis.fit(): LogLike:   -51380.613 DeltaLogLike:        2.741 
+2024-03-19 15:02:43 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['norm', 'alpha', 'beta']
+2024-03-19 15:02:43 DEBUG   GTAnalysis.optimize(): Fitting shape 4FGL J0442.6-0017 TS:   4090.824
+2024-03-19 15:02:43 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0442.6-0017     : ['norm', 'alpha', 'beta']
+2024-03-19 15:02:43 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:02:43 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:02:43 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0442.6-0017
+2024-03-19 15:02:44 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0442.6-0017
+2024-03-19 15:02:44 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:02:44 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:44 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:02:44 DEBUG   GTAnalysis.fit(): LogLike:   -51378.934 DeltaLogLike:        1.679 
+2024-03-19 15:02:44 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['norm', 'alpha', 'beta']
+2024-03-19 15:02:44 DEBUG   GTAnalysis.optimize(): Fitting shape 4FGL J0422.1-0644 TS:    940.532
+2024-03-19 15:02:44 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0422.1-0644     : ['norm', 'alpha', 'beta']
+2024-03-19 15:02:44 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:02:44 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:02:44 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0422.1-0644
+2024-03-19 15:02:44 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0422.1-0644
+2024-03-19 15:02:44 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:02:44 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:44 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:02:44 DEBUG   GTAnalysis.fit(): LogLike:   -51377.498 DeltaLogLike:        1.435 
+2024-03-19 15:02:44 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['norm', 'alpha', 'beta']
+2024-03-19 15:02:44 DEBUG   GTAnalysis.optimize(): Fitting shape 4FGL J0418.1-0252 TS:    670.329
+2024-03-19 15:02:44 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0418.1-0252     : ['norm', 'alpha', 'beta']
+2024-03-19 15:02:44 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:02:44 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:02:44 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0418.1-0252
+2024-03-19 15:02:44 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0418.1-0252
+2024-03-19 15:02:44 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:02:44 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:44 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:02:44 DEBUG   GTAnalysis.fit(): LogLike:   -51375.397 DeltaLogLike:        2.101 
+2024-03-19 15:02:44 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['norm', 'alpha', 'beta']
+2024-03-19 15:02:44 DEBUG   GTAnalysis.optimize(): Fitting shape isodiff TS:    621.758
+2024-03-19 15:02:44 DEBUG   GTAnalysis.free_source(): Freeing parameters for isodiff               : ['Normalization']
+2024-03-19 15:02:44 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:02:45 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:02:45 DEBUG   GTAnalysis.get_src_model(): Generating source dict for isodiff
+2024-03-19 15:02:45 DEBUG   GTAnalysis.profile_norm(): Profiling isodiff
+2024-03-19 15:02:45 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:45 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:02:45 DEBUG   GTAnalysis.fit(): LogLike:   -51375.380 DeltaLogLike:        0.017 
+2024-03-19 15:02:45 DEBUG   GTAnalysis.free_source(): Fixing parameters for isodiff               : ['Normalization']
+2024-03-19 15:02:45 DEBUG   GTAnalysis.optimize(): Fitting shape 4FGL J0423.0-0943 TS:    107.807
+2024-03-19 15:02:45 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0423.0-0943     : ['norm', 'alpha', 'beta']
+2024-03-19 15:02:45 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:02:45 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:02:45 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0423.0-0943
+2024-03-19 15:02:45 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0423.0-0943
+2024-03-19 15:02:45 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.0-0943     : ['alpha', 'beta']
+2024-03-19 15:02:45 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:45 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:02:45 DEBUG   GTAnalysis.fit(): LogLike:   -51375.208 DeltaLogLike:        0.172 
+2024-03-19 15:02:45 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.0-0943     : ['norm', 'alpha', 'beta']
+2024-03-19 15:02:45 DEBUG   GTAnalysis.optimize(): Fitting shape 4FGL J0413.1-0304 TS:     65.601
+2024-03-19 15:02:45 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0413.1-0304     : ['Prefactor', 'Index']
+2024-03-19 15:02:45 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:02:45 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:02:46 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0413.1-0304
+2024-03-19 15:02:46 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0413.1-0304
+2024-03-19 15:02:46 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0413.1-0304     : ['Index']
+2024-03-19 15:02:46 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:46 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:02:46 DEBUG   GTAnalysis.fit(): LogLike:   -51375.126 DeltaLogLike:        0.083 
+2024-03-19 15:02:46 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0413.1-0304     : ['Prefactor', 'Index']
+2024-03-19 15:02:46 DEBUG   GTAnalysis.optimize(): Fitting shape 4FGL J0421.0-0752 TS:     42.943
+2024-03-19 15:02:46 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0421.0-0752     : ['Prefactor', 'Index']
+2024-03-19 15:02:46 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:02:46 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:02:46 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0421.0-0752
+2024-03-19 15:02:46 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0421.0-0752
+2024-03-19 15:02:46 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0421.0-0752     : ['Index']
+2024-03-19 15:02:46 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:46 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:02:46 DEBUG   GTAnalysis.fit(): LogLike:   -51374.921 DeltaLogLike:        0.205 
+2024-03-19 15:02:46 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0421.0-0752     : ['Prefactor', 'Index']
+2024-03-19 15:02:46 DEBUG   GTAnalysis.optimize(): Fitting shape 4FGL J0436.2-0038 TS:     38.505
+2024-03-19 15:02:46 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0436.2-0038     : ['norm', 'alpha', 'beta']
+2024-03-19 15:02:46 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:02:46 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:02:46 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0436.2-0038
+2024-03-19 15:02:47 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0436.2-0038
+2024-03-19 15:02:47 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0436.2-0038     : ['alpha', 'beta']
+2024-03-19 15:02:47 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:47 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:02:47 DEBUG   GTAnalysis.fit(): LogLike:   -51373.646 DeltaLogLike:        1.275 
+2024-03-19 15:02:47 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0436.2-0038     : ['norm', 'alpha', 'beta']
+2024-03-19 15:02:47 DEBUG   GTAnalysis.optimize(): Fitting shape 4FGL J0414.6-0842 TS:     26.682
+2024-03-19 15:02:47 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0414.6-0842     : ['Prefactor', 'Index']
+2024-03-19 15:02:47 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:02:47 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:02:47 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0414.6-0842
+2024-03-19 15:02:47 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0414.6-0842
+2024-03-19 15:02:47 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0414.6-0842     : ['Index']
+2024-03-19 15:02:47 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:47 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:02:47 DEBUG   GTAnalysis.fit(): LogLike:   -51373.375 DeltaLogLike:        0.270 
+2024-03-19 15:02:47 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0414.6-0842     : ['Prefactor', 'Index']
+2024-03-19 15:02:47 INFO    GTAnalysis.optimize(): Finished
+2024-03-19 15:02:47 INFO    GTAnalysis.optimize(): LogLike: -51373.375452 Delta-LogLike: 359.980422
+2024-03-19 15:02:47 INFO    GTAnalysis.optimize(): Execution time: 13.28 s
+2024-03-19 15:02:47 INFO    GTAnalysis.print_roi(): 
+name                SpatialModel   SpectrumType     offset        ts       npred
+--------------------------------------------------------------------------------
+NGC1600             PointSource    PowerLaw          0.000     -0.00         0.0
+4FGL J0430.2-0356   PointSource    PowerLaw          1.192     14.15       147.5
+4FGL J0439.9-0535   PointSource    PowerLaw          2.119     21.23        95.3
+4FGL J0422.1-0644   PointSource    LogParabola       2.890    968.58      1470.8
+4FGL J0420.3-0407   PointSource    PowerLaw          2.970     12.09       103.5
+4FGL J0421.0-0752   PointSource    PowerLaw          3.844     37.62       197.6
+4FGL J0418.1-0252   PointSource    LogParabola       4.033    674.80       775.1
+4FGL J0423.3-0120   PointSource    LogParabola       4.293   4646.57      3712.5
+4FGL J0436.2-0038   PointSource    LogParabola       4.581     39.61       163.1
+4FGL J0413.1-0304   PointSource    PowerLaw          5.026     71.98       251.6
+4FGL J0429.0-0006   PointSource    PowerLaw          5.029      3.32        57.9
+4FGL J0423.0-0943   PointSource    LogParabola       5.106    101.66       248.5
+4FGL J0442.6-0017   PointSource    LogParabola       5.519   4146.06      2609.0
+4FGL J0409.8-0359   PointSource    LogParabola       5.546      0.34        24.4
+4FGL J0414.6-0842   PointSource    PowerLaw          5.564     25.84       122.6
+4FGL J0433.5-1039   PointSource    PowerLaw          5.595     20.48       246.2
+4FGL J0424.7+0036   PointSource    LogParabola       5.943      4.55       140.7
+4FGL J0416.9+0105   PointSource    PowerLaw          7.191     -0.00         0.0
+4FGL J0501.2-0158   PointSource    LogParabola       8.001      9.34       228.3
+isodiff             ConstantValue  FileFunction      -----   5183.63     16115.2
+galdiff             MapCubeFunctio PowerLaw          -----  54160.07     41635.4
+
+2024-03-19 15:02:47 INFO    GTAnalysis.free_source(): Freeing parameters for galdiff               : ['Prefactor', 'Index']
+2024-03-19 15:02:47 INFO    GTAnalysis.free_source(): Freeing parameters for isodiff               : ['Normalization']
+2024-03-19 15:02:47 INFO    GTAnalysis.free_source(): Freeing parameters for 4FGL J0422.1-0644     : ['norm']
+2024-03-19 15:02:47 INFO    GTAnalysis.free_source(): Freeing parameters for 4FGL J0421.0-0752     : ['Prefactor']
+2024-03-19 15:02:47 INFO    GTAnalysis.free_source(): Freeing parameters for 4FGL J0418.1-0252     : ['norm']
+2024-03-19 15:02:47 INFO    GTAnalysis.free_source(): Freeing parameters for 4FGL J0423.3-0120     : ['norm']
+2024-03-19 15:02:47 INFO    GTAnalysis.free_source(): Freeing parameters for 4FGL J0436.2-0038     : ['norm']
+2024-03-19 15:02:47 INFO    GTAnalysis.free_source(): Freeing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:02:47 INFO    GTAnalysis.free_source(): Freeing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:02:47 INFO    GTAnalysis.free_source(): Freeing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:02:47 INFO    GTAnalysis.free_source(): Freeing parameters for 4FGL J0442.6-0017     : ['norm', 'alpha', 'beta']
+2024-03-19 15:02:47 INFO    GTAnalysis.free_source(): Freeing parameters for NGC1600               : ['Index']
+2024-03-19 15:02:47 INFO    GTAnalysis.fit(): Starting fit.
+2024-03-19 15:02:50 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:02:51 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0418.1-0252
+2024-03-19 15:02:51 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0418.1-0252
+2024-03-19 15:02:51 DEBUG   GTAnalysis.free_source(): Fixing parameters for NGC1600               : ['Index']
+2024-03-19 15:02:51 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:02:51 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:02:51 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:02:51 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:02:51 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:02:51 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:51 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0421.0-0752
+2024-03-19 15:02:51 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0421.0-0752
+2024-03-19 15:02:51 DEBUG   GTAnalysis.free_source(): Fixing parameters for NGC1600               : ['Index']
+2024-03-19 15:02:51 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:02:51 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:02:51 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:02:51 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:02:51 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:02:51 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:51 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0422.1-0644
+2024-03-19 15:02:51 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0422.1-0644
+2024-03-19 15:02:51 DEBUG   GTAnalysis.free_source(): Fixing parameters for NGC1600               : ['Index']
+2024-03-19 15:02:51 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:02:51 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:02:51 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:02:51 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:02:51 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:02:51 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:51 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0423.3-0120
+2024-03-19 15:02:51 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0423.3-0120
+2024-03-19 15:02:51 DEBUG   GTAnalysis.free_source(): Fixing parameters for NGC1600               : ['Index']
+2024-03-19 15:02:51 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:02:51 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:02:51 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:02:51 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:02:51 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:02:51 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:51 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0436.2-0038
+2024-03-19 15:02:51 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0436.2-0038
+2024-03-19 15:02:51 DEBUG   GTAnalysis.free_source(): Fixing parameters for NGC1600               : ['Index']
+2024-03-19 15:02:52 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:02:52 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:02:52 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:02:52 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:02:52 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:02:52 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:52 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0442.6-0017
+2024-03-19 15:02:52 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0442.6-0017
+2024-03-19 15:02:52 DEBUG   GTAnalysis.free_source(): Fixing parameters for NGC1600               : ['Index']
+2024-03-19 15:02:52 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:02:52 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:02:52 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:02:52 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:02:52 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:02:52 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:52 DEBUG   GTAnalysis.get_src_model(): Generating source dict for NGC1600
+2024-03-19 15:02:52 DEBUG   GTAnalysis.profile_norm(): Profiling NGC1600
+2024-03-19 15:02:52 DEBUG   GTAnalysis.free_source(): Fixing parameters for NGC1600               : ['Index']
+2024-03-19 15:02:52 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:02:52 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:02:52 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:02:52 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:02:52 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:02:52 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:52 DEBUG   GTAnalysis.get_src_model(): Generating source dict for galdiff
+2024-03-19 15:02:52 DEBUG   GTAnalysis.profile_norm(): Profiling galdiff
+2024-03-19 15:02:52 DEBUG   GTAnalysis.free_source(): Fixing parameters for NGC1600               : ['Index']
+2024-03-19 15:02:52 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:02:52 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:02:52 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:02:52 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:02:52 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:02:53 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:53 DEBUG   GTAnalysis.get_src_model(): Generating source dict for isodiff
+2024-03-19 15:02:53 DEBUG   GTAnalysis.profile_norm(): Profiling isodiff
+2024-03-19 15:02:53 DEBUG   GTAnalysis.free_source(): Fixing parameters for NGC1600               : ['Index']
+2024-03-19 15:02:53 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:02:53 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:02:53 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:02:53 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:02:53 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:02:53 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:02:53 INFO    GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:02:53 INFO    GTAnalysis.fit(): LogLike:   -51371.725 DeltaLogLike:        1.650 
+2024-03-19 15:02:53 INFO    GTAnalysis.print_roi(): 
+name                SpatialModel   SpectrumType     offset        ts       npred
+--------------------------------------------------------------------------------
+NGC1600             PointSource    PowerLaw          0.000     -0.00         0.0
+4FGL J0430.2-0356   PointSource    PowerLaw          1.192     14.15       147.5
+4FGL J0439.9-0535   PointSource    PowerLaw          2.119     21.23        95.3
+4FGL J0422.1-0644   PointSource    LogParabola       2.890    941.07      1479.4
+4FGL J0420.3-0407   PointSource    PowerLaw          2.970     12.09       103.5
+4FGL J0421.0-0752   PointSource    PowerLaw          3.844     38.12       201.8
+4FGL J0418.1-0252   PointSource    LogParabola       4.033    659.46       770.4
+4FGL J0423.3-0120   PointSource    LogParabola       4.293   4507.22      3749.7
+4FGL J0436.2-0038   PointSource    LogParabola       4.581     39.06       163.3
+4FGL J0413.1-0304   PointSource    PowerLaw          5.026     71.98       251.6
+4FGL J0429.0-0006   PointSource    PowerLaw          5.029      3.32        57.9
+4FGL J0423.0-0943   PointSource    LogParabola       5.106    101.66       248.5
+4FGL J0442.6-0017   PointSource    LogParabola       5.519   4020.45      2593.9
+4FGL J0409.8-0359   PointSource    LogParabola       5.546      0.34        24.4
+4FGL J0414.6-0842   PointSource    PowerLaw          5.564     25.84       122.6
+4FGL J0433.5-1039   PointSource    PowerLaw          5.595     20.48       246.2
+4FGL J0424.7+0036   PointSource    LogParabola       5.943      4.55       140.7
+4FGL J0416.9+0105   PointSource    PowerLaw          7.191     -0.00         0.0
+4FGL J0501.2-0158   PointSource    LogParabola       8.001      9.34       228.3
+isodiff             ConstantValue  FileFunction      -----    831.67     17865.9
+galdiff             MapCubeFunctio PowerLaw          -----   7796.09     39751.9
+
+2024-03-19 15:02:53 INFO    GTBinnedAnalysis.write_xml(): Writing /Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/fit_model_1_00.xml...
+2024-03-19 15:02:53 INFO    GTAnalysis.write_fits(): Writing /Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/fit_model_1.fits...
+2024-03-19 15:03:02 INFO    GTAnalysis.write_roi(): Writing /Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/fit_model_1.npy...
+2024-03-19 15:03:02 INFO    GTAnalysis.residmap(): Generating residual maps
+2024-03-19 15:03:02 INFO    GTAnalysis.add_source(): Adding source residmap_testsource
+2024-03-19 15:03:03 INFO    GTAnalysis.delete_source(): Deleting source residmap_testsource
+2024-03-19 15:03:03 DEBUG   GTBinnedAnalysis.delete_source(): Deleting source residmap_testsource
+2024-03-19 15:03:03 INFO    GTAnalysis.residmap(): Finished residual maps
+2024-03-19 15:03:08 WARNING GTAnalysis.residmap(): Saving maps in .npy files is disabled b/c of incompatibilities in python3, remove the maps from the /Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/fit_model_1_pointsource_powerlaw_2.00_residmap.npy
+2024-03-19 15:03:08 INFO    GTAnalysis.residmap(): Execution time: 5.58 s
+2024-03-19 15:03:09 INFO    GTAnalysis.delete_source(): Deleting source NGC1600
+2024-03-19 15:03:09 DEBUG   GTBinnedAnalysis.delete_source(): Deleting source NGC1600
+2024-03-19 15:03:09 INFO    GTAnalysis.find_sources(): Starting.
+2024-03-19 15:03:09 INFO    GTAnalysis.tsmap(): Generating TS map
+2024-03-19 15:03:10 DEBUG   GTAnalysis.add_source(): Adding source tsmap_testsource
+2024-03-19 15:03:10 DEBUG   GTAnalysis.delete_source(): Deleting source tsmap_testsource
+2024-03-19 15:03:10 DEBUG   GTBinnedAnalysis.delete_source(): Deleting source tsmap_testsource
+2024-03-19 15:03:10 INFO    GTAnalysis._make_tsmap_fast(): Fitting test source.
+2024-03-19 15:03:25 INFO    GTAnalysis.tsmap(): Finished TS map
+2024-03-19 15:03:31 WARNING GTAnalysis.tsmap(): Saving TS maps in .npy files is disabled b/c of incompatibilities in python3, remove the maps from the /Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/find2_sourcefind_00_pointsource_powerlaw_2.00_tsmap.npy
+2024-03-19 15:03:31 INFO    GTAnalysis.tsmap(): Execution time: 21.49 s
+2024-03-19 15:03:31 INFO    GTAnalysis._build_src_dicts_from_peaks(): Found source
+name: PS J0421.5-0626
+ts: 27.682495
+2024-03-19 15:03:31 INFO    GTAnalysis._build_src_dicts_from_peaks(): Found source
+name: PS J0433.1-0716
+ts: 18.798357
+2024-03-19 15:03:31 INFO    GTAnalysis.add_source(): Adding source PS J0421.5-0626
+2024-03-19 15:03:32 DEBUG   GTAnalysis.get_src_model(): Generating source dict for PS J0421.5-0626
+2024-03-19 15:03:32 INFO    GTAnalysis.free_source(): Fixing parameters for PS J0421.5-0626       : ['Prefactor']
+2024-03-19 15:03:32 INFO    GTAnalysis.add_source(): Adding source PS J0433.1-0716
+2024-03-19 15:03:32 DEBUG   GTAnalysis.get_src_model(): Generating source dict for PS J0433.1-0716
+2024-03-19 15:03:32 INFO    GTAnalysis.free_source(): Fixing parameters for PS J0433.1-0716       : ['Prefactor']
+2024-03-19 15:03:32 INFO    GTAnalysis._find_sources_iterate(): Performing spectral fit for PS J0421.5-0626.
+2024-03-19 15:03:32 DEBUG   GTAnalysis._find_sources_iterate(): {'Index': {'error': nan, 'value': -2.0},
+ 'Prefactor': {'error': 0.0, 'value': 1.1792694468649928e-13},
+ 'Scale': {'error': nan, 'value': 1000.0}}
+2024-03-19 15:03:32 INFO    GTAnalysis.free_source(): Freeing parameters for PS J0421.5-0626       : ['Prefactor', 'Index']
+2024-03-19 15:03:32 INFO    GTAnalysis.fit(): Starting fit.
+2024-03-19 15:03:34 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:03:35 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0418.1-0252
+2024-03-19 15:03:35 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0418.1-0252
+2024-03-19 15:03:35 DEBUG   GTAnalysis.free_source(): Fixing parameters for PS J0421.5-0626       : ['Index']
+2024-03-19 15:03:35 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:03:35 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:03:35 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:03:35 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:03:35 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:03:35 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:03:35 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0421.0-0752
+2024-03-19 15:03:35 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0421.0-0752
+2024-03-19 15:03:35 DEBUG   GTAnalysis.free_source(): Fixing parameters for PS J0421.5-0626       : ['Index']
+2024-03-19 15:03:35 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:03:35 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:03:35 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:03:35 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:03:35 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:03:35 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:03:35 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0422.1-0644
+2024-03-19 15:03:35 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0422.1-0644
+2024-03-19 15:03:35 DEBUG   GTAnalysis.free_source(): Fixing parameters for PS J0421.5-0626       : ['Index']
+2024-03-19 15:03:35 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:03:35 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:03:35 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:03:35 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:03:35 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:03:35 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:03:35 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0423.3-0120
+2024-03-19 15:03:35 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0423.3-0120
+2024-03-19 15:03:35 DEBUG   GTAnalysis.free_source(): Fixing parameters for PS J0421.5-0626       : ['Index']
+2024-03-19 15:03:35 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:03:35 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:03:35 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:03:35 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:03:35 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:03:36 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:03:36 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0436.2-0038
+2024-03-19 15:03:36 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0436.2-0038
+2024-03-19 15:03:36 DEBUG   GTAnalysis.free_source(): Fixing parameters for PS J0421.5-0626       : ['Index']
+2024-03-19 15:03:36 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:03:36 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:03:36 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:03:36 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:03:36 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:03:36 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:03:36 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0442.6-0017
+2024-03-19 15:03:36 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0442.6-0017
+2024-03-19 15:03:36 DEBUG   GTAnalysis.free_source(): Fixing parameters for PS J0421.5-0626       : ['Index']
+2024-03-19 15:03:36 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:03:36 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:03:36 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:03:36 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:03:36 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:03:36 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:03:36 DEBUG   GTAnalysis.get_src_model(): Generating source dict for PS J0421.5-0626
+2024-03-19 15:03:36 DEBUG   GTAnalysis.profile_norm(): Profiling PS J0421.5-0626
+2024-03-19 15:03:36 DEBUG   GTAnalysis.free_source(): Fixing parameters for PS J0421.5-0626       : ['Index']
+2024-03-19 15:03:36 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:03:36 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:03:36 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:03:36 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:03:36 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:03:36 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:03:36 DEBUG   GTAnalysis.get_src_model(): Generating source dict for galdiff
+2024-03-19 15:03:37 DEBUG   GTAnalysis.profile_norm(): Profiling galdiff
+2024-03-19 15:03:37 DEBUG   GTAnalysis.free_source(): Fixing parameters for PS J0421.5-0626       : ['Index']
+2024-03-19 15:03:37 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:03:37 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:03:37 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:03:37 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:03:37 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:03:37 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:03:37 DEBUG   GTAnalysis.get_src_model(): Generating source dict for isodiff
+2024-03-19 15:03:37 DEBUG   GTAnalysis.profile_norm(): Profiling isodiff
+2024-03-19 15:03:37 DEBUG   GTAnalysis.free_source(): Fixing parameters for PS J0421.5-0626       : ['Index']
+2024-03-19 15:03:37 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:03:37 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:03:37 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:03:37 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:03:37 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:03:37 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:03:37 INFO    GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:03:37 INFO    GTAnalysis.fit(): LogLike:   -51344.917 DeltaLogLike:        1.841 
+2024-03-19 15:03:37 INFO    GTAnalysis._find_sources_iterate(): {'Index': {'error': 0.17748492974324784, 'value': -1.9309416536620374},
+ 'Prefactor': {'error': 5.5667236926042684e-14,
+               'value': 1.3024606950770254e-13},
+ 'Scale': {'error': nan, 'value': 1000.0}}
+2024-03-19 15:03:37 INFO    GTAnalysis.free_source(): Fixing parameters for PS J0421.5-0626       : ['Prefactor', 'Index']
+2024-03-19 15:03:37 INFO    GTAnalysis._find_sources_iterate(): Performing spectral fit for PS J0433.1-0716.
+2024-03-19 15:03:37 DEBUG   GTAnalysis._find_sources_iterate(): {'Index': {'error': nan, 'value': -2.0},
+ 'Prefactor': {'error': 0.0, 'value': 9.079708779060453e-14},
+ 'Scale': {'error': nan, 'value': 1000.0}}
+2024-03-19 15:03:37 INFO    GTAnalysis.free_source(): Freeing parameters for PS J0433.1-0716       : ['Prefactor', 'Index']
+2024-03-19 15:03:37 INFO    GTAnalysis.fit(): Starting fit.
+2024-03-19 15:03:40 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:03:40 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0418.1-0252
+2024-03-19 15:03:40 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0418.1-0252
+2024-03-19 15:03:40 DEBUG   GTAnalysis.free_source(): Fixing parameters for PS J0433.1-0716       : ['Index']
+2024-03-19 15:03:40 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:03:40 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:03:40 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:03:40 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:03:40 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:03:41 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:03:41 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0421.0-0752
+2024-03-19 15:03:41 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0421.0-0752
+2024-03-19 15:03:41 DEBUG   GTAnalysis.free_source(): Fixing parameters for PS J0433.1-0716       : ['Index']
+2024-03-19 15:03:41 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:03:41 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:03:41 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:03:41 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:03:41 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:03:41 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:03:41 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0422.1-0644
+2024-03-19 15:03:41 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0422.1-0644
+2024-03-19 15:03:41 DEBUG   GTAnalysis.free_source(): Fixing parameters for PS J0433.1-0716       : ['Index']
+2024-03-19 15:03:41 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:03:41 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:03:41 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:03:41 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:03:41 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:03:41 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:03:41 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0423.3-0120
+2024-03-19 15:03:41 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0423.3-0120
+2024-03-19 15:03:41 DEBUG   GTAnalysis.free_source(): Fixing parameters for PS J0433.1-0716       : ['Index']
+2024-03-19 15:03:41 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:03:41 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:03:41 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:03:41 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:03:41 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:03:41 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:03:42 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0436.2-0038
+2024-03-19 15:03:42 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0436.2-0038
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for PS J0433.1-0716       : ['Index']
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:03:42 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:03:42 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0442.6-0017
+2024-03-19 15:03:42 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0442.6-0017
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for PS J0433.1-0716       : ['Index']
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:03:42 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:03:42 DEBUG   GTAnalysis.get_src_model(): Generating source dict for PS J0433.1-0716
+2024-03-19 15:03:42 DEBUG   GTAnalysis.profile_norm(): Profiling PS J0433.1-0716
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for PS J0433.1-0716       : ['Index']
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:03:42 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:03:42 DEBUG   GTAnalysis.get_src_model(): Generating source dict for galdiff
+2024-03-19 15:03:42 DEBUG   GTAnalysis.profile_norm(): Profiling galdiff
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for PS J0433.1-0716       : ['Index']
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:03:42 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:03:42 DEBUG   GTAnalysis.get_src_model(): Generating source dict for isodiff
+2024-03-19 15:03:42 DEBUG   GTAnalysis.profile_norm(): Profiling isodiff
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for PS J0433.1-0716       : ['Index']
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:03:42 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:03:43 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:03:43 INFO    GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:03:43 INFO    GTAnalysis.fit(): LogLike:   -51343.829 DeltaLogLike:        1.088 
+2024-03-19 15:03:43 INFO    GTAnalysis._find_sources_iterate(): {'Index': {'error': 0.21818016800902895, 'value': -2.318699365421576},
+ 'Prefactor': {'error': 4.74378796091577e-14, 'value': 1.460467924962149e-13},
+ 'Scale': {'error': nan, 'value': 1000.0}}
+2024-03-19 15:03:43 INFO    GTAnalysis.free_source(): Fixing parameters for PS J0433.1-0716       : ['Prefactor', 'Index']
+2024-03-19 15:03:43 INFO    GTAnalysis.find_sources(): Found 2 sources in iteration 0.
+2024-03-19 15:03:43 INFO    GTAnalysis.tsmap(): Generating TS map
+2024-03-19 15:03:43 DEBUG   GTAnalysis.add_source(): Adding source tsmap_testsource
+2024-03-19 15:03:43 DEBUG   GTAnalysis.delete_source(): Deleting source tsmap_testsource
+2024-03-19 15:03:43 DEBUG   GTBinnedAnalysis.delete_source(): Deleting source tsmap_testsource
+2024-03-19 15:03:43 INFO    GTAnalysis._make_tsmap_fast(): Fitting test source.
+2024-03-19 15:03:58 INFO    GTAnalysis.tsmap(): Finished TS map
+2024-03-19 15:04:04 WARNING GTAnalysis.tsmap(): Saving TS maps in .npy files is disabled b/c of incompatibilities in python3, remove the maps from the /Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/find2_sourcefind_01_pointsource_powerlaw_2.00_tsmap.npy
+2024-03-19 15:04:04 INFO    GTAnalysis.tsmap(): Execution time: 21.38 s
+2024-03-19 15:04:04 INFO    GTAnalysis.find_sources(): Found 0 sources in iteration 1.
+2024-03-19 15:04:04 INFO    GTAnalysis.find_sources(): Done.
+2024-03-19 15:04:04 INFO    GTAnalysis.find_sources(): Execution time: 54.55 s
+2024-03-19 15:04:04 INFO    GTAnalysis.print_roi(): 
+name                SpatialModel   SpectrumType     offset        ts       npred
+--------------------------------------------------------------------------------
+4FGL J0430.2-0356   PointSource    PowerLaw          1.192     14.15       147.5
+4FGL J0439.9-0535   PointSource    PowerLaw          2.119     21.23        95.3
+PS J0433.1-0716     PointSource    PowerLaw          2.225     22.94       123.2
+PS J0421.5-0626     PointSource    PowerLaw          2.860     36.04       119.5
+4FGL J0422.1-0644   PointSource    LogParabola       2.890    793.75      1388.4
+4FGL J0420.3-0407   PointSource    PowerLaw          2.970     12.09       103.5
+4FGL J0421.0-0752   PointSource    PowerLaw          3.844     39.21       205.4
+4FGL J0418.1-0252   PointSource    LogParabola       4.033    663.94       775.0
+4FGL J0423.3-0120   PointSource    LogParabola       4.293   4520.85      3757.2
+4FGL J0436.2-0038   PointSource    LogParabola       4.581     39.92       165.4
+4FGL J0413.1-0304   PointSource    PowerLaw          5.026     71.98       251.6
+4FGL J0429.0-0006   PointSource    PowerLaw          5.029      3.32        57.9
+4FGL J0423.0-0943   PointSource    LogParabola       5.106    101.66       248.5
+4FGL J0442.6-0017   PointSource    LogParabola       5.519   4035.34      2599.9
+4FGL J0409.8-0359   PointSource    LogParabola       5.546      0.34        24.4
+4FGL J0414.6-0842   PointSource    PowerLaw          5.564     25.84       122.6
+4FGL J0433.5-1039   PointSource    PowerLaw          5.595     20.48       246.2
+4FGL J0424.7+0036   PointSource    LogParabola       5.943      4.55       140.7
+4FGL J0416.9+0105   PointSource    PowerLaw          7.191     -0.00         0.0
+4FGL J0501.2-0158   PointSource    LogParabola       8.001      9.34       228.3
+isodiff             ConstantValue  FileFunction      -----    807.52     17631.3
+galdiff             MapCubeFunctio PowerLaw          -----   7819.33     39808.8
+
+2024-03-19 15:04:04 INFO    GTBinnedAnalysis.write_xml(): Writing /Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/fit_model_2_00.xml...
+2024-03-19 15:04:04 INFO    GTAnalysis.write_fits(): Writing /Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/fit_model_2.fits...
+2024-03-19 15:04:12 INFO    GTAnalysis.write_roi(): Writing /Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/fit_model_2.npy...
+2024-03-19 15:04:12 INFO    GTAnalysis.add_source(): Adding source NGC1600
+2024-03-19 15:04:13 DEBUG   GTAnalysis.get_src_model(): Generating source dict for NGC1600
+2024-03-19 15:04:13 INFO    GTAnalysis.optimize(): Starting
+2024-03-19 15:04:13 DEBUG   GTAnalysis.optimize(): LogLike: -56398.206186
+2024-03-19 15:04:13 DEBUG   GTAnalysis.free_source(): Fixing parameters for NGC1600               : ['Prefactor']
+2024-03-19 15:04:13 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['norm', 'alpha', 'beta']
+2024-03-19 15:04:13 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0421.0-0752     : ['Prefactor']
+2024-03-19 15:04:13 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['norm', 'alpha', 'beta']
+2024-03-19 15:04:13 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['norm', 'alpha', 'beta']
+2024-03-19 15:04:13 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0436.2-0038     : ['norm']
+2024-03-19 15:04:13 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['norm', 'alpha', 'beta']
+2024-03-19 15:04:13 DEBUG   GTAnalysis.free_source(): Fixing parameters for isodiff               : ['Normalization']
+2024-03-19 15:04:13 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Prefactor', 'Index']
+2024-03-19 15:04:13 DEBUG   GTAnalysis.free_source(): Freeing parameters for galdiff               : ['Prefactor']
+2024-03-19 15:04:13 DEBUG   GTAnalysis.free_source(): Freeing parameters for isodiff               : ['Normalization']
+2024-03-19 15:04:13 DEBUG   GTAnalysis.free_source(): Freeing parameters for NGC1600               : ['Prefactor']
+2024-03-19 15:04:13 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0423.3-0120     : ['norm']
+2024-03-19 15:04:13 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0442.6-0017     : ['norm']
+2024-03-19 15:04:13 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:14 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:14 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0423.3-0120
+2024-03-19 15:04:14 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0423.3-0120
+2024-03-19 15:04:14 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:14 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0442.6-0017
+2024-03-19 15:04:14 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0442.6-0017
+2024-03-19 15:04:14 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:14 DEBUG   GTAnalysis.get_src_model(): Generating source dict for NGC1600
+2024-03-19 15:04:14 DEBUG   GTAnalysis.profile_norm(): Profiling NGC1600
+2024-03-19 15:04:14 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:14 DEBUG   GTAnalysis.get_src_model(): Generating source dict for galdiff
+2024-03-19 15:04:14 DEBUG   GTAnalysis.profile_norm(): Profiling galdiff
+2024-03-19 15:04:14 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:14 DEBUG   GTAnalysis.get_src_model(): Generating source dict for isodiff
+2024-03-19 15:04:14 DEBUG   GTAnalysis.profile_norm(): Profiling isodiff
+2024-03-19 15:04:15 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:15 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:15 DEBUG   GTAnalysis.fit(): LogLike:   -51343.840 DeltaLogLike:     5054.366 
+2024-03-19 15:04:15 DEBUG   GTAnalysis.free_source(): Fixing parameters for NGC1600               : ['Prefactor']
+2024-03-19 15:04:15 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['norm']
+2024-03-19 15:04:15 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['norm']
+2024-03-19 15:04:15 DEBUG   GTAnalysis.free_source(): Fixing parameters for isodiff               : ['Normalization']
+2024-03-19 15:04:15 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Prefactor']
+2024-03-19 15:04:15 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0422.1-0644 npred:   1388.379 TS:    793.747
+2024-03-19 15:04:15 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0422.1-0644     : ['norm']
+2024-03-19 15:04:15 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:15 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:15 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0422.1-0644
+2024-03-19 15:04:15 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0422.1-0644
+2024-03-19 15:04:15 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:15 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:15 DEBUG   GTAnalysis.fit(): LogLike:   -51343.840 DeltaLogLike:        0.000 
+2024-03-19 15:04:15 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:   1388.334 TS:    820.614
+2024-03-19 15:04:15 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['norm']
+2024-03-19 15:04:15 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0418.1-0252 npred:    774.971 TS:    663.945
+2024-03-19 15:04:15 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0418.1-0252     : ['norm']
+2024-03-19 15:04:15 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:15 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:15 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0418.1-0252
+2024-03-19 15:04:15 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0418.1-0252
+2024-03-19 15:04:16 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:16 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:16 DEBUG   GTAnalysis.fit(): LogLike:   -51343.840 DeltaLogLike:        0.000 
+2024-03-19 15:04:16 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    774.986 TS:    672.726
+2024-03-19 15:04:16 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['norm']
+2024-03-19 15:04:16 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0413.1-0304 npred:    251.586 TS:     71.977
+2024-03-19 15:04:16 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0413.1-0304     : ['Prefactor']
+2024-03-19 15:04:16 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:16 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:16 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0413.1-0304
+2024-03-19 15:04:16 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0413.1-0304
+2024-03-19 15:04:16 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:16 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:16 DEBUG   GTAnalysis.fit(): LogLike:   -51343.834 DeltaLogLike:        0.006 
+2024-03-19 15:04:16 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    255.599 TS:     73.791
+2024-03-19 15:04:16 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0413.1-0304     : ['Prefactor']
+2024-03-19 15:04:16 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0423.0-0943 npred:    248.467 TS:    101.660
+2024-03-19 15:04:16 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0423.0-0943     : ['norm']
+2024-03-19 15:04:16 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:16 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:16 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0423.0-0943
+2024-03-19 15:04:16 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0423.0-0943
+2024-03-19 15:04:16 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:16 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:16 DEBUG   GTAnalysis.fit(): LogLike:   -51343.810 DeltaLogLike:        0.024 
+2024-03-19 15:04:16 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    255.524 TS:    106.244
+2024-03-19 15:04:16 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.0-0943     : ['norm']
+2024-03-19 15:04:16 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0433.5-1039 npred:    246.248 TS:     20.483
+2024-03-19 15:04:16 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0433.5-1039     : ['Prefactor']
+2024-03-19 15:04:16 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:17 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:17 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0433.5-1039
+2024-03-19 15:04:17 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0433.5-1039
+2024-03-19 15:04:17 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:17 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:17 DEBUG   GTAnalysis.fit(): LogLike:   -51343.753 DeltaLogLike:        0.057 
+2024-03-19 15:04:17 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    227.589 TS:     17.498
+2024-03-19 15:04:17 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0433.5-1039     : ['Prefactor']
+2024-03-19 15:04:17 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0501.2-0158 npred:    228.293 TS:      9.338
+2024-03-19 15:04:17 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0501.2-0158     : ['norm']
+2024-03-19 15:04:17 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:17 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:17 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0501.2-0158
+2024-03-19 15:04:17 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0501.2-0158
+2024-03-19 15:04:17 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:17 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:17 DEBUG   GTAnalysis.fit(): LogLike:   -51343.449 DeltaLogLike:        0.303 
+2024-03-19 15:04:17 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    169.331 TS:      5.129
+2024-03-19 15:04:17 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0501.2-0158     : ['norm']
+2024-03-19 15:04:17 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0421.0-0752 npred:    205.379 TS:     39.205
+2024-03-19 15:04:17 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0421.0-0752     : ['Prefactor']
+2024-03-19 15:04:17 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:17 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:17 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0421.0-0752
+2024-03-19 15:04:18 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0421.0-0752
+2024-03-19 15:04:18 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:18 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:18 DEBUG   GTAnalysis.fit(): LogLike:   -51343.449 DeltaLogLike:        0.000 
+2024-03-19 15:04:18 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    205.429 TS:     39.842
+2024-03-19 15:04:18 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0421.0-0752     : ['Prefactor']
+2024-03-19 15:04:18 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0436.2-0038 npred:    165.427 TS:     39.915
+2024-03-19 15:04:18 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0436.2-0038     : ['norm']
+2024-03-19 15:04:18 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:18 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:18 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0436.2-0038
+2024-03-19 15:04:18 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0436.2-0038
+2024-03-19 15:04:18 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:18 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:18 DEBUG   GTAnalysis.fit(): LogLike:   -51343.449 DeltaLogLike:        0.000 
+2024-03-19 15:04:18 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    166.068 TS:     40.544
+2024-03-19 15:04:18 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0436.2-0038     : ['norm']
+2024-03-19 15:04:18 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0430.2-0356 npred:    147.530 TS:     14.153
+2024-03-19 15:04:18 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0430.2-0356     : ['Prefactor']
+2024-03-19 15:04:18 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:18 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:18 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0430.2-0356
+2024-03-19 15:04:18 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0430.2-0356
+2024-03-19 15:04:18 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:18 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:18 DEBUG   GTAnalysis.fit(): LogLike:   -51343.352 DeltaLogLike:        0.097 
+2024-03-19 15:04:18 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    129.045 TS:     11.089
+2024-03-19 15:04:18 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0430.2-0356     : ['Prefactor']
+2024-03-19 15:04:18 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0424.7+0036 npred:    140.724 TS:      4.552
+2024-03-19 15:04:18 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0424.7+0036     : ['norm']
+2024-03-19 15:04:18 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:19 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:19 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0424.7+0036
+2024-03-19 15:04:19 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0424.7+0036
+2024-03-19 15:04:19 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:19 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:19 DEBUG   GTAnalysis.fit(): LogLike:   -51343.262 DeltaLogLike:        0.090 
+2024-03-19 15:04:19 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    112.509 TS:      2.932
+2024-03-19 15:04:19 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0424.7+0036     : ['norm']
+2024-03-19 15:04:19 DEBUG   GTAnalysis.optimize(): Fitting PS J0433.1-0716 npred:    123.221 TS:     22.944
+2024-03-19 15:04:19 DEBUG   GTAnalysis.free_source(): Freeing parameters for PS J0433.1-0716       : ['Prefactor']
+2024-03-19 15:04:19 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:19 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:19 DEBUG   GTAnalysis.get_src_model(): Generating source dict for PS J0433.1-0716
+2024-03-19 15:04:19 DEBUG   GTAnalysis.profile_norm(): Profiling PS J0433.1-0716
+2024-03-19 15:04:19 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:19 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:19 DEBUG   GTAnalysis.fit(): LogLike:   -51343.262 DeltaLogLike:        0.000 
+2024-03-19 15:04:19 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    123.866 TS:     23.328
+2024-03-19 15:04:19 DEBUG   GTAnalysis.free_source(): Fixing parameters for PS J0433.1-0716       : ['Prefactor']
+2024-03-19 15:04:19 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0414.6-0842 npred:    122.580 TS:     25.843
+2024-03-19 15:04:19 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0414.6-0842     : ['Prefactor']
+2024-03-19 15:04:19 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:19 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:20 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0414.6-0842
+2024-03-19 15:04:20 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0414.6-0842
+2024-03-19 15:04:20 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:20 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:20 DEBUG   GTAnalysis.fit(): LogLike:   -51343.258 DeltaLogLike:        0.004 
+2024-03-19 15:04:20 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    125.266 TS:     26.500
+2024-03-19 15:04:20 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0414.6-0842     : ['Prefactor']
+2024-03-19 15:04:20 DEBUG   GTAnalysis.optimize(): Fitting PS J0421.5-0626 npred:    119.493 TS:     36.038
+2024-03-19 15:04:20 DEBUG   GTAnalysis.free_source(): Freeing parameters for PS J0421.5-0626       : ['Prefactor']
+2024-03-19 15:04:20 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:20 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:20 DEBUG   GTAnalysis.get_src_model(): Generating source dict for PS J0421.5-0626
+2024-03-19 15:04:20 DEBUG   GTAnalysis.profile_norm(): Profiling PS J0421.5-0626
+2024-03-19 15:04:20 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:20 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:20 DEBUG   GTAnalysis.fit(): LogLike:   -51343.258 DeltaLogLike:        0.000 
+2024-03-19 15:04:20 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    119.669 TS:     36.305
+2024-03-19 15:04:20 DEBUG   GTAnalysis.free_source(): Fixing parameters for PS J0421.5-0626       : ['Prefactor']
+2024-03-19 15:04:20 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0420.3-0407 npred:    103.496 TS:     12.087
+2024-03-19 15:04:20 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0420.3-0407     : ['Prefactor']
+2024-03-19 15:04:20 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:20 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:21 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0420.3-0407
+2024-03-19 15:04:21 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0420.3-0407
+2024-03-19 15:04:21 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:21 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:21 DEBUG   GTAnalysis.fit(): LogLike:   -51343.252 DeltaLogLike:        0.006 
+2024-03-19 15:04:21 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:     99.876 TS:     11.391
+2024-03-19 15:04:21 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0420.3-0407     : ['Prefactor']
+2024-03-19 15:04:21 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0439.9-0535 npred:     95.318 TS:     21.227
+2024-03-19 15:04:21 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0439.9-0535     : ['Prefactor']
+2024-03-19 15:04:21 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:21 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:21 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0439.9-0535
+2024-03-19 15:04:21 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0439.9-0535
+2024-03-19 15:04:21 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:21 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:21 DEBUG   GTAnalysis.fit(): LogLike:   -51343.252 DeltaLogLike:        0.000 
+2024-03-19 15:04:21 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:     95.756 TS:     21.659
+2024-03-19 15:04:21 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0439.9-0535     : ['Prefactor']
+2024-03-19 15:04:21 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0429.0-0006 npred:     57.893 TS:      3.317
+2024-03-19 15:04:21 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0429.0-0006     : ['Prefactor']
+2024-03-19 15:04:21 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:21 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:21 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0429.0-0006
+2024-03-19 15:04:21 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0429.0-0006
+2024-03-19 15:04:22 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:22 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:22 DEBUG   GTAnalysis.fit(): LogLike:   -51343.240 DeltaLogLike:        0.013 
+2024-03-19 15:04:22 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:     52.602 TS:      2.824
+2024-03-19 15:04:22 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0429.0-0006     : ['Prefactor']
+2024-03-19 15:04:22 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0409.8-0359 npred:     24.388 TS:      0.338
+2024-03-19 15:04:22 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0409.8-0359     : ['norm']
+2024-03-19 15:04:22 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:22 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:22 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0409.8-0359
+2024-03-19 15:04:22 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0409.8-0359
+2024-03-19 15:04:22 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:22 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:22 DEBUG   GTAnalysis.fit(): LogLike:   -51343.215 DeltaLogLike:        0.024 
+2024-03-19 15:04:22 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:     15.320 TS:      0.132
+2024-03-19 15:04:22 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0409.8-0359     : ['norm']
+2024-03-19 15:04:22 DEBUG   GTAnalysis.optimize(): Skipping 4FGL J0416.9+0105 with npred      0.004
+2024-03-19 15:04:22 DEBUG   GTAnalysis.optimize(): Fitting shape galdiff TS:   7182.498
+2024-03-19 15:04:22 DEBUG   GTAnalysis.free_source(): Freeing parameters for galdiff               : ['Prefactor', 'Index']
+2024-03-19 15:04:22 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:22 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:22 DEBUG   GTAnalysis.get_src_model(): Generating source dict for galdiff
+2024-03-19 15:04:22 DEBUG   GTAnalysis.profile_norm(): Profiling galdiff
+2024-03-19 15:04:22 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:04:22 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:22 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:22 DEBUG   GTAnalysis.fit(): LogLike:   -51343.086 DeltaLogLike:        0.130 
+2024-03-19 15:04:22 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Prefactor', 'Index']
+2024-03-19 15:04:22 DEBUG   GTAnalysis.optimize(): Fitting shape 4FGL J0423.3-0120 TS:   4512.575
+2024-03-19 15:04:23 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0423.3-0120     : ['norm', 'alpha', 'beta']
+2024-03-19 15:04:23 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:23 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:23 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0423.3-0120
+2024-03-19 15:04:23 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0423.3-0120
+2024-03-19 15:04:23 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:04:23 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:23 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:23 DEBUG   GTAnalysis.fit(): LogLike:   -51343.083 DeltaLogLike:        0.003 
+2024-03-19 15:04:23 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['norm', 'alpha', 'beta']
+2024-03-19 15:04:23 DEBUG   GTAnalysis.optimize(): Fitting shape 4FGL J0442.6-0017 TS:   4030.064
+2024-03-19 15:04:23 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0442.6-0017     : ['norm', 'alpha', 'beta']
+2024-03-19 15:04:23 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:23 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:23 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0442.6-0017
+2024-03-19 15:04:23 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0442.6-0017
+2024-03-19 15:04:23 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:04:23 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:23 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:23 DEBUG   GTAnalysis.fit(): LogLike:   -51343.080 DeltaLogLike:        0.003 
+2024-03-19 15:04:23 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['norm', 'alpha', 'beta']
+2024-03-19 15:04:23 DEBUG   GTAnalysis.optimize(): Fitting shape 4FGL J0422.1-0644 TS:    820.614
+2024-03-19 15:04:23 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0422.1-0644     : ['norm', 'alpha', 'beta']
+2024-03-19 15:04:23 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:24 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:24 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0422.1-0644
+2024-03-19 15:04:24 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0422.1-0644
+2024-03-19 15:04:24 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:04:24 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:24 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:24 DEBUG   GTAnalysis.fit(): LogLike:   -51343.075 DeltaLogLike:        0.004 
+2024-03-19 15:04:24 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['norm', 'alpha', 'beta']
+2024-03-19 15:04:24 DEBUG   GTAnalysis.optimize(): Fitting shape isodiff TS:    769.182
+2024-03-19 15:04:24 DEBUG   GTAnalysis.free_source(): Freeing parameters for isodiff               : ['Normalization']
+2024-03-19 15:04:24 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:24 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:24 DEBUG   GTAnalysis.get_src_model(): Generating source dict for isodiff
+2024-03-19 15:04:24 DEBUG   GTAnalysis.profile_norm(): Profiling isodiff
+2024-03-19 15:04:24 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:24 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:24 DEBUG   GTAnalysis.fit(): LogLike:   -51343.075 DeltaLogLike:        0.001 
+2024-03-19 15:04:24 DEBUG   GTAnalysis.free_source(): Fixing parameters for isodiff               : ['Normalization']
+2024-03-19 15:04:24 DEBUG   GTAnalysis.optimize(): Fitting shape 4FGL J0418.1-0252 TS:    672.726
+2024-03-19 15:04:24 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0418.1-0252     : ['norm', 'alpha', 'beta']
+2024-03-19 15:04:24 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:25 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:25 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0418.1-0252
+2024-03-19 15:04:25 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0418.1-0252
+2024-03-19 15:04:25 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:04:25 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:25 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:25 DEBUG   GTAnalysis.fit(): LogLike:   -51343.073 DeltaLogLike:        0.001 
+2024-03-19 15:04:25 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['norm', 'alpha', 'beta']
+2024-03-19 15:04:25 DEBUG   GTAnalysis.optimize(): Fitting shape 4FGL J0423.0-0943 TS:    106.244
+2024-03-19 15:04:25 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0423.0-0943     : ['norm', 'alpha', 'beta']
+2024-03-19 15:04:25 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:25 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:25 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0423.0-0943
+2024-03-19 15:04:25 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0423.0-0943
+2024-03-19 15:04:25 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.0-0943     : ['alpha', 'beta']
+2024-03-19 15:04:25 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:25 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:25 DEBUG   GTAnalysis.fit(): LogLike:   -51343.062 DeltaLogLike:        0.012 
+2024-03-19 15:04:25 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.0-0943     : ['norm', 'alpha', 'beta']
+2024-03-19 15:04:25 DEBUG   GTAnalysis.optimize(): Fitting shape 4FGL J0413.1-0304 TS:     73.791
+2024-03-19 15:04:25 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0413.1-0304     : ['Prefactor', 'Index']
+2024-03-19 15:04:25 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:26 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:26 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0413.1-0304
+2024-03-19 15:04:26 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0413.1-0304
+2024-03-19 15:04:26 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0413.1-0304     : ['Index']
+2024-03-19 15:04:26 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:26 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:26 DEBUG   GTAnalysis.fit(): LogLike:   -51343.057 DeltaLogLike:        0.005 
+2024-03-19 15:04:26 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0413.1-0304     : ['Prefactor', 'Index']
+2024-03-19 15:04:26 DEBUG   GTAnalysis.optimize(): Fitting shape 4FGL J0436.2-0038 TS:     40.544
+2024-03-19 15:04:26 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0436.2-0038     : ['norm', 'alpha', 'beta']
+2024-03-19 15:04:26 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:26 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:26 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0436.2-0038
+2024-03-19 15:04:26 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0436.2-0038
+2024-03-19 15:04:26 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0436.2-0038     : ['alpha', 'beta']
+2024-03-19 15:04:27 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:27 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:27 DEBUG   GTAnalysis.fit(): LogLike:   -51343.052 DeltaLogLike:        0.005 
+2024-03-19 15:04:27 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0436.2-0038     : ['norm', 'alpha', 'beta']
+2024-03-19 15:04:27 DEBUG   GTAnalysis.optimize(): Fitting shape 4FGL J0421.0-0752 TS:     39.842
+2024-03-19 15:04:27 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0421.0-0752     : ['Prefactor', 'Index']
+2024-03-19 15:04:27 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:27 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:27 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0421.0-0752
+2024-03-19 15:04:27 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0421.0-0752
+2024-03-19 15:04:27 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0421.0-0752     : ['Index']
+2024-03-19 15:04:27 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:27 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:27 DEBUG   GTAnalysis.fit(): LogLike:   -51343.046 DeltaLogLike:        0.006 
+2024-03-19 15:04:27 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0421.0-0752     : ['Prefactor', 'Index']
+2024-03-19 15:04:27 DEBUG   GTAnalysis.optimize(): Fitting shape PS J0421.5-0626 TS:     36.305
+2024-03-19 15:04:27 DEBUG   GTAnalysis.free_source(): Freeing parameters for PS J0421.5-0626       : ['Prefactor', 'Index']
+2024-03-19 15:04:27 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:27 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:28 DEBUG   GTAnalysis.get_src_model(): Generating source dict for PS J0421.5-0626
+2024-03-19 15:04:28 DEBUG   GTAnalysis.profile_norm(): Profiling PS J0421.5-0626
+2024-03-19 15:04:28 DEBUG   GTAnalysis.free_source(): Fixing parameters for PS J0421.5-0626       : ['Index']
+2024-03-19 15:04:28 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:28 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:28 DEBUG   GTAnalysis.fit(): LogLike:   -51343.046 DeltaLogLike:        0.000 
+2024-03-19 15:04:28 DEBUG   GTAnalysis.free_source(): Fixing parameters for PS J0421.5-0626       : ['Prefactor', 'Index']
+2024-03-19 15:04:28 DEBUG   GTAnalysis.optimize(): Fitting shape 4FGL J0414.6-0842 TS:     26.500
+2024-03-19 15:04:28 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0414.6-0842     : ['Prefactor', 'Index']
+2024-03-19 15:04:28 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:28 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:28 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0414.6-0842
+2024-03-19 15:04:28 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0414.6-0842
+2024-03-19 15:04:28 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0414.6-0842     : ['Index']
+2024-03-19 15:04:28 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:28 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:28 DEBUG   GTAnalysis.fit(): LogLike:   -51343.044 DeltaLogLike:        0.003 
+2024-03-19 15:04:28 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0414.6-0842     : ['Prefactor', 'Index']
+2024-03-19 15:04:28 INFO    GTAnalysis.optimize(): Finished
+2024-03-19 15:04:28 INFO    GTAnalysis.optimize(): LogLike: -51343.043526 Delta-LogLike: 5055.162660
+2024-03-19 15:04:28 INFO    GTAnalysis.optimize(): Execution time: 15.09 s
+2024-03-19 15:04:28 INFO    GTAnalysis.print_roi(): 
+name                SpatialModel   SpectrumType     offset        ts       npred
+--------------------------------------------------------------------------------
+NGC1600             PointSource    PowerLaw          0.000     -0.02         0.1
+4FGL J0430.2-0356   PointSource    PowerLaw          1.192     11.09       129.0
+4FGL J0439.9-0535   PointSource    PowerLaw          2.119     21.66        95.8
+PS J0433.1-0716     PointSource    PowerLaw          2.225     23.33       123.9
+PS J0421.5-0626     PointSource    PowerLaw          2.860     36.24       119.3
+4FGL J0422.1-0644   PointSource    LogParabola       2.890    815.72      1382.3
+4FGL J0420.3-0407   PointSource    PowerLaw          2.970     11.39        99.9
+4FGL J0421.0-0752   PointSource    PowerLaw          3.844     39.14       205.2
+4FGL J0418.1-0252   PointSource    LogParabola       4.033    671.17       772.3
+4FGL J0423.3-0120   PointSource    LogParabola       4.293   4746.53      3763.4
+4FGL J0436.2-0038   PointSource    LogParabola       4.581     40.22       167.5
+4FGL J0413.1-0304   PointSource    PowerLaw          5.026     74.23       257.8
+4FGL J0429.0-0006   PointSource    PowerLaw          5.029      2.82        52.6
+4FGL J0423.0-0943   PointSource    LogParabola       5.106    105.52       257.5
+4FGL J0442.6-0017   PointSource    LogParabola       5.519   4144.08      2604.3
+4FGL J0409.8-0359   PointSource    LogParabola       5.546      0.13        15.3
+4FGL J0414.6-0842   PointSource    PowerLaw          5.564     25.99       124.7
+4FGL J0433.5-1039   PointSource    PowerLaw          5.595     17.50       227.6
+4FGL J0424.7+0036   PointSource    LogParabola       5.943      2.93       112.5
+4FGL J0416.9+0105   PointSource    PowerLaw          7.191     -0.00         0.0
+4FGL J0501.2-0158   PointSource    LogParabola       8.001      5.13       169.3
+isodiff             ConstantValue  FileFunction      -----   6338.83     17639.5
+galdiff             MapCubeFunctio PowerLaw          -----  47777.17     39928.9
+
+2024-03-19 15:04:28 INFO    GTAnalysis.free_source(): Freeing parameters for NGC1600               : ['Index']
+2024-03-19 15:04:28 INFO    GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:32 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:04:32 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0418.1-0252
+2024-03-19 15:04:32 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0418.1-0252
+2024-03-19 15:04:32 DEBUG   GTAnalysis.free_source(): Fixing parameters for NGC1600               : ['Index']
+2024-03-19 15:04:32 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:04:32 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:04:32 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:04:32 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:04:32 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:04:32 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:32 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0421.0-0752
+2024-03-19 15:04:32 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0421.0-0752
+2024-03-19 15:04:32 DEBUG   GTAnalysis.free_source(): Fixing parameters for NGC1600               : ['Index']
+2024-03-19 15:04:32 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:04:32 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:04:32 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:04:32 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:04:32 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:04:32 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:32 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0422.1-0644
+2024-03-19 15:04:32 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0422.1-0644
+2024-03-19 15:04:32 DEBUG   GTAnalysis.free_source(): Fixing parameters for NGC1600               : ['Index']
+2024-03-19 15:04:32 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:04:32 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:04:32 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:04:32 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:04:32 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:04:32 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:32 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0423.3-0120
+2024-03-19 15:04:33 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0423.3-0120
+2024-03-19 15:04:33 DEBUG   GTAnalysis.free_source(): Fixing parameters for NGC1600               : ['Index']
+2024-03-19 15:04:33 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:04:33 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:04:33 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:04:33 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:04:33 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:04:33 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:33 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0436.2-0038
+2024-03-19 15:04:33 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0436.2-0038
+2024-03-19 15:04:33 DEBUG   GTAnalysis.free_source(): Fixing parameters for NGC1600               : ['Index']
+2024-03-19 15:04:33 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:04:33 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:04:33 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:04:33 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:04:33 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:04:33 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:33 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0442.6-0017
+2024-03-19 15:04:33 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0442.6-0017
+2024-03-19 15:04:33 DEBUG   GTAnalysis.free_source(): Fixing parameters for NGC1600               : ['Index']
+2024-03-19 15:04:33 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:04:33 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:04:33 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:04:33 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:04:33 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:04:33 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:33 DEBUG   GTAnalysis.get_src_model(): Generating source dict for NGC1600
+2024-03-19 15:04:33 DEBUG   GTAnalysis.profile_norm(): Profiling NGC1600
+2024-03-19 15:04:33 DEBUG   GTAnalysis.free_source(): Fixing parameters for NGC1600               : ['Index']
+2024-03-19 15:04:33 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:04:33 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:04:33 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:04:33 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:04:33 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:04:33 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:34 DEBUG   GTAnalysis.get_src_model(): Generating source dict for galdiff
+2024-03-19 15:04:34 DEBUG   GTAnalysis.profile_norm(): Profiling galdiff
+2024-03-19 15:04:34 DEBUG   GTAnalysis.free_source(): Fixing parameters for NGC1600               : ['Index']
+2024-03-19 15:04:34 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:04:34 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:04:34 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:04:34 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:04:34 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:04:34 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:34 DEBUG   GTAnalysis.get_src_model(): Generating source dict for isodiff
+2024-03-19 15:04:34 DEBUG   GTAnalysis.profile_norm(): Profiling isodiff
+2024-03-19 15:04:34 DEBUG   GTAnalysis.free_source(): Fixing parameters for NGC1600               : ['Index']
+2024-03-19 15:04:34 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:04:34 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:04:34 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:04:34 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:04:34 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:04:34 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:04:34 INFO    GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:04:34 INFO    GTAnalysis.fit(): LogLike:   -51343.016 DeltaLogLike:        0.028 
+2024-03-19 15:04:34 INFO    GTAnalysis.print_roi(): 
+name                SpatialModel   SpectrumType     offset        ts       npred
+--------------------------------------------------------------------------------
+NGC1600             PointSource    PowerLaw          0.000     -0.01         0.1
+4FGL J0430.2-0356   PointSource    PowerLaw          1.192     11.09       129.0
+4FGL J0439.9-0535   PointSource    PowerLaw          2.119     21.66        95.8
+PS J0433.1-0716     PointSource    PowerLaw          2.225     23.33       123.9
+PS J0421.5-0626     PointSource    PowerLaw          2.860     36.24       119.3
+4FGL J0422.1-0644   PointSource    LogParabola       2.890    788.54      1381.0
+4FGL J0420.3-0407   PointSource    PowerLaw          2.970     11.39        99.9
+4FGL J0421.0-0752   PointSource    PowerLaw          3.844     38.73       206.0
+4FGL J0418.1-0252   PointSource    LogParabola       4.033    661.79       771.6
+4FGL J0423.3-0120   PointSource    LogParabola       4.293   4534.49      3765.7
+4FGL J0436.2-0038   PointSource    LogParabola       4.581     39.75       167.5
+4FGL J0413.1-0304   PointSource    PowerLaw          5.026     74.23       257.8
+4FGL J0429.0-0006   PointSource    PowerLaw          5.029      2.82        52.6
+4FGL J0423.0-0943   PointSource    LogParabola       5.106    105.52       257.5
+4FGL J0442.6-0017   PointSource    LogParabola       5.519   4036.71      2602.9
+4FGL J0409.8-0359   PointSource    LogParabola       5.546      0.13        15.3
+4FGL J0414.6-0842   PointSource    PowerLaw          5.564     25.99       124.7
+4FGL J0433.5-1039   PointSource    PowerLaw          5.595     17.50       227.6
+4FGL J0424.7+0036   PointSource    LogParabola       5.943      2.93       112.5
+4FGL J0416.9+0105   PointSource    PowerLaw          7.191     -0.00         0.0
+4FGL J0501.2-0158   PointSource    LogParabola       8.001      5.13       169.3
+isodiff             ConstantValue  FileFunction      -----    832.77     17849.3
+galdiff             MapCubeFunctio PowerLaw          -----   7739.54     39707.0
+
+2024-03-19 15:04:34 INFO    GTBinnedAnalysis.write_xml(): Writing /Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/fit_model_3_00.xml...
+2024-03-19 15:04:34 INFO    GTAnalysis.write_fits(): Writing /Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/fit_model_3.fits...
+2024-03-19 15:04:42 INFO    GTAnalysis.write_roi(): Writing /Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/fit_model_3.npy...
+2024-03-19 15:04:42 INFO    GTAnalysis.residmap(): Generating residual maps
+2024-03-19 15:04:42 INFO    GTAnalysis.add_source(): Adding source residmap_testsource
+2024-03-19 15:04:43 INFO    GTAnalysis.delete_source(): Deleting source residmap_testsource
+2024-03-19 15:04:43 DEBUG   GTBinnedAnalysis.delete_source(): Deleting source residmap_testsource
+2024-03-19 15:04:43 INFO    GTAnalysis.residmap(): Finished residual maps
+2024-03-19 15:04:48 WARNING GTAnalysis.residmap(): Saving maps in .npy files is disabled b/c of incompatibilities in python3, remove the maps from the /Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/fit_model_3_pointsource_powerlaw_2.00_residmap.npy
+2024-03-19 15:04:48 INFO    GTAnalysis.residmap(): Execution time: 5.71 s
+2024-03-19 15:04:54 INFO    GTAnalysis.__init__(): 
+--------------------------------------------------------------------------------
+fermipy version 1.2.0 
+ScienceTools version 2.2.0
+2024-03-19 15:04:54 DEBUG   GTAnalysis.print_config(): Configuration:
+binning:
+  binsperdec: 4.0
+  binsz: 0.08
+  coordsys: CEL
+  enumbins: null
+  hpx_ebin: true
+  hpx_order: 10
+  hpx_ordering_scheme: RING
+  npix: null
+  proj: AIT
+  projtype: WCS
+  roiwidth: 10.0
+components: null
+curvature:
+  Index2: 0.6667
+  free_Index2: false
+data:
+  cacheft1: true
+  evfile: /Users/asteinhe/FermiLAT/BHinEGs_DM/data/NGC1600/ft1.fits
+  ltcube: /Users/asteinhe/FermiLAT/BHinEGs_DM/data/ltcube_00.fits
+  scfile: /Users/asteinhe/FermiLAT/BHinEGs_DM/data/ft2_sc.fits
+extension:
+  fit_ebin: false
+  fit_position: false
+  fix_shape: false
+  free_background: false
+  free_radius: null
+  make_plots: false
+  make_tsmap: true
+  psf_scale_fn: null
+  reoptimize: false
+  save_model_map: false
+  spatial_model: RadialGaussian
+  sqrt_ts_threshold: null
+  tsmap_fitter: tsmap
+  update: false
+  width: []
+  width_max: 1.0
+  width_min: 0.01
+  width_nstep: 21
+  write_fits: true
+  write_npy: true
+fileio:
+  logfile: NGC1600
+  outdir: output
+  outdir_regex:
+  - \.fits$|\.fit$|\.xml$|\.npy$|\.png$|\.pdf$|\.yaml$
+  savefits: true
+  scratchdir: scratch
+  usescratch: false
+  workdir: null
+  workdir_regex:
+  - \.fits$|\.fit$|\.xml$|\.npy$
+gtlike:
+  bexpmap: null
+  bexpmap_base: null
+  bexpmap_roi: null
+  bexpmap_roi_base: null
+  convolve: true
+  edisp: true
+  edisp_bins: -1
+  edisp_disable:
+  - isodiff
+  expscale: null
+  irfs: P8R3_SOURCE_V3
+  llscan_npts: 20
+  minbinsz: 0.05
+  resample: true
+  rfactor: 2
+  src_expscale: {}
+  srcmap: null
+  srcmap_base: null
+  use_external_srcmap: false
+  use_scaled_srcmap: false
+  wmap: null
+lightcurve:
+  binsz: 86400.0
+  free_background: false
+  free_params: []
+  free_radius: null
+  free_sources: []
+  make_plots: false
+  max_free_sources: 5
+  multithread: false
+  nbins: null
+  nthread: null
+  outdir: null
+  save_bin_data: true
+  shape_ts_threshold: 16.0
+  systematic: 0.02
+  time_bins: []
+  use_local_ltcube: true
+  use_scaled_srcmap: false
+  write_fits: true
+  write_npy: true
+localize:
+  dtheta_max: 0.5
+  fix_shape: false
+  free_background: false
+  free_radius: null
+  make_plots: false
+  nstep: 5
+  tsmap_fitter: tsmap
+  update: true
+  write_fits: true
+  write_npy: true
+logging:
+  chatter: 3
+  prefix: ''
+  verbosity: 3
+ltcube:
+  binsz: 1.0
+  dcostheta: 0.025
+  phibins: 0
+  use_local_ltcube: false
+mc:
+  seed: null
+model:
+  assoc_xmatch_columns:
+  - 3FGL_Name
+  catalogs:
+  - 4FGL-DR3
+  diffuse: []
+  diffuse_dir: []
+  diffuse_xml: []
+  extdir: null
+  extract_diffuse: false
+  galdiff:
+  - /Users/asteinhe/opt/anaconda3/envs/fermi_test/share/fermitools/refdata/fermi/galdiffuse/gll_iem_v07.fits
+  isodiff:
+  - /Users/asteinhe/opt/anaconda3/envs/fermi_test/share/fermitools/refdata/fermi/galdiffuse/iso_P8R3_SOURCE_V3_v1.txt
+  limbdiff: []
+  merge_sources: true
+  sources:
+  - SpectrumType: PowerLaw
+    dec: -5.08625
+    name: NGC1600
+    ra: 67.916417
+  src_radius: 15.0
+  src_radius_roi: null
+  src_roiwidth: 15.0
+optimizer:
+  init_lambda: 0.0001
+  max_iter: 100
+  min_fit_quality: 2
+  optimizer: MINUIT
+  retries: 3
+  tol: 0.001
+  verbosity: 0
+plotting:
+  catalogs: []
+  cmap: magma
+  cmap_resid: RdBu_r
+  figsize:
+  - 8.0
+  - 6.0
+  format: png
+  graticule_radii: []
+  interactive: false
+  label_ts_threshold: 0.0
+  loge_bounds: []
+residmap:
+  exclude: []
+  loge_bounds: []
+  make_plots: false
+  model: {}
+  use_weights: false
+  write_fits: true
+  write_npy: true
+roiopt:
+  max_free_sources: 5
+  npred_frac: 0.95
+  npred_threshold: 1.0
+  shape_ts_threshold: 25.0
+  skip: []
+sed:
+  bin_index: 2.0
+  cov_scale: 3.0
+  free_background: false
+  free_pars: []
+  free_radius: null
+  make_plots: false
+  ul_confidence: 0.95
+  use_local_index: true
+  write_fits: true
+  write_npy: true
+selection:
+  convtype: null
+  dec: null
+  emax: 1000000.0
+  emin: 500.0
+  evclass: 128
+  evtype: 3
+  filter: DATA_QUAL>0 && LAT_CONFIG==1 && ABS(ROCK_ANGLE)<52
+  glat: null
+  glon: null
+  logemax: null
+  logemin: null
+  phasemax: null
+  phasemin: null
+  ra: null
+  radius: 15.0
+  roicut: 'no'
+  target: NGC1600
+  tmax: 712597417
+  tmin: 239557417
+  zmax: 100.0
+sourcefind:
+  free_params: []
+  max_iter: 5
+  min_separation: 1.0
+  model: {}
+  multithread: false
+  nthread: null
+  sources_per_iter: 4
+  sqrt_ts_threshold: 5.0
+  tsmap_fitter: tsmap
+tscube:
+  cov_scale: -1.0
+  cov_scale_bb: -1.0
+  do_sed: true
+  exclude: []
+  init_lambda: 0.0
+  max_iter: 30
+  model: {}
+  nnorm: 10
+  norm_sigma: 5.0
+  remake_test_source: false
+  st_scan_level: 0
+  tol: 0.001
+  tol_type: 0
+tsmap:
+  exclude: []
+  loge_bounds: []
+  make_plots: false
+  max_kernel_radius: 3.0
+  model: {}
+  multithread: false
+  nthread: null
+  write_fits: true
+  write_npy: true
+
+2024-03-19 15:04:55 DEBUG   GTAnalysis._create_component(): Creating Analysis Component: 00
+2024-03-19 15:04:55 DEBUG   GTBinnedAnalysis.print_config(): Configuration:
+binning:
+  binsperdec: 4.0
+  binsz: 0.08
+  coordsys: CEL
+  enumbins: null
+  hpx_ebin: true
+  hpx_order: 10
+  hpx_ordering_scheme: RING
+  npix: null
+  proj: AIT
+  projtype: WCS
+  roiwidth: 10.0
+data:
+  cacheft1: true
+  evfile: /Users/asteinhe/FermiLAT/BHinEGs_DM/data/NGC1600/ft1.fits
+  ltcube: /Users/asteinhe/FermiLAT/BHinEGs_DM/data/ltcube_00.fits
+  scfile: /Users/asteinhe/FermiLAT/BHinEGs_DM/data/ft2_sc.fits
+file_suffix: _00
+fileio:
+  logfile: NGC1600
+  outdir: output
+  outdir_regex:
+  - \.fits$|\.fit$|\.xml$|\.npy$|\.png$|\.pdf$|\.yaml$
+  savefits: true
+  scratchdir: scratch
+  usescratch: false
+  workdir: /Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output
+  workdir_regex:
+  - \.fits$|\.fit$|\.xml$|\.npy$
+gtlike:
+  bexpmap: null
+  bexpmap_base: null
+  bexpmap_roi: null
+  bexpmap_roi_base: null
+  convolve: true
+  edisp: true
+  edisp_bins: -1
+  edisp_disable:
+  - isodiff
+  expscale: null
+  irfs: P8R3_SOURCE_V3
+  llscan_npts: 20
+  minbinsz: 0.05
+  resample: true
+  rfactor: 2
+  src_expscale: {}
+  srcmap: null
+  srcmap_base: null
+  use_external_srcmap: false
+  use_scaled_srcmap: false
+  wmap: null
+logging:
+  chatter: 3
+  prefix: ''
+  verbosity: 3
+ltcube:
+  binsz: 1.0
+  dcostheta: 0.025
+  phibins: 0
+  use_local_ltcube: false
+model:
+  assoc_xmatch_columns:
+  - 3FGL_Name
+  catalogs:
+  - 4FGL-DR3
+  diffuse: []
+  diffuse_dir: []
+  diffuse_xml: []
+  extdir: null
+  extract_diffuse: false
+  galdiff:
+  - /Users/asteinhe/opt/anaconda3/envs/fermi_test/share/fermitools/refdata/fermi/galdiffuse/gll_iem_v07.fits
+  isodiff:
+  - /Users/asteinhe/opt/anaconda3/envs/fermi_test/share/fermitools/refdata/fermi/galdiffuse/iso_P8R3_SOURCE_V3_v1.txt
+  limbdiff: []
+  merge_sources: true
+  sources:
+  - SpectrumType: PowerLaw
+    dec: -5.08625
+    name: NGC1600
+    ra: 67.916417
+  src_radius: 15.0
+  src_radius_roi: null
+  src_roiwidth: 15.0
+name: '00'
+selection:
+  convtype: null
+  dec: null
+  emax: 1000000.0
+  emin: 500.0
+  evclass: 128
+  evtype: 3
+  filter: DATA_QUAL>0 && LAT_CONFIG==1 && ABS(ROCK_ANGLE)<52
+  glat: null
+  glon: null
+  logemax: !!python/object/apply:numpy.core.multiarray.scalar
+  - &id001 !!python/object/apply:numpy.dtype
+    args:
+    - f8
+    - false
+    - true
+    state: !!python/tuple
+    - 3
+    - <
+    - null
+    - null
+    - null
+    - -1
+    - -1
+    - 0
+  - !!binary |
+    AAAAAAAAGEA=
+  logemin: !!python/object/apply:numpy.core.multiarray.scalar
+  - *id001
+  - !!binary |
+    wBDslX2XBUA=
+  phasemax: null
+  phasemin: null
+  ra: null
+  radius: 15.0
+  roicut: 'no'
+  target: NGC1600
+  tmax: 712597417
+  tmin: 239557417
+  zmax: 100.0
+
+2024-03-19 15:04:55 INFO    GTAnalysis.load_roi(): Loading ROI file: /Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/fit_model_3.npy
+2024-03-19 15:04:55 INFO    GTBinnedAnalysis._create_binned_analysis(): Creating BinnedAnalysis for component 00.
+2024-03-19 15:04:55 DEBUG   GTBinnedAnalysis._create_binned_analysis(): Creating BinnedObs
+2024-03-19 15:04:55 DEBUG   GTBinnedAnalysis._create_binned_analysis(): {'srcMaps': '/Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/srcmap_00.fits', 'expCube': '/Users/asteinhe/FermiLAT/BHinEGs_DM/data/ltcube_00.fits', 'binnedExpMap': '/Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/bexpmap_00.fits', 'irfs': 'P8R3_SOURCE_V3'}
+2024-03-19 15:04:56 DEBUG   GTBinnedAnalysis._create_binned_analysis(): Creating BinnedAnalysis
+2024-03-19 15:04:56 DEBUG   GTBinnedAnalysis._create_binned_analysis(): {'srcModel': '/Users/asteinhe/FermiLAT/BHinEGs_DM/run/NGC1600/output/fit_model_3_00.xml', 'optimizer': 'MINUIT', 'wmap': None, 'convolve': True, 'resample': True, 'minbinsz': 0.05, 'resamp_fact': 2, 'edisp_bins': -1}
+2024-03-19 15:04:58 DEBUG   GTBinnedAnalysis._create_binned_analysis(): Disabling energy dispersion for isodiff
+2024-03-19 15:04:58 DEBUG   GTBinnedAnalysis._create_binned_analysis(): Computing fixed weights
+2024-03-19 15:04:58 DEBUG   GTBinnedAnalysis._create_binned_analysis(): Updating source maps
+2024-03-19 15:04:59 INFO    GTAnalysis.load_roi(): Finished Loading ROI
+2024-03-19 15:04:59 INFO    GTAnalysis.optimize(): Starting
+2024-03-19 15:04:59 DEBUG   GTAnalysis.optimize(): LogLike: -51342.963667
+2024-03-19 15:04:59 DEBUG   GTAnalysis.free_source(): Fixing parameters for NGC1600               : ['Prefactor', 'Index']
+2024-03-19 15:04:59 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['norm', 'alpha', 'beta']
+2024-03-19 15:04:59 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0421.0-0752     : ['Prefactor']
+2024-03-19 15:04:59 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['norm', 'alpha', 'beta']
+2024-03-19 15:04:59 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['norm', 'alpha', 'beta']
+2024-03-19 15:04:59 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0436.2-0038     : ['norm']
+2024-03-19 15:04:59 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['norm', 'alpha', 'beta']
+2024-03-19 15:04:59 DEBUG   GTAnalysis.free_source(): Fixing parameters for isodiff               : ['Normalization']
+2024-03-19 15:04:59 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Prefactor', 'Index']
+2024-03-19 15:04:59 DEBUG   GTAnalysis.free_source(): Freeing parameters for galdiff               : ['Prefactor']
+2024-03-19 15:04:59 DEBUG   GTAnalysis.free_source(): Freeing parameters for isodiff               : ['Normalization']
+2024-03-19 15:04:59 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0423.3-0120     : ['norm']
+2024-03-19 15:04:59 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0442.6-0017     : ['norm']
+2024-03-19 15:04:59 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0422.1-0644     : ['norm']
+2024-03-19 15:04:59 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:04:59 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:00 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0422.1-0644
+2024-03-19 15:05:00 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0422.1-0644
+2024-03-19 15:05:00 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:00 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0423.3-0120
+2024-03-19 15:05:00 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0423.3-0120
+2024-03-19 15:05:00 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:00 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0442.6-0017
+2024-03-19 15:05:00 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0442.6-0017
+2024-03-19 15:05:00 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:00 DEBUG   GTAnalysis.get_src_model(): Generating source dict for galdiff
+2024-03-19 15:05:05 DEBUG   GTAnalysis.profile_norm(): Profiling galdiff
+2024-03-19 15:05:05 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:05 DEBUG   GTAnalysis.get_src_model(): Generating source dict for isodiff
+2024-03-19 15:05:05 DEBUG   GTAnalysis.profile_norm(): Profiling isodiff
+2024-03-19 15:05:05 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:05 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:05 DEBUG   GTAnalysis.fit(): LogLike:   -51342.962 DeltaLogLike:        0.001 
+2024-03-19 15:05:05 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['norm']
+2024-03-19 15:05:05 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['norm']
+2024-03-19 15:05:05 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['norm']
+2024-03-19 15:05:05 DEBUG   GTAnalysis.free_source(): Fixing parameters for isodiff               : ['Normalization']
+2024-03-19 15:05:05 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Prefactor']
+2024-03-19 15:05:05 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0418.1-0252 npred:    771.567 TS:    661.791
+2024-03-19 15:05:05 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0418.1-0252     : ['norm']
+2024-03-19 15:05:05 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:06 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:06 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0418.1-0252
+2024-03-19 15:05:06 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0418.1-0252
+2024-03-19 15:05:06 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:06 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:06 DEBUG   GTAnalysis.fit(): LogLike:   -51342.962 DeltaLogLike:        0.000 
+2024-03-19 15:05:06 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    771.497 TS:    670.391
+2024-03-19 15:05:06 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['norm']
+2024-03-19 15:05:06 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0413.1-0304 npred:    257.842 TS:     74.229
+2024-03-19 15:05:06 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0413.1-0304     : ['Prefactor']
+2024-03-19 15:05:06 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:06 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:06 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0413.1-0304
+2024-03-19 15:05:06 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0413.1-0304
+2024-03-19 15:05:06 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:06 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:06 DEBUG   GTAnalysis.fit(): LogLike:   -51342.962 DeltaLogLike:        0.000 
+2024-03-19 15:05:06 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    257.982 TS:     74.265
+2024-03-19 15:05:06 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0413.1-0304     : ['Prefactor']
+2024-03-19 15:05:06 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0423.0-0943 npred:    257.541 TS:    105.523
+2024-03-19 15:05:06 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0423.0-0943     : ['norm']
+2024-03-19 15:05:06 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:06 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:07 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0423.0-0943
+2024-03-19 15:05:07 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0423.0-0943
+2024-03-19 15:05:07 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:07 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:07 DEBUG   GTAnalysis.fit(): LogLike:   -51342.962 DeltaLogLike:        0.000 
+2024-03-19 15:05:07 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    258.158 TS:    105.870
+2024-03-19 15:05:07 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.0-0943     : ['norm']
+2024-03-19 15:05:07 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0433.5-1039 npred:    227.589 TS:     17.498
+2024-03-19 15:05:07 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0433.5-1039     : ['Prefactor']
+2024-03-19 15:05:07 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:07 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:07 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0433.5-1039
+2024-03-19 15:05:07 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0433.5-1039
+2024-03-19 15:05:07 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:07 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:07 DEBUG   GTAnalysis.fit(): LogLike:   -51342.954 DeltaLogLike:        0.008 
+2024-03-19 15:05:07 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    220.511 TS:     16.545
+2024-03-19 15:05:07 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0433.5-1039     : ['Prefactor']
+2024-03-19 15:05:07 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0421.0-0752 npred:    205.970 TS:     38.727
+2024-03-19 15:05:07 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0421.0-0752     : ['Prefactor']
+2024-03-19 15:05:07 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:07 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:08 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0421.0-0752
+2024-03-19 15:05:08 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0421.0-0752
+2024-03-19 15:05:08 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:08 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:08 DEBUG   GTAnalysis.fit(): LogLike:   -51342.954 DeltaLogLike:        0.000 
+2024-03-19 15:05:08 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    205.979 TS:     39.347
+2024-03-19 15:05:08 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0421.0-0752     : ['Prefactor']
+2024-03-19 15:05:08 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0501.2-0158 npred:    169.331 TS:      5.129
+2024-03-19 15:05:08 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0501.2-0158     : ['norm']
+2024-03-19 15:05:08 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:08 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:08 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0501.2-0158
+2024-03-19 15:05:08 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0501.2-0158
+2024-03-19 15:05:08 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:08 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:08 DEBUG   GTAnalysis.fit(): LogLike:   -51342.934 DeltaLogLike:        0.020 
+2024-03-19 15:05:08 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    154.012 TS:      4.268
+2024-03-19 15:05:08 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0501.2-0158     : ['norm']
+2024-03-19 15:05:08 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0436.2-0038 npred:    167.526 TS:     39.754
+2024-03-19 15:05:08 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0436.2-0038     : ['norm']
+2024-03-19 15:05:08 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:08 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:08 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0436.2-0038
+2024-03-19 15:05:08 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0436.2-0038
+2024-03-19 15:05:09 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:09 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:09 DEBUG   GTAnalysis.fit(): LogLike:   -51342.934 DeltaLogLike:        0.000 
+2024-03-19 15:05:09 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    167.668 TS:     40.216
+2024-03-19 15:05:09 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0436.2-0038     : ['norm']
+2024-03-19 15:05:09 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0430.2-0356 npred:    129.045 TS:     11.089
+2024-03-19 15:05:09 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0430.2-0356     : ['Prefactor']
+2024-03-19 15:05:09 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:09 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:09 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0430.2-0356
+2024-03-19 15:05:09 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0430.2-0356
+2024-03-19 15:05:09 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:09 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:09 DEBUG   GTAnalysis.fit(): LogLike:   -51342.930 DeltaLogLike:        0.004 
+2024-03-19 15:05:09 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    125.257 TS:     10.486
+2024-03-19 15:05:09 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0430.2-0356     : ['Prefactor']
+2024-03-19 15:05:09 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0414.6-0842 npred:    124.666 TS:     25.995
+2024-03-19 15:05:09 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0414.6-0842     : ['Prefactor']
+2024-03-19 15:05:09 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:09 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:09 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0414.6-0842
+2024-03-19 15:05:10 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0414.6-0842
+2024-03-19 15:05:10 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:10 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:10 DEBUG   GTAnalysis.fit(): LogLike:   -51342.930 DeltaLogLike:        0.000 
+2024-03-19 15:05:10 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    124.602 TS:     25.966
+2024-03-19 15:05:10 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0414.6-0842     : ['Prefactor']
+2024-03-19 15:05:10 DEBUG   GTAnalysis.optimize(): Fitting PS J0433.1-0716 npred:    123.866 TS:     23.328
+2024-03-19 15:05:10 DEBUG   GTAnalysis.free_source(): Freeing parameters for PS J0433.1-0716       : ['Prefactor']
+2024-03-19 15:05:10 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:10 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:10 DEBUG   GTAnalysis.get_src_model(): Generating source dict for PS J0433.1-0716
+2024-03-19 15:05:10 DEBUG   GTAnalysis.profile_norm(): Profiling PS J0433.1-0716
+2024-03-19 15:05:10 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:10 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:10 DEBUG   GTAnalysis.fit(): LogLike:   -51342.928 DeltaLogLike:        0.002 
+2024-03-19 15:05:10 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    121.488 TS:     22.944
+2024-03-19 15:05:10 DEBUG   GTAnalysis.free_source(): Fixing parameters for PS J0433.1-0716       : ['Prefactor']
+2024-03-19 15:05:10 DEBUG   GTAnalysis.optimize(): Fitting PS J0421.5-0626 npred:    119.307 TS:     36.236
+2024-03-19 15:05:10 DEBUG   GTAnalysis.free_source(): Freeing parameters for PS J0421.5-0626       : ['Prefactor']
+2024-03-19 15:05:10 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:10 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:11 DEBUG   GTAnalysis.get_src_model(): Generating source dict for PS J0421.5-0626
+2024-03-19 15:05:11 DEBUG   GTAnalysis.profile_norm(): Profiling PS J0421.5-0626
+2024-03-19 15:05:11 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:11 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:11 DEBUG   GTAnalysis.fit(): LogLike:   -51342.926 DeltaLogLike:        0.002 
+2024-03-19 15:05:11 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    117.844 TS:     36.108
+2024-03-19 15:05:11 DEBUG   GTAnalysis.free_source(): Fixing parameters for PS J0421.5-0626       : ['Prefactor']
+2024-03-19 15:05:11 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0424.7+0036 npred:    112.509 TS:      2.932
+2024-03-19 15:05:11 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0424.7+0036     : ['norm']
+2024-03-19 15:05:11 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:11 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:11 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0424.7+0036
+2024-03-19 15:05:11 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0424.7+0036
+2024-03-19 15:05:11 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:11 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:11 DEBUG   GTAnalysis.fit(): LogLike:   -51342.924 DeltaLogLike:        0.002 
+2024-03-19 15:05:11 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:    108.074 TS:      2.722
+2024-03-19 15:05:11 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0424.7+0036     : ['norm']
+2024-03-19 15:05:11 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0420.3-0407 npred:     99.876 TS:     11.391
+2024-03-19 15:05:11 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0420.3-0407     : ['Prefactor']
+2024-03-19 15:05:11 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:11 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:11 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0420.3-0407
+2024-03-19 15:05:11 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0420.3-0407
+2024-03-19 15:05:12 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:12 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:12 DEBUG   GTAnalysis.fit(): LogLike:   -51342.923 DeltaLogLike:        0.002 
+2024-03-19 15:05:12 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:     98.007 TS:     11.032
+2024-03-19 15:05:12 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0420.3-0407     : ['Prefactor']
+2024-03-19 15:05:12 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0439.9-0535 npred:     95.756 TS:     21.659
+2024-03-19 15:05:12 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0439.9-0535     : ['Prefactor']
+2024-03-19 15:05:12 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:12 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:12 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0439.9-0535
+2024-03-19 15:05:12 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0439.9-0535
+2024-03-19 15:05:12 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:12 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:12 DEBUG   GTAnalysis.fit(): LogLike:   -51342.922 DeltaLogLike:        0.000 
+2024-03-19 15:05:12 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:     94.911 TS:     21.460
+2024-03-19 15:05:12 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0439.9-0535     : ['Prefactor']
+2024-03-19 15:05:12 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0429.0-0006 npred:     52.602 TS:      2.824
+2024-03-19 15:05:12 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0429.0-0006     : ['Prefactor']
+2024-03-19 15:05:12 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:12 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:12 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0429.0-0006
+2024-03-19 15:05:12 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0429.0-0006
+2024-03-19 15:05:12 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:13 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:13 DEBUG   GTAnalysis.fit(): LogLike:   -51342.921 DeltaLogLike:        0.001 
+2024-03-19 15:05:13 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:     51.231 TS:      2.694
+2024-03-19 15:05:13 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0429.0-0006     : ['Prefactor']
+2024-03-19 15:05:13 DEBUG   GTAnalysis.optimize(): Fitting 4FGL J0409.8-0359 npred:     15.320 TS:      0.132
+2024-03-19 15:05:13 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0409.8-0359     : ['norm']
+2024-03-19 15:05:13 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:13 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:13 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0409.8-0359
+2024-03-19 15:05:13 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0409.8-0359
+2024-03-19 15:05:13 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:13 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:13 DEBUG   GTAnalysis.fit(): LogLike:   -51342.917 DeltaLogLike:        0.005 
+2024-03-19 15:05:13 DEBUG   GTAnalysis.optimize(): Post-fit Results npred:     11.391 TS:      0.074
+2024-03-19 15:05:13 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0409.8-0359     : ['norm']
+2024-03-19 15:05:13 DEBUG   GTAnalysis.optimize(): Skipping NGC1600 with npred      0.098
+2024-03-19 15:05:13 DEBUG   GTAnalysis.optimize(): Skipping 4FGL J0416.9+0105 with npred      0.004
+2024-03-19 15:05:13 DEBUG   GTAnalysis.optimize(): Fitting shape galdiff TS:   7407.007
+2024-03-19 15:05:13 DEBUG   GTAnalysis.free_source(): Freeing parameters for galdiff               : ['Prefactor', 'Index']
+2024-03-19 15:05:13 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:13 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:13 DEBUG   GTAnalysis.get_src_model(): Generating source dict for galdiff
+2024-03-19 15:05:13 DEBUG   GTAnalysis.profile_norm(): Profiling galdiff
+2024-03-19 15:05:13 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:05:13 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:14 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:14 DEBUG   GTAnalysis.fit(): LogLike:   -51342.907 DeltaLogLike:        0.010 
+2024-03-19 15:05:14 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Prefactor', 'Index']
+2024-03-19 15:05:14 DEBUG   GTAnalysis.optimize(): Fitting shape 4FGL J0423.3-0120 TS:   4533.962
+2024-03-19 15:05:14 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0423.3-0120     : ['norm', 'alpha', 'beta']
+2024-03-19 15:05:14 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:14 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:14 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0423.3-0120
+2024-03-19 15:05:14 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0423.3-0120
+2024-03-19 15:05:14 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:05:14 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:14 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:14 DEBUG   GTAnalysis.fit(): LogLike:   -51342.907 DeltaLogLike:        0.000 
+2024-03-19 15:05:14 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['norm', 'alpha', 'beta']
+2024-03-19 15:05:14 DEBUG   GTAnalysis.optimize(): Fitting shape 4FGL J0442.6-0017 TS:   4035.242
+2024-03-19 15:05:14 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0442.6-0017     : ['norm', 'alpha', 'beta']
+2024-03-19 15:05:14 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:14 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:14 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0442.6-0017
+2024-03-19 15:05:15 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0442.6-0017
+2024-03-19 15:05:15 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:05:15 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:15 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:15 DEBUG   GTAnalysis.fit(): LogLike:   -51342.907 DeltaLogLike:        0.000 
+2024-03-19 15:05:15 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['norm', 'alpha', 'beta']
+2024-03-19 15:05:15 DEBUG   GTAnalysis.optimize(): Fitting shape isodiff TS:    806.639
+2024-03-19 15:05:15 DEBUG   GTAnalysis.free_source(): Freeing parameters for isodiff               : ['Normalization']
+2024-03-19 15:05:15 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:15 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:15 DEBUG   GTAnalysis.get_src_model(): Generating source dict for isodiff
+2024-03-19 15:05:15 DEBUG   GTAnalysis.profile_norm(): Profiling isodiff
+2024-03-19 15:05:15 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:15 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:15 DEBUG   GTAnalysis.fit(): LogLike:   -51342.907 DeltaLogLike:        0.000 
+2024-03-19 15:05:15 DEBUG   GTAnalysis.free_source(): Fixing parameters for isodiff               : ['Normalization']
+2024-03-19 15:05:15 DEBUG   GTAnalysis.optimize(): Fitting shape 4FGL J0422.1-0644 TS:    792.188
+2024-03-19 15:05:15 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0422.1-0644     : ['norm', 'alpha', 'beta']
+2024-03-19 15:05:15 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:15 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:16 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0422.1-0644
+2024-03-19 15:05:16 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0422.1-0644
+2024-03-19 15:05:16 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:05:16 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:16 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:16 DEBUG   GTAnalysis.fit(): LogLike:   -51342.906 DeltaLogLike:        0.001 
+2024-03-19 15:05:16 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['norm', 'alpha', 'beta']
+2024-03-19 15:05:16 DEBUG   GTAnalysis.optimize(): Fitting shape 4FGL J0418.1-0252 TS:    670.391
+2024-03-19 15:05:16 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0418.1-0252     : ['norm', 'alpha', 'beta']
+2024-03-19 15:05:16 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:16 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:16 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0418.1-0252
+2024-03-19 15:05:16 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0418.1-0252
+2024-03-19 15:05:16 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:05:16 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:17 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:17 DEBUG   GTAnalysis.fit(): LogLike:   -51342.906 DeltaLogLike:        0.000 
+2024-03-19 15:05:17 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['norm', 'alpha', 'beta']
+2024-03-19 15:05:17 DEBUG   GTAnalysis.optimize(): Fitting shape 4FGL J0423.0-0943 TS:    105.870
+2024-03-19 15:05:17 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0423.0-0943     : ['norm', 'alpha', 'beta']
+2024-03-19 15:05:17 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:17 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:17 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0423.0-0943
+2024-03-19 15:05:17 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0423.0-0943
+2024-03-19 15:05:17 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.0-0943     : ['alpha', 'beta']
+2024-03-19 15:05:17 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:17 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:17 DEBUG   GTAnalysis.fit(): LogLike:   -51342.906 DeltaLogLike:        0.000 
+2024-03-19 15:05:17 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.0-0943     : ['norm', 'alpha', 'beta']
+2024-03-19 15:05:17 DEBUG   GTAnalysis.optimize(): Fitting shape 4FGL J0413.1-0304 TS:     74.265
+2024-03-19 15:05:17 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0413.1-0304     : ['Prefactor', 'Index']
+2024-03-19 15:05:17 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:17 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:17 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0413.1-0304
+2024-03-19 15:05:17 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0413.1-0304
+2024-03-19 15:05:17 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0413.1-0304     : ['Index']
+2024-03-19 15:05:18 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:18 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:18 DEBUG   GTAnalysis.fit(): LogLike:   -51342.906 DeltaLogLike:        0.000 
+2024-03-19 15:05:18 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0413.1-0304     : ['Prefactor', 'Index']
+2024-03-19 15:05:18 DEBUG   GTAnalysis.optimize(): Fitting shape 4FGL J0436.2-0038 TS:     40.216
+2024-03-19 15:05:18 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0436.2-0038     : ['norm', 'alpha', 'beta']
+2024-03-19 15:05:18 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:18 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:18 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0436.2-0038
+2024-03-19 15:05:18 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0436.2-0038
+2024-03-19 15:05:18 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0436.2-0038     : ['alpha', 'beta']
+2024-03-19 15:05:18 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:18 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:18 DEBUG   GTAnalysis.fit(): LogLike:   -51342.906 DeltaLogLike:        0.000 
+2024-03-19 15:05:18 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0436.2-0038     : ['norm', 'alpha', 'beta']
+2024-03-19 15:05:18 DEBUG   GTAnalysis.optimize(): Fitting shape 4FGL J0421.0-0752 TS:     39.347
+2024-03-19 15:05:18 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0421.0-0752     : ['Prefactor', 'Index']
+2024-03-19 15:05:18 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:18 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:18 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0421.0-0752
+2024-03-19 15:05:18 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0421.0-0752
+2024-03-19 15:05:18 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0421.0-0752     : ['Index']
+2024-03-19 15:05:19 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:19 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:19 DEBUG   GTAnalysis.fit(): LogLike:   -51342.905 DeltaLogLike:        0.000 
+2024-03-19 15:05:19 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0421.0-0752     : ['Prefactor', 'Index']
+2024-03-19 15:05:19 DEBUG   GTAnalysis.optimize(): Fitting shape PS J0421.5-0626 TS:     36.108
+2024-03-19 15:05:19 DEBUG   GTAnalysis.free_source(): Freeing parameters for PS J0421.5-0626       : ['Prefactor', 'Index']
+2024-03-19 15:05:19 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:19 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:19 DEBUG   GTAnalysis.get_src_model(): Generating source dict for PS J0421.5-0626
+2024-03-19 15:05:19 DEBUG   GTAnalysis.profile_norm(): Profiling PS J0421.5-0626
+2024-03-19 15:05:19 DEBUG   GTAnalysis.free_source(): Fixing parameters for PS J0421.5-0626       : ['Index']
+2024-03-19 15:05:19 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:19 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:19 DEBUG   GTAnalysis.fit(): LogLike:   -51342.905 DeltaLogLike:        0.001 
+2024-03-19 15:05:19 DEBUG   GTAnalysis.free_source(): Fixing parameters for PS J0421.5-0626       : ['Prefactor', 'Index']
+2024-03-19 15:05:19 DEBUG   GTAnalysis.optimize(): Fitting shape 4FGL J0414.6-0842 TS:     25.966
+2024-03-19 15:05:19 DEBUG   GTAnalysis.free_source(): Freeing parameters for 4FGL J0414.6-0842     : ['Prefactor', 'Index']
+2024-03-19 15:05:19 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:19 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:20 DEBUG   GTAnalysis.get_src_model(): Generating source dict for 4FGL J0414.6-0842
+2024-03-19 15:05:20 DEBUG   GTAnalysis.profile_norm(): Profiling 4FGL J0414.6-0842
+2024-03-19 15:05:20 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0414.6-0842     : ['Index']
+2024-03-19 15:05:20 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:20 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:20 DEBUG   GTAnalysis.fit(): LogLike:   -51342.905 DeltaLogLike:        0.000 
+2024-03-19 15:05:20 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0414.6-0842     : ['Prefactor', 'Index']
+2024-03-19 15:05:20 INFO    GTAnalysis.optimize(): Finished
+2024-03-19 15:05:20 INFO    GTAnalysis.optimize(): LogLike: -51342.904692 Delta-LogLike: 0.058975
+2024-03-19 15:05:20 INFO    GTAnalysis.optimize(): Execution time: 20.87 s
+2024-03-19 15:05:20 INFO    GTAnalysis.sed(): Computing SED for NGC1600
+2024-03-19 15:05:20 DEBUG   GTAnalysis.free_source(): Fixing parameters for NGC1600               : ['Index']
+2024-03-19 15:05:20 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:05:20 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:05:20 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:05:20 DEBUG   GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:05:20 DEBUG   GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:05:20 DEBUG   GTAnalysis.free_source(): Freeing parameters for NGC1600               : ['Index']
+2024-03-19 15:05:20 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:21 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:21 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   2 Status: 102
+2024-03-19 15:05:21 DEBUG   GTAnalysis.fit(): LogLike:   -51342.904 DeltaLogLike:        0.001 
+2024-03-19 15:05:21 INFO    GTAnalysis._make_sed(): Fitting SED
+2024-03-19 15:05:21 INFO    GTAnalysis.free_source(): Fixing parameters for NGC1600               : ['Index']
+2024-03-19 15:05:21 INFO    GTAnalysis.free_source(): Fixing parameters for 4FGL J0422.1-0644     : ['alpha', 'beta']
+2024-03-19 15:05:21 INFO    GTAnalysis.free_source(): Fixing parameters for 4FGL J0418.1-0252     : ['alpha', 'beta']
+2024-03-19 15:05:21 INFO    GTAnalysis.free_source(): Fixing parameters for 4FGL J0423.3-0120     : ['alpha', 'beta']
+2024-03-19 15:05:21 INFO    GTAnalysis.free_source(): Fixing parameters for 4FGL J0442.6-0017     : ['alpha', 'beta']
+2024-03-19 15:05:21 INFO    GTAnalysis.free_source(): Fixing parameters for galdiff               : ['Index']
+2024-03-19 15:05:21 INFO    GTAnalysis.free_source(): Fixing parameters for NGC1600               : ['Prefactor']
+2024-03-19 15:05:21 DEBUG   GTAnalysis.fit(): Starting fit.
+2024-03-19 15:05:21 DEBUG   GTAnalysis.fit(): Fit complete.
+2024-03-19 15:05:21 DEBUG   GTAnalysis.fit(): Fit returned successfully. Quality:   3 Status:   0
+2024-03-19 15:05:21 DEBUG   GTAnalysis.fit(): LogLike:   -51342.900 DeltaLogLike:        0.000 
+2024-03-19 15:05:22 DEBUG   GTAnalysis._make_sed(): Fitting NGC1600 SED from 500 MeV to 897 MeV
+2024-03-19 15:05:22 DEBUG   GTAnalysis.profile_norm(): Profiling NGC1600
+2024-03-19 15:05:34 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:34 DEBUG   GTAnalysis._make_sed(): Fitting NGC1600 SED from 897 MeV to 1610 MeV
+2024-03-19 15:05:35 DEBUG   GTAnalysis.profile_norm(): Profiling NGC1600
+2024-03-19 15:05:45 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:46 DEBUG   GTAnalysis._make_sed(): Fitting NGC1600 SED from 1610 MeV to 2889 MeV
+2024-03-19 15:05:46 DEBUG   GTAnalysis.profile_norm(): Profiling NGC1600
+2024-03-19 15:05:57 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:05:57 DEBUG   GTAnalysis._make_sed(): Fitting NGC1600 SED from 2889 MeV to 5184 MeV
+2024-03-19 15:05:58 DEBUG   GTAnalysis.profile_norm(): Profiling NGC1600
+2024-03-19 15:06:09 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:06:09 DEBUG   GTAnalysis._make_sed(): Fitting NGC1600 SED from 5184 MeV to 9303 MeV
+2024-03-19 15:06:10 DEBUG   GTAnalysis.profile_norm(): Profiling NGC1600
+2024-03-19 15:06:20 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:06:20 DEBUG   GTAnalysis._make_sed(): Fitting NGC1600 SED from 9303 MeV to 16692 MeV
+2024-03-19 15:06:21 DEBUG   GTAnalysis.profile_norm(): Profiling NGC1600
+2024-03-19 15:06:31 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:06:31 DEBUG   GTAnalysis._make_sed(): Fitting NGC1600 SED from 16692 MeV to 29954 MeV
+2024-03-19 15:06:32 DEBUG   GTAnalysis.profile_norm(): Profiling NGC1600
+2024-03-19 15:06:42 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:06:42 DEBUG   GTAnalysis._make_sed(): Fitting NGC1600 SED from 29954 MeV to 53749 MeV
+2024-03-19 15:06:43 DEBUG   GTAnalysis.profile_norm(): Profiling NGC1600
+2024-03-19 15:06:53 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:06:53 DEBUG   GTAnalysis._make_sed(): Fitting NGC1600 SED from 53749 MeV to 96450 MeV
+2024-03-19 15:06:54 DEBUG   GTAnalysis.profile_norm(): Profiling NGC1600
+2024-03-19 15:07:04 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:07:04 DEBUG   GTAnalysis._make_sed(): Fitting NGC1600 SED from 96450 MeV to 173069 MeV
+2024-03-19 15:07:05 DEBUG   GTAnalysis.profile_norm(): Profiling NGC1600
+2024-03-19 15:07:17 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:07:17 DEBUG   GTAnalysis._make_sed(): Fitting NGC1600 SED from 173069 MeV to 310563 MeV
+2024-03-19 15:07:18 DEBUG   GTAnalysis.profile_norm(): Profiling NGC1600
+2024-03-19 15:07:28 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:07:28 DEBUG   GTAnalysis._make_sed(): Fitting NGC1600 SED from 310563 MeV to 557276 MeV
+2024-03-19 15:07:28 DEBUG   GTAnalysis.profile_norm(): Profiling NGC1600
+2024-03-19 15:07:38 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:07:38 DEBUG   GTAnalysis._make_sed(): Fitting NGC1600 SED from 557276 MeV to 1000000 MeV
+2024-03-19 15:07:39 DEBUG   GTAnalysis.profile_norm(): Profiling NGC1600
+2024-03-19 15:07:48 DEBUG   GTAnalysis.profile_norm(): Finished
+2024-03-19 15:07:48 INFO    GTAnalysis.sed(): Finished SED
+2024-03-19 15:07:55 INFO    GTAnalysis.sed(): Execution time: 154.99 s

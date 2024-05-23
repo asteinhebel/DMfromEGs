@@ -10,10 +10,11 @@
 
 # python schnittamn_likelihood_DM.py <target> <M_BH> <distance>
 
-targets=("NGC4889" "NGC4649" "NGC1407" "NGC3842" "NGC3091" "NGC1550")
-m_bh=(208.0 47.3 46.5 90.0 37.2 38.7) #1e8 solar masses
-distanceKH=(102.0 16.5 29.0 92.2 53.02 52.5) #Mpc
-distance=(99.03 21.14 24.44 96.78 63.55 53.58) #Mpc
+targets=("NGC4889" "NGC4649" "NGC1407" "NGC3842" "NGC3091" "NGC1550" "NGC1600")
+m_bh=(208.0 47.3 46.5 90.0 37.2 38.7 170.0) #1e8 solar masses
+#distanceKH=(102.0 16.5 29.0 92.2 53.02 52.5) #Mpc
+distance=(99.03 21.14 24.44 96.78 63.55 53.58 68.15) #Mpc
+
 
 for i in ${!targets[@]}; do
   #python breakdown__schnittman_likelihood_DM.py ${targets[$i]} ${m_bh[$i]} ${distance[$i]} 0 4 40 -28 -22 60
